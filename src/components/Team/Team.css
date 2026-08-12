@@ -1,0 +1,334 @@
+/* ========================================
+   TEAM SECTION - MODERN DESIGN
+======================================== */
+.team-section-modern {
+  padding: 100px 24px;
+  background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-section-modern .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+.team-header-modern {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.team-badge-modern {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: linear-gradient(135deg, rgba(255, 138, 0, 0.1), rgba(255, 49, 92, 0.1));
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ff8a00;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 138, 0, 0.1);
+}
+
+.gradient-text-modern {
+  background: linear-gradient(135deg, #ff8a00, #ff315c, #d21cff, #3b4cff, #1267ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 300% 300%;
+  animation: gradientMoveModern 4s ease-in-out infinite;
+}
+
+@keyframes gradientMoveModern {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.team-header-modern h2 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 900;
+  color: #0a0a1a;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.team-header-modern p {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+/* ========================================
+   TEAM GRID - RESPONSIVE FIX FOR 4 CARDS
+======================================== */
+.team-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+/* ========================================
+   TEAM CARD - MODERN WITH HOVER
+======================================== */
+.team-card-modern {
+  position: relative;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px 24px 24px;
+  text-align: center;
+  border: 1px solid #f1f5f9;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  overflow: hidden;
+}
+
+.team-card-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-color);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.team-card-modern:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  border-color: var(--card-border);
+}
+
+.team-card-modern:hover::before {
+  opacity: 1;
+}
+
+.team-card-modern::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--card-bg);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.team-card-modern:hover::after {
+  opacity: 1;
+}
+
+/* ========================================
+   AVATAR
+======================================== */
+.team-avatar-modern {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 16px;
+  z-index: 1;
+}
+
+.avatar-ring {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  padding: 3px;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.team-card-modern:hover .avatar-ring {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px var(--card-color);
+}
+
+.avatar-ring img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatar-glow {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.team-card-modern:hover .avatar-glow {
+  opacity: 1;
+}
+
+/* ========================================
+   INFO
+======================================== */
+.team-info-modern {
+  position: relative;
+  z-index: 1;
+}
+
+.team-info-modern h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.team-title {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.team-handle {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+/* ========================================
+   STATS
+======================================== */
+.team-stats {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 16px 0;
+  padding: 12px 0;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.stat-item span {
+  font-size: 0.7rem;
+}
+
+/* ========================================
+   ACTIONS (Social + Connect)
+======================================== */
+.team-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.team-social {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: var(--social-color);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   CONNECT BUTTON
+======================================== */
+.connect-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.connect-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.connect-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.connect-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 1024px) {
+  .team-grid-modern {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-section-modern {
+    padding: 60px 16px;
+  }
+
+  .team-grid-modern {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}

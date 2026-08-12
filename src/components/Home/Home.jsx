@@ -4,6 +4,9 @@ import AboutHero from "./AboutHero";
 import WebServicesStats from "./WebServicesStats";
 import ProfessionalServices from "./ProfessionalServices";
 import Gallery from "./Gallery/Gallery";
+import WhyChooseUs from "./WhyChooseUs";
+import Process from "./Process";
+import Testimonials from "./Testimonials";
 
 export default function Home() {
   return (
@@ -78,6 +81,10 @@ export default function Home() {
         showLabels={true}
         trigger="hover"
       />
+      <WhyChooseUs />
+      <Process />
+      <Testimonials />
+
     </main>
   );
 }
