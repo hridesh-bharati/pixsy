@@ -153,7 +153,7 @@ export default function ProfessionalServices() {
     <section ref={sectionRef} className="pixsy-prof-services-section">
       <div className="pixsy-mesh-overlay"></div>
 
-      <div className="container position-relative z-2">
+      <div className="container-fluid position-relative z-2">
         {/* Top 3 Image Cards Section */}
         <div ref={topCardsRef} className="row g-4 mb-5 pb-4 justify-content-center">
           {topCards.map((card, index) => (
@@ -177,7 +177,7 @@ export default function ProfessionalServices() {
         </div>
 
         {/* Section Header */}
-        <div ref={headerRef} className="row align-items-center mb-5 pt-3">
+        <div ref={headerRef} className="container  m-auto row align-items-center mb-5 pt-3">
           <div className="col-lg-6">
             <div className="pixsy-small-title">
               <Sparkles sizelet={14} />
