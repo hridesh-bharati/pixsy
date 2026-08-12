@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import AboutHero from "./AboutHero";
 import WebServicesStats from "./WebServicesStats";
+import ProfessionalServices from "./ProfessionalServices";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
       </div>
       <AboutHero />
       <WebServicesStats />
+      <ProfessionalServices />
     </main>
   );
 }

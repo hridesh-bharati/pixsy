@@ -1,0 +1,265 @@
+/* =========================================
+   PROFESSIONAL IT SERVICES SECTION (DARK THEME)
+========================================= */
+
+.pixsy-prof-services-section {
+  padding: 110px 0;
+  background-color: #0f0d18;
+  /* Deep Dark Background */
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Mesh / Dotted Pattern Overlay */
+.pixsy-mesh-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(rgba(210, 28, 255, 0.15) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(59, 76, 255, 0.15) 1.5px, transparent 1.5px);
+  background-size: 36px 36px;
+  background-position: 0 0, 18px 18px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* =========================================
+   TOP 3 IMAGE CARDS (COLORFUL ON HOVER)
+========================================= */
+.pixsy-top-card {
+  background: #181424;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  height: 100%;
+}
+
+.top-card-img {
+  height: 210px;
+  overflow: hidden;
+}
+
+.top-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.top-card-banner {
+  background: #1e1a2d;
+  padding: 22px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+}
+
+.banner-icon-box {
+  width: 45px;
+  height: 45px;
+  background: rgba(210, 28, 255, 0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.4s ease;
+}
+
+.pixsy-top-icon {
+  width: 24px;
+  height: 24px;
+  color: #d21cff;
+  transition: color 0.4s ease;
+}
+
+.top-card-banner h5 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.4;
+  color: #ffffff;
+  transition: color 0.4s ease;
+}
+
+/* Top Card Hover Effect -> Full Gradient & Glow */
+.pixsy-top-card:hover {
+  transform: translateY(-8px);
+  border-color: transparent;
+  box-shadow: 0 20px 45px rgba(210, 28, 255, 0.35);
+}
+
+.pixsy-top-card:hover .top-card-img img {
+  transform: scale(1.08);
+}
+
+.pixsy-top-card:hover .top-card-banner {
+  background: linear-gradient(135deg,
+      #ff8a00 0%,
+      #ff315c 28%,
+      #d21cff 55%,
+      #3b4cff 78%,
+      #1267ff 100%);
+}
+
+.pixsy-top-card:hover .banner-icon-box {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.pixsy-top-card:hover .pixsy-top-icon {
+  color: #ffffff;
+}
+
+/* =========================================
+   HEADER STYLING
+========================================= */
+.pixsy-small-title {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #ff8a00, #ff315c, #d21cff, #3b4cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
+.pixsy-main-heading {
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #ffffff;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.pixsy-main-heading span {
+  background: linear-gradient(90deg, #ff8a00, #ff315c, #d21cff, #3b4cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pixsy-header-desc {
+  color: #9ca3af;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* =========================================
+   DESKTOP 5-COLUMN LAYOUT FOR PC
+========================================= */
+@media (min-width: 992px) {
+  .pixsy-grid-5 {
+    flex: 0 0 auto;
+    width: 20%;
+    /* Makes all 5 cards fit perfectly in one row on PC */
+  }
+}
+
+/* =========================================
+   BOTTOM 5 HOVER CARDS (DARK TO COLORFUL)
+========================================= */
+.pixsy-hover-card {
+  background: #181424;
+  border-radius: 18px;
+  padding: 50px 15px 25px 15px;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  height: 100%;
+  margin-top: 30px;
+}
+
+/* Floating Top Icon Tab */
+.pixsy-icon-tab {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 58px;
+  height: 58px;
+  background: #181424;
+  border: 2px solid rgba(210, 28, 255, 0.4);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease;
+}
+
+.pixsy-service-icon {
+  width: 26px;
+  height: 26px;
+  color: #d21cff;
+  transition: color 0.4s ease;
+}
+
+.pixsy-card-body h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+  transition: color 0.4s ease;
+}
+
+.pixsy-card-line {
+  width: 30px;
+  height: 2px;
+  background: #d21cff;
+  margin: 0 auto 12px auto;
+  transition: background 0.4s ease, width 0.4s ease;
+}
+
+.pixsy-card-body p {
+  color: #9ca3af;
+  font-size: 12.5px;
+  line-height: 1.55;
+  margin: 0;
+  transition: color 0.4s ease;
+}
+
+/* Hover Effects (Full Colorful Gradient Background) */
+.pixsy-hover-card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(135deg,
+      #ff8a00 0%,
+      #ff315c 28%,
+      #d21cff 55%,
+      #3b4cff 78%,
+      #1267ff 100%);
+  border-color: transparent;
+  box-shadow: 0 20px 45px rgba(210, 28, 255, 0.35);
+}
+
+.pixsy-hover-card:hover .pixsy-icon-tab {
+  background: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.pixsy-hover-card:hover .pixsy-service-icon {
+  color: #ff315c;
+}
+
+.pixsy-hover-card:hover h4,
+.pixsy-hover-card:hover p {
+  color: #ffffff;
+}
+
+.pixsy-hover-card:hover .pixsy-card-line {
+  background: #ffffff;
+  width: 40px;
+}
