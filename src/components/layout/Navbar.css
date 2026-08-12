@@ -1,0 +1,292 @@
+/* =========================================
+   PIXSY NAVBAR
+========================================= */
+
+.pixsy-navbar {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border-bottom: 1px solid rgba(20, 30, 70, 0.08);
+
+  min-height: 82px;
+  transition: all 0.3s ease;
+
+  z-index: 1000;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.pixsy-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  text-decoration: none !important;
+  color: #111827;
+
+  padding: 0;
+}
+
+
+/* Logo P */
+
+.pixsy-logo-mark {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px 15px 18px 5px;
+
+  color: white;
+  font-size: 29px;
+  font-weight: 800;
+
+  background:
+    linear-gradient(135deg,
+      #ff8a00 0%,
+      #ff315c 28%,
+      #d21cff 55%,
+      #3b4cff 78%,
+      #1267ff 100%);
+
+  box-shadow:
+    0 8px 22px rgba(93, 61, 255, 0.22);
+}
+
+
+/* Brand Text */
+
+.pixsy-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.pixsy-name {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 7px;
+  color: #111827;
+}
+
+.pixsy-media {
+  margin-top: 4px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 6px;
+
+  background:
+    linear-gradient(90deg,
+      #ff6b00,
+      #ff2468,
+      #a52aff,
+      #315cff);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pixsy-brand-text small {
+  margin-top: 6px;
+
+  font-size: 6.5px;
+  letter-spacing: 2.4px;
+
+  color: #4b5563;
+}
+
+
+/* =========================================
+   NAV LINKS
+========================================= */
+
+.pixsy-navbar .nav-link {
+  position: relative;
+
+  color: #1f2937;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  padding: 10px 13px !important;
+
+  transition: all 0.3s ease;
+}
+
+
+.pixsy-navbar .nav-link:hover,
+.pixsy-navbar .nav-link.active {
+  color: #7047ff;
+}
+
+
+/* Gradient underline */
+
+.pixsy-navbar .nav-link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 2px;
+
+  width: 0;
+  height: 3px;
+
+  border-radius: 10px;
+
+  transform: translateX(-50%);
+
+  background:
+    linear-gradient(90deg,
+      #ff6b00,
+      #ff2770,
+      #873cff,
+      #2865ff);
+
+  transition: width 0.3s ease;
+}
+
+.pixsy-navbar .nav-link:hover::after,
+.pixsy-navbar .nav-link.active::after {
+  width: 24px;
+}
+
+
+/* =========================================
+   CONTACT BUTTON
+========================================= */
+
+.pixsy-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 20px;
+
+  color: white !important;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  border-radius: 50px;
+
+  background:
+    linear-gradient(100deg,
+      #ff7a00 0%,
+      #ff306c 32%,
+      #b72bff 65%,
+      #315cff 100%);
+
+  box-shadow:
+    0 8px 22px rgba(121, 60, 255, 0.25);
+
+  transition: all 0.3s ease;
+}
+
+.pixsy-nav-btn span {
+  font-size: 20px;
+  line-height: 1;
+
+  transition: transform 0.3s ease;
+}
+
+.pixsy-nav-btn:hover {
+  color: white;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 28px rgba(121, 60, 255, 0.35);
+}
+
+.pixsy-nav-btn:hover span {
+  transform: translateX(4px);
+}
+
+
+/* =========================================
+   MOBILE TOGGLER
+========================================= */
+
+.pixsy-toggler {
+  border: 0 !important;
+  padding: 8px 10px;
+
+  box-shadow: none !important;
+}
+
+.pixsy-toggler:focus {
+  box-shadow: none !important;
+}
+
+.pixsy-toggler .navbar-toggler-icon {
+  width: 24px;
+  height: 24px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 991.98px) {
+
+  .pixsy-navbar {
+    min-height: 72px;
+  }
+
+  .pixsy-brand-text small {
+    display: none;
+  }
+
+  .pixsy-name {
+    font-size: 21px;
+  }
+
+  .pixsy-media {
+    font-size: 9px;
+    letter-spacing: 5px;
+  }
+
+  .pixsy-logo-mark {
+    width: 42px;
+    height: 42px;
+    font-size: 25px;
+  }
+
+  .pixsy-navbar .navbar-collapse {
+    margin-top: 15px;
+
+    padding: 15px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+      0 15px 40px rgba(20, 30, 70, 0.10);
+  }
+
+  .pixsy-navbar .nav-link {
+    padding: 12px 10px !important;
+  }
+
+  .pixsy-navbar .nav-link::after {
+    display: none;
+  }
+
+  .pixsy-nav-btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
