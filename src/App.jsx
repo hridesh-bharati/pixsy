@@ -10,12 +10,14 @@ import Footer from "./components/layout/Footer";
 import Team from "./components/Team/Team";
 import ContactForm from "./components/ContactForm/ContactForm";
 import About from "./components/About/About";
+import Services from "./components/Services/Services";
+import Blog from "./components/Blog/Blog";
 
 function App() {
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration in milliseconds
-      once: true,     // Animation sirf ek baar chale scroll karne par
+      duration: 1000,
+      once: true,
       easing: "ease-in-out",
     });
   }, []);
@@ -25,9 +27,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about_us" element={<About />} />
-        <Route path="/our_team" element={<Team />} />
-        <Route path="/contact_us" element={<ContactForm />} />
+        <Route path="/about-us" element={<About />} />
+        <Route path="/our-team" element={<Team />} />
+        <Route path="/our-services" element={<Services />} />
+        <Route path="/contact-us" element={<ContactForm />} />
+        <Route path="/blog" element={<Blog />} />
 
       </Routes>
       <Footer />

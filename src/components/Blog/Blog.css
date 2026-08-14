@@ -1,0 +1,137 @@
+/* =========================================
+   BLOG PAGE STYLING
+========================================= */
+
+.blog-page-wrapper {
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.blog-page-hero {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border-bottom: 1px solid #e2e8f0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background Glowing Orbs */
+.blog-bg-circle {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.blog-bg-circle-1 {
+  top: 5%;
+  left: 10%;
+  background: radial-gradient(circle, #ff8a00 0%, #ff315c 100%);
+}
+
+.blog-bg-circle-2 {
+  bottom: 5%;
+  right: 10%;
+  background: radial-gradient(circle, #3b4cff 0%, #d21cff 100%);
+}
+
+.blog-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.blog-hero-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff8a00;
+  background: rgba(255, 138, 0, 0.1);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 138, 0, 0.15);
+}
+
+.blog-gradient-text {
+  background: linear-gradient(90deg, #ff8a00, #ff315c, #d21cff, #3b4cff, #1267ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================
+   BLOG CARDS (HOVER SLIDE FILL & ZOOM)
+========================================= */
+.blog-card-item {
+  border: 2px solid #e2e8f0 !important;
+  border-left: 6px solid var(--card-color, #ff8a00) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.blog-card-flare {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, var(--card-color) 0%, transparent 70%);
+  opacity: 0.15;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.5s ease;
+}
+
+.blog-card-item:hover .blog-card-flare {
+  transform: scale(2);
+  opacity: 0.3;
+}
+
+.blog-card-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--card-color, #ff8a00);
+  transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 1;
+}
+
+.blog-card-item:hover::before {
+  width: 100%;
+}
+
+.blog-card-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--card-color, #ff8a00) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+/* Card Content Above Hover Layer */
+.blog-card-item>*:not(.blog-card-flare):not(::before) {
+  position: relative;
+  z-index: 2;
+  transition: color 0.4s ease;
+}
+
+.blog-card-item:hover img {
+  transform: scale(1.08);
+}
+
+.blog-card-item:hover h3,
+.blog-card-item:hover p,
+.blog-card-item:hover .text-muted,
+.blog-card-item:hover .blog-read-more {
+  color: #ffffff !important;
+}
+
+.blog-card-item:hover .border-top {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
