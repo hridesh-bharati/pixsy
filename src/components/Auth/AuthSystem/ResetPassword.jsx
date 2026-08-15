@@ -1,14 +1,29 @@
 import React, { useState } from 'react';
-import { Mail, KeyRound, ArrowLeft } from 'lucide-react';
+import { Mail, KeyRound, ArrowLeft, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { auth } from '../../../lib/firebase';
 import './AuthSystem.css';
 
 const ResetPassword = ({ onSwitchToLogin }) => {
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Reset password for:", email);
-    alert("Password reset instructions sent to your email!");
+    setLoading(true);
+    setError('');
+    setMessage('');
+
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setMessage('Password reset instructions sent to your email!');
+    } catch (err) {
+      setError(err.message.replace('Firebase: ', ''));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -22,6 +37,20 @@ const ResetPassword = ({ onSwitchToLogin }) => {
           <h2>Reset <span className="auth-gradient-text">Password</span></h2>
           <p>Enter your email and we'll send you instructions to reset your password.</p>
         </div>
+
+        {error && (
+          <div className="alert alert-danger py-2 px-3 mb-3 d-flex align-items-center gap-2" role="alert" style={{ fontSize: '0.9rem', borderRadius: '10px' }}>
+            <AlertCircle size={16} />
+            <span>{error}</span>
+          </div>
+        )}
+
+        {message && (
+          <div className="alert alert-success py-2 px-3 mb-3 d-flex align-items-center gap-2" role="alert" style={{ fontSize: '0.9rem', borderRadius: '10px' }}>
+            <CheckCircle2 size={16} />
+            <span>{message}</span>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
@@ -39,8 +68,8 @@ const ResetPassword = ({ onSwitchToLogin }) => {
             </div>
           </div>
 
-          <button type="submit" className="auth-submit-btn">
-            <span>Send Reset Link</span>
+          <button type="submit" className="auth-submit-btn" disabled={loading}>
+            <span>{loading ? 'Sending...' : 'Send Reset Link'}</span>
             <KeyRound size={16} />
           </button>
         </form>

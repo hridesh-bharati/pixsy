@@ -1,0 +1,33 @@
+/* src/components/Auth/Dashboard/AdminDashboard/AdminDashboard.css */
+.admin-layout {
+  min-height: 100vh;
+  background-color: #f8fafc;
+}
+
+.admin-sidebar {
+  width: 270px;
+  background: #002147;
+  min-height: 100vh;
+}
+
+.admin-sidebar .nav-link {
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.admin-sidebar .nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ff3f05 !important;
+}
+
+.admin-content {
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+}

@@ -7,6 +7,7 @@ import Gallery from "./Gallery/Gallery";
 import WhyChooseUs from "./WhyChooseUs";
 import Process from "./Process";
 import Testimonials from "./Testimonials";
+import PixsyServices from "./Services/PixsyServices";
 
 export default function Home() {
   return (
@@ -82,6 +83,7 @@ export default function Home() {
         trigger="hover"
       />
       <WhyChooseUs />
+      <PixsyServices />
       <Process />
       <Testimonials />
 

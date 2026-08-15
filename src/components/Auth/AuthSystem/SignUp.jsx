@@ -1,18 +1,43 @@
+// src\components\Auth\AuthSystem\SignUp.jsx
 import React, { useState } from 'react';
-import { User, Mail, Lock, UserPlus, ArrowRight } from 'lucide-react';
+import { User, Mail, Lock, UserPlus, ArrowRight, AlertCircle } from 'lucide-react';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../../../lib/firebase';
+import { useNavigate, Link } from 'react-router-dom';
 import './AuthSystem.css';
 
-const SignUp = ({ onSwitchToLogin }) => {
+const SignUp = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Sign Up data:", formData);
-    alert("Account created successfully! (Hook your backend/Firebase here)");
+    setLoading(true);
+    setError('');
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      await updateProfile(userCredential.user, { displayName: formData.name });
+
+      const role = formData.email.trim().toLowerCase() === 'hridesh027@gmail.com' ? 'admin' : 'user';
+
+      if (role === 'admin') {
+        navigate('/admin-dashboard');
+      } else {
+        navigate('/user-dashboard');
+      }
+    } catch (err) {
+      setError(err.message.replace('Firebase: ', ''));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -26,6 +51,13 @@ const SignUp = ({ onSwitchToLogin }) => {
           <h2>Create <span className="auth-gradient-text">Account</span></h2>
           <p>Join us today and start your journey.</p>
         </div>
+
+        {error && (
+          <div className="alert alert-danger py-2 px-3 mb-3 d-flex align-items-center gap-2" role="alert" style={{ fontSize: '0.9rem', borderRadius: '10px' }}>
+            <AlertCircle size={16} />
+            <span>{error}</span>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
@@ -73,17 +105,17 @@ const SignUp = ({ onSwitchToLogin }) => {
             </div>
           </div>
 
-          <button type="submit" className="auth-submit-btn">
-            <span>Create Account</span>
+          <button type="submit" className="auth-submit-btn" disabled={loading}>
+            <span>{loading ? 'Creating Account...' : 'Create Account'}</span>
             <UserPlus size={16} />
           </button>
         </form>
 
         <div className="auth-switch-text">
           Already have an account?{' '}
-          <span className="auth-link-bold" onClick={onSwitchToLogin}>
+          <Link to="/login" className="auth-link-bold text-decoration-none">
             Sign In <ArrowRight size={14} />
-          </span>
+          </Link>
         </div>
       </div>
     </div>
