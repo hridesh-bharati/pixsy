@@ -15,7 +15,7 @@ export default function Home() {
       <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src="/images/slider1.png" className="d-block w-100" alt="..." />
+            <img src="/images/home-page-picture1.png" className="d-block w-100" alt="..." />
           </div>
           <div className="carousel-item">
             <img src="/images/slider2.png" className="d-block w-100" alt="..." />

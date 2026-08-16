@@ -57,20 +57,20 @@ export default function AboutHero() {
                 We help organizations and companies improve business performance & enhance their competitiveness.
               </p>
 
-              {/* Service Features Grid (Permanently Colorful Icons) */}
+              {/* Service Features Grid (With Left Borders) */}
               <div className="row g-3 mb-4">
                 <div className="col-sm-6" data-aos="fade-up" data-aos-delay="200">
-                  <div className="pixsy-feature-box">
+                  <div className="pixsy-feature-box feature-box-orange">
                     <div className="feature-icon-wrapper feature-orange">
-                      <CodeXml size={22} />
+                      <CodeXml size={20} />
                     </div>
                     <h5>Website Development</h5>
                   </div>
                 </div>
                 <div className="col-sm-6" data-aos="fade-up" data-aos-delay="400">
-                  <div className="pixsy-feature-box">
+                  <div className="pixsy-feature-box feature-box-blue">
                     <div className="feature-icon-wrapper feature-blue">
-                      <Megaphone size={22} />
+                      <Megaphone size={20} />
                     </div>
                     <h5>Digital Marketing</h5>
                   </div>

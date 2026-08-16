@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-/* Image Collage Layout */
+/* Image Collage Layout (Restored Previous Overlap) */
 .pixsy-about-images {
   position: relative;
   display: flex;
@@ -32,12 +32,13 @@
 .img-box-2 {
   width: 75%;
   align-self: flex-end;
-  margin-top: -50px;
+  margin-top: -40px;
+  /* Purana overlap wapas set kar diya hai */
   position: relative;
   z-index: 2;
 }
 
-/* Floating Badge */
+/* Floating Badge (Restored Original Position & Size) */
 .pixsy-floating-badge {
   position: absolute;
   bottom: 20px;
@@ -45,7 +46,7 @@
   z-index: 5;
   background: linear-gradient(135deg, #a62dff, #315cff);
   color: white;
-  padding: 18px 24px;
+  padding: 10px 18px;
   border-radius: 16px;
   box-shadow: 0 15px 30px rgba(112, 54, 255, 0.3);
   display: flex;
@@ -141,29 +142,36 @@
   margin-bottom: 25px;
 }
 
-/* Feature Boxes */
+/* Feature Boxes with Left Borders */
 .pixsy-feature-box {
   background: #f8fafc;
   border: 1px solid #edf2f7;
-  padding: 16px 18px;
-  border-radius: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   gap: 14px;
   transition: all 0.3s ease;
 }
 
+.feature-box-orange {
+  border-left: 4px solid #ff8a00;
+}
+
+.feature-box-blue {
+  border-left: 4px solid #3b4cff;
+}
+
 .pixsy-feature-box:hover {
   background: #ffffff;
   box-shadow: 0 10px 25px rgba(49, 92, 255, 0.08);
-  border-color: #dbeafe;
   transform: translateY(-3px);
 }
 
-/* Permanent Colorful Icon Wrappers (Without Hover dependency) */
+/* Icon Wrappers */
 .feature-icon-wrapper {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -174,16 +182,16 @@
 
 .feature-orange {
   background: linear-gradient(135deg, #ff8a00, #ff315c);
-  box-shadow: 0 6px 15px rgba(255, 138, 0, 0.25);
+  box-shadow: 0 4px 12px rgba(255, 138, 0, 0.25);
 }
 
 .feature-blue {
   background: linear-gradient(135deg, #3b4cff, #d21cff);
-  box-shadow: 0 6px 15px rgba(59, 76, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(59, 76, 255, 0.25);
 }
 
 .pixsy-feature-box h5 {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   color: #1f2937;
   margin: 0;
