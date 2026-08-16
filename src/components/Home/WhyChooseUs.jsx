@@ -1,3 +1,4 @@
+// src/components/Home/WhyChooseUs.jsx
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -20,7 +21,7 @@ const WhyChooseUs = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Heading Gradient Animation
+      // Heading Gradient Running Animation
       const headingChars = headingRef.current?.querySelectorAll('.gradient-text');
       if (headingChars) {
         gsap.to(headingChars, {
@@ -31,7 +32,7 @@ const WhyChooseUs = () => {
         });
       }
 
-      // Pro Background Floating Orbs GSAP Animation
+      // Background Orbs Floating
       gsap.to('.why-bg-circle-1', {
         x: 60,
         y: -40,
@@ -52,18 +53,34 @@ const WhyChooseUs = () => {
         ease: 'sine.inOut',
       });
 
-      // Cards Stagger Animation
-      gsap.from('.why-card', {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 0,
-        y: 50,
-        stagger: 0.12,
-        duration: 0.8,
-        ease: 'power3.out',
+      // Alternating Left / Right 360deg Rotation Cards Animation with Bidirectional ScrollTrigger
+      const cards = sectionRef.current?.querySelectorAll('.why-card');
+      cards?.forEach((card, index) => {
+        const isEven = index % 2 === 0; // Even cards left se, Odd cards right se aayenge
+
+        gsap.fromTo(
+          card,
+          {
+            opacity: 0,
+            x: isEven ? -200 : 200,
+            rotation: isEven ? -360 : 360,
+            scale: 0.7
+          },
+          {
+            opacity: 1,
+            x: 0,
+            rotation: 0,
+            scale: 1,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 88%',
+              end: 'bottom 12%',
+              toggleActions: 'play reverse play reverse', // Scrolldown par aana aur scrollup/down par wapas jana
+            },
+          }
+        );
       });
     }, sectionRef);
 
@@ -110,7 +127,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="why-choose-us">
+    <section ref={sectionRef} className="why-choose-us" style={{ overflowX: 'hidden' }}>
       {/* Pro Animated Circular Gradient Background Orbs */}
       <div className="why-bg-circle why-bg-circle-1"></div>
       <div className="why-bg-circle why-bg-circle-2"></div>

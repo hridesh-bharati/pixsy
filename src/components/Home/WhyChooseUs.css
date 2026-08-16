@@ -8,30 +8,6 @@
   overflow: hidden;
 }
 
-/* Pro Animated Circular Gradient Background Orbs */
-.why-bg-circle {
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.12;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.why-bg-circle-1 {
-  top: 10%;
-  left: 5%;
-  background: radial-gradient(circle, #ff8a00 0%, #ff315c 100%);
-}
-
-.why-bg-circle-2 {
-  bottom: 10%;
-  right: 5%;
-  background: radial-gradient(circle, #3b4cff 0%, #d21cff 100%);
-}
-
 /* Subtle Tech Grid Pattern */
 .why-grid-pattern {
   position: absolute;
@@ -81,6 +57,7 @@
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .why-choose-us .section-header p {

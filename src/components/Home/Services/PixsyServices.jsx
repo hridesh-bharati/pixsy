@@ -173,8 +173,7 @@ const PixsyServices = () => {
 
           <h1 className="fw-bold text-dark mb-3" style={{ fontSize: '2.2rem', lineHeight: '1.3' }}>
             Elevate Your Brand With <br />
-            <span>Our </span>
-            <span ref={headingRef} className="process-gradient-text">Services</span>
+            <span ref={headingRef} className="process-gradient-text">Pixsy Media</span>
           </h1>
 
 
