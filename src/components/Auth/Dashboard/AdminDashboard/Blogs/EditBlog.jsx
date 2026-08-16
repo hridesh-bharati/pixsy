@@ -60,7 +60,7 @@ export default function EditBlog({ editingBlog, setActiveTab, setEditingBlog }) 
   };
 
   return (
-    <div className="container-fluid p-0">
+    <div className="container-fluid py-3 px-2 px-sm-3 px-lg-4">
       <div className="d-flex align-items-center gap-3 mb-4">
         <button
           onClick={() => { setEditingBlog(null); setActiveTab('blogs'); }}
@@ -79,10 +79,10 @@ export default function EditBlog({ editingBlog, setActiveTab, setEditingBlog }) 
         </div>
       </div>
 
-      <div className="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white mx-auto" >
-        <form onSubmit={handleSubmit}>
+      <div className="card border shadow-sm rounded-4 p-4 p-md-5 mx-auto" style={{ maxWidth: '800px', backgroundColor: '#eef6fc', borderColor: '#b8daf4' }}>
+        <form onSubmit5 onSubmit={handleSubmit}>
 
-          <div className="mb-3">
+          <div className="mb-3 p-3 rounded-3 border" style={{ backgroundColor: '#ffffff', borderColor: '#b8daf4' }}>
             <label className="form-label fw-semibold text-secondary small">Blog Title *</label>
             <input
               type="text"
@@ -94,7 +94,7 @@ export default function EditBlog({ editingBlog, setActiveTab, setEditingBlog }) 
             />
           </div>
 
-          <div className="mb-3">
+          <div className="mb-3 p-3 rounded-3 border" style={{ backgroundColor: '#ffffff', borderColor: '#b8daf4' }}>
             <label className="form-label fw-semibold text-secondary small">Blog Content *</label>
             <textarea
               className="form-control rounded-3 bg-light border-0"
@@ -106,8 +106,8 @@ export default function EditBlog({ editingBlog, setActiveTab, setEditingBlog }) 
             ></textarea>
           </div>
 
-          <div className="mb-4">
-            <label className="form-label fw-semibold text-secondary small">Banner Image (Cloudinary)</label>
+          <div className="mb-4 p-3 rounded-3 border" style={{ backgroundColor: '#ffffff', borderColor: '#b8daf4' }}>
+            <label className="form-label fw-semibold text-secondary small">Banner Image</label>
             <input type="file" className="form-control rounded-3 py-2 bg-light border-0" accept="image/*" onChange={handleImageUpload} />
             {uploading && <small className="text-primary mt-1 d-block"><Loader2 size={12} className="spin me-1" /> Uploading image...</small>}
             {formData.imageUrl && (
@@ -116,8 +116,8 @@ export default function EditBlog({ editingBlog, setActiveTab, setEditingBlog }) 
           </div>
 
           <div className="pt-3 border-top d-flex justify-content-end gap-2">
-            <button type="button" onClick={() => { setEditingBlog(null); setActiveTab('blogs'); }} className="btn btn-light px-4 rounded-pill fw-semibold text-secondary">Cancel</button>
-            <button type="submit" className="btn text-white fw-semibold px-5 rounded-pill shadow-sm border-0 d-flex align-items-center gap-2" style={{ background: 'linear-gradient(135deg, #7928ca 0%, #ff0080 100%)' }} disabled={saving || uploading}>
+            <button type="button" onClick={() => { setEditingBlog(null); setActiveTab('blogs'); }} className="btn btn-light px-4 rounded-pill fw-semibold text-secondary border">Cancel</button>
+            <button type="submit" className="btn text-dark fw-semibold px-5 rounded-pill shadow-sm border border-dark d-flex align-items-center gap-2" style={{ background: '#ffd700' }} disabled={saving || uploading}>
               {saving ? <Loader2 size={16} className="spin" /> : (editingBlog ? <Save size={16} /> : <Plus size={16} />)}
               {saving ? 'Saving...' : (editingBlog ? 'Update Blog' : 'Publish Blog')}
             </button>

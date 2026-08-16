@@ -32,27 +32,31 @@ const ManageBlogs = ({ setActiveTab, setEditingBlog }) => {
 
   return (
     <div className="container-fluid p-0">
-      <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+      <div className="d-flex justify-content-between align-items-center mb-4 gap-2">
         <div>
-          <h2 className="fw-bold text-dark m-0 d-flex align-items-center gap-2">
-            <FileText size={24} className="text-primary" /> Manage Blogs
+          <h2 className="fw-bold text-dark m-0 d-flex align-items-center gap-2" style={{ fontSize: '1.4rem' }}>
+            <FileText size={22} className="text-primary flex-shrink-0" /> Manage Blogs
           </h2>
-          <p className="text-muted small m-0">View, update, or remove published articles from database.</p>
+          <p className="text-muted small m-0 ">View, update, or remove published articles from database.</p>
         </div>
+
+        {/* Mobile View Button: Heading ke theek aage / side mein */}
         <button
-          className="btn text-white fw-semibold px-4 rounded-pill shadow-sm d-flex align-items-center gap-2 border-0"
-          style={{ background: brandGradient }}
+          className="btn text-white fw-semibold px-2 px-sm-4 py-2 rounded-pill shadow-sm d-flex align-items-center justify-content-center gap-1 border-0 flex-shrink-0"
+          style={{ background: brandGradient, fontSize: '0.85rem' }}
           onClick={() => { setEditingBlog(null); setActiveTab('add-blog'); }}
         >
-          <Plus size={18} /> Add New Blog
+          <Plus size={18} />
+          <span className="d-none d-sm-inline">Add New Blog</span>
+          <span className="d-inline d-sm-none">Add</span>
         </button>
       </div>
 
       {loading ? (
         <div className="text-center py-5 text-muted">Loading blogs from database...</div>
       ) : blogs.length === 0 ? (
-        <div className="text-center py-5 text-muted card border-0 shadow-sm rounded-4 p-5 bg-white">
-          <FileText size={48} className="text-muted mb-3 opacity-50" />
+        <div className="text-center py-5 text-muted card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
+          <FileText size={48} className="text-muted mb-3 opacity-50 mx-auto" />
           <h4 className="fw-bold text-dark">No blogs found</h4>
           <p className="text-muted small">Create your first blog post using the button above!</p>
         </div>

@@ -67,7 +67,7 @@ const Main = ({ user }) => {
         onLogout={handleLogout}
       />
 
-      <div className="admin-content flex-grow-1 p-3 p-md-4 bg-light min-vh-100">
+      <div className="admin-content flex-grow-1 p-1 p-md-4 bg-light min-vh-100">
         {activeTab === 'dashboard' && <DashboardHome user={user} userData={userData} />}
         {activeTab === 'projects' && <Projects setActiveTab={setActiveTab} setEditingProject={setEditingProject} />}
         {activeTab === 'add-project' && <EditProjects editingProject={editingProject} setActiveTab={setActiveTab} setEditingProject={setEditingProject} />}

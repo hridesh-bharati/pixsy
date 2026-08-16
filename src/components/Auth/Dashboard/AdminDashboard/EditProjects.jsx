@@ -118,7 +118,7 @@ export default function EditProjects({ editingProject, setActiveTab, setEditingP
           </div>
 
           <div className="mb-4">
-            <label className="form-label fw-semibold text-secondary small">Project Banner Image (Cloudinary)</label>
+            <label className="form-label fw-semibold text-secondary small">Project Banner Image</label>
             <input
               type="file"
               className="form-control rounded-3 py-2.5 bg-light border-light"
