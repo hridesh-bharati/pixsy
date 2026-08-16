@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./Home.css";
 import Cards from "./CardFeatures/Cards";
 import AboutHero from "./AboutHero";
 import ProfessionalServices from "./ProfessionalServices";
