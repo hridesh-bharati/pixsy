@@ -1,6 +1,6 @@
-import React, { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import {
   Sparkles,
   Briefcase,
@@ -10,50 +10,14 @@ import {
 } from 'lucide-react';
 import './Team.css';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Team = () => {
-  const sectionRef = useRef(null);
-
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Header Animation
-      gsap.from('.team-header-modern', {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 0,
-        y: 35,
-        duration: 0.8,
-        ease: 'power3.out',
-      });
-
-      // Individual Elements Animation inside each card
-      const cards = gsap.utils.toArray('.team-card-modern');
-      cards.forEach((card) => {
-        const avatar = card.querySelector('.team-avatar-modern');
-        const info = card.querySelector('.team-info-modern');
-        const stats = card.querySelector('.team-stats');
-        const actions = card.querySelector('.team-actions');
-
-        gsap.from([avatar, info, stats, actions], {
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 88%',
-            toggleActions: 'play none none none',
-          },
-          opacity: 0,
-          y: 30,
-          stagger: 0.1,
-          duration: 0.7,
-          ease: 'power3.out',
-        });
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-out-cubic',
+      offset: 50,
+    });
   }, []);
 
   const teamMembers = [
@@ -135,9 +99,9 @@ const Team = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="team-section-modern">
+    <section className="team-section-modern">
       <div className="container">
-        <div className="team-header-modern">
+        <div className="team-header-modern" data-aos="fade-up">
           <span className="team-badge-modern">
             <Sparkles size={14} />
             Our Team
@@ -148,17 +112,23 @@ const Team = () => {
 
         <div className="team-grid-modern">
           {teamMembers.map((member, index) => (
-            <div key={index} className="team-card-modern" style={{
-              '--card-color': member.color,
-              '--card-bg': member.bgColor,
-              '--card-border': member.borderColor
-            }}>
-              {/* Avatar */}
+            <div
+              key={index}
+              className="team-card-modern"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              style={{
+                '--card-color': member.color,
+                '--card-bg': member.bgColor,
+                '--card-border': member.borderColor
+              }}
+            >
+              {/* Avatar with Original Strong Glow & Ring */}
               <div className="team-avatar-modern">
                 <div className="avatar-ring" style={{ borderColor: member.color }}>
                   <img src={member.avatar} alt={member.name} />
                 </div>
-                <div className="avatar-glow" style={{ background: `radial-gradient(circle, ${member.color}40, transparent)` }}></div>
+                <div className="avatar-glow" style={{ background: `radial-gradient(circle, ${member.color}80, transparent)` }}></div>
               </div>
 
               {/* Info */}
@@ -171,15 +141,15 @@ const Team = () => {
               {/* Stats */}
               <div className="team-stats">
                 <div className="stat-item">
-                  <Briefcase size={13} style={{ color: member.color }} />
+                  <Briefcase size={12} style={{ color: member.color }} />
                   <span>{member.experience}</span>
                 </div>
                 <div className="stat-item">
-                  <Star size={13} style={{ color: member.color }} />
+                  <Star size={12} style={{ color: member.color }} />
                   <span>{member.projects}</span>
                 </div>
                 <div className="stat-item">
-                  <MapPin size={13} style={{ color: member.color }} />
+                  <MapPin size={12} style={{ color: member.color }} />
                   <span>{member.location}</span>
                 </div>
               </div>
@@ -194,7 +164,7 @@ const Team = () => {
                   ))}
                 </div>
                 <button className="connect-btn" style={{ background: member.color }}>
-                  Connect <ArrowRight size={14} />
+                  Connect <ArrowRight size={13} />
                 </button>
               </div>
             </div>

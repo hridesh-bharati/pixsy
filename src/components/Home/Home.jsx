@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.css";
+import Cards from "./CardFeatures/Cards"
 import AboutHero from "./AboutHero";
 import ProfessionalServices from "./ProfessionalServices";
 import Gallery from "./Gallery/Gallery";
@@ -32,6 +33,7 @@ export default function Home() {
           <span className="visually-hidden">Next</span>
         </button>
       </div>
+      <Cards />
       <AboutHero />
       <ProfessionalServices />
       <Gallery

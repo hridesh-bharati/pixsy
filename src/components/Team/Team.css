@@ -2,7 +2,7 @@
    TEAM SECTION - MODERN DESIGN
 ======================================== */
 .team-section-modern {
-  padding: 100px 24px;
+  padding: 24px;
   background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
   position: relative;
   overflow: hidden;
@@ -18,7 +18,7 @@
 ======================================== */
 .team-header-modern {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 
 .team-badge-modern {
@@ -59,35 +59,36 @@
 }
 
 .team-header-modern h2 {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: clamp(2.3rem, 4vw, 3.2rem);
   font-weight: 900;
   color: #0a0a1a;
   line-height: 1.1;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .team-header-modern p {
   color: #64748b;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 /* ========================================
-   TEAM GRID - RESPONSIVE FIX FOR 4 CARDS
+   TEAM GRID
 ======================================== */
 .team-grid-modern {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
 }
 
 /* ========================================
-   TEAM CARD - MODERN WITH HOVER
+   TEAM CARD (COMPACT HEIGHT)
 ======================================== */
 .team-card-modern {
   position: relative;
   background: #ffffff;
-  border-radius: 20px;
-  padding: 30px 24px 24px;
+  border-radius: 18px;
+  padding: 22px 20px 18px;
+  /* Padding kam ki gayi hai taaki card compact/short ho */
   text-align: center;
   border: 1px solid #f1f5f9;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -102,18 +103,13 @@
   right: 0;
   height: 3px;
   background: var(--card-color);
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  opacity: 0.9;
 }
 
 .team-card-modern:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
   border-color: var(--card-border);
-}
-
-.team-card-modern:hover::before {
-  opacity: 1;
 }
 
 .team-card-modern::after {
@@ -124,40 +120,33 @@
   right: 0;
   bottom: 0;
   background: var(--card-bg);
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  opacity: 1;
   pointer-events: none;
 }
 
-.team-card-modern:hover::after {
-  opacity: 1;
-}
-
 /* ========================================
-   AVATAR
+   AVATAR (RESTORED STRONG SHADOW & GLOW)
 ======================================== */
 .team-avatar-modern {
   position: relative;
   display: inline-block;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   z-index: 1;
 }
 
 .avatar-ring {
-  width: 85px;
-  height: 85px;
+  width: 76px;
+  /* Size thoda compact */
+  height: 76px;
   border-radius: 50%;
   padding: 3px;
   border: 3px solid;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.4s ease;
-}
-
-.team-card-modern:hover .avatar-ring {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px var(--card-color);
+  box-shadow: 0 0 20px var(--card-color);
+  /* Purani strong shadow wapas */
+  background: #ffffff;
 }
 
 .avatar-ring img {
@@ -170,18 +159,15 @@
 
 .avatar-glow {
   position: absolute;
-  top: -30px;
-  left: -30px;
-  right: -30px;
-  bottom: -30px;
+  top: -25px;
+  left: -25px;
+  right: -25px;
+  bottom: -25px;
   border-radius: 50%;
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  opacity: 0.6;
+  /* Pehle jaisa deep glow */
   z-index: -1;
-}
-
-.team-card-modern:hover .avatar-glow {
-  opacity: 1;
+  filter: blur(10px);
 }
 
 /* ========================================
@@ -193,34 +179,33 @@
 }
 
 .team-info-modern h3 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 4px;
-  transition: color 0.3s ease;
+  margin-bottom: 2px;
 }
 
 .team-title {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #64748b;
   font-weight: 500;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .team-handle {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #94a3b8;
   font-weight: 400;
 }
 
 /* ========================================
-   STATS
+   STATS (COMPACT MARGINS)
 ======================================== */
 .team-stats {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  margin: 16px 0;
-  padding: 12px 0;
+  gap: 12px;
+  margin: 12px 0;
+  padding: 8px 0;
   border-top: 1px solid #f1f5f9;
   border-bottom: 1px solid #f1f5f9;
   position: relative;
@@ -230,14 +215,14 @@
 .stat-item {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.75rem;
+  gap: 4px;
+  font-size: 0.72rem;
   color: #64748b;
   font-weight: 500;
 }
 
 .stat-item span {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
 }
 
 /* ========================================
@@ -248,19 +233,19 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 .team-social {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .social-link {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -274,7 +259,7 @@
   background: var(--social-color);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* ========================================
@@ -284,14 +269,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   width: 100%;
-  padding: 10px 18px;
+  padding: 8px 16px;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   color: #ffffff;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -300,7 +285,7 @@
 
 .connect-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .connect-btn svg {
@@ -308,7 +293,7 @@
 }
 
 .connect-btn:hover svg {
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
 
 /* ========================================
@@ -323,12 +308,12 @@
 
 @media (max-width: 480px) {
   .team-section-modern {
-    padding: 60px 16px;
+    padding: 50px 16px;
   }
 
   .team-grid-modern {
     grid-template-columns: 1fr;
-    max-width: 360px;
+    max-width: 340px;
     margin: 0 auto;
   }
 }

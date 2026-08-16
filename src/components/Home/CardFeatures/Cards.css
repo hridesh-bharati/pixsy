@@ -1,0 +1,205 @@
+/* =========================================
+   COLORFUL SERVICES MARQUEE STYLES
+========================================= */
+
+.services-marquee-section {
+  width: 100%;
+  padding: 60px 0;
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Gradient fade masks on edges */
+.services-marquee-section::before,
+.services-marquee-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.services-marquee-section::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.services-marquee-section::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+.marquee-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  animation: scrollMarquee 40s linear infinite;
+  /* Slowed down for better readability */
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Base Card Style */
+.service-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 300px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Bouncy hover */
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Decorative Bottom Line */
+.card-bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--card-color-start), var(--card-color-end));
+  opacity: 0.8;
+  transition: height 0.3s ease;
+}
+
+.service-card:hover .card-bottom-line {
+  height: 6px;
+  opacity: 1;
+}
+
+/* Icon Box - Colorful */
+.service-icon-box {
+  width: 54px;
+  height: 54px;
+  /* Light transparent background based on card color */
+  background: color-mix(in srgb, var(--card-color-end) 15%, transparent);
+  color: var(--card-color-end);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.4s ease;
+  border: 2px solid transparent;
+}
+
+.service-card:hover .service-icon-box {
+  background: linear-gradient(135deg, var(--card-color-start), var(--card-color-end));
+  color: #ffffff;
+  transform: rotate(10deg) scale(1.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Service Info */
+.service-info h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+  transition: color 0.3s ease;
+}
+
+.service-info p {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect on text */
+.service-card:hover .service-info h4,
+.service-card:hover .service-info p {
+  /* Text remains dark on hover for contrast, icon/border gets colors */
+}
+
+/* =========================================
+   DEFINING 8 UNIQUE COLOR VARIATIONS
+========================================= */
+
+/* 1. Web Dev - Orange/Yellow */
+.service-card.color-1 {
+  --card-color-start: #ff9f00;
+  --card-color-end: #ff5e00;
+}
+
+/* 2. UI/UX - Pink/Red */
+.service-card.color-2 {
+  --card-color-start: #ff3d77;
+  --card-color-end: #e91e63;
+}
+
+/* 3. Mobile - Purple */
+.service-card.color-3 {
+  --card-color-start: #a74cf2;
+  --card-color-end: #7c3aed;
+}
+
+/* 4. Digital Mkt - Blue */
+.service-card.color-4 {
+  --card-color-start: #3b82f6;
+  --card-color-end: #2563eb;
+}
+
+/* 5. SEO - Teal/Green */
+.service-card.color-5 {
+  --card-color-start: #14b8a6;
+  --card-color-end: #0d9488;
+}
+
+/* 6. AI - Sky Blue */
+.service-card.color-6 {
+  --card-color-start: #0ea5e9;
+  --card-color-end: #0284c7;
+}
+
+/* 7. Security - Emerald */
+.service-card.color-7 {
+  --card-color-start: #10b981;
+  --card-color-end: #059669;
+}
+
+/* 8. Maintenance - Indigo */
+.service-card.color-8 {
+  --card-color-start: #6366f1;
+  --card-color-end: #4f46e5;
+}
+
+/* Ensure hover text color change is handled if needed, 
+   currently using dark text on light cards for best accessibility */
+.service-card:hover .service-info h4 {
+  color: #1f2937;
+  /* Slightly darker on hover */
+}
+
+/* Infinite Scroll Keyframes */
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

@@ -1,10 +1,8 @@
 /* =========================================
-   CONTACT SECTION & ANDROID-STYLE UI
+   MINIMAL CONTACT CSS
 ========================================= */
 
 .contact-section {
-  padding: 120px 0;
-  background-color: #f8fafc;
   position: relative;
   overflow: hidden;
 }
@@ -42,7 +40,6 @@
   z-index: 1;
 }
 
-/* Badge Styling */
 .contact-badge {
   font-size: 12px;
   font-weight: 700;
@@ -60,15 +57,12 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Form Wrapper Card */
+/* Form Wrapper Left Orange Accent Border */
 .contact-form-wrapper {
-  border: 2px solid #e2e8f0 !important;
   border-left: 6px solid #ff8a00 !important;
-  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.06) !important;
-  background: #ffffff;
 }
 
-/* Input Fields Focus & Material/Android Android Style */
+/* Bootstrap Input Focus Override */
 .form-control:focus {
   background-color: #ffffff !important;
   border-color: #ff8a00 !important;
@@ -80,7 +74,7 @@
   color: #ff8a00 !important;
 }
 
-/* Theme Submit Button using your theme colors */
+/* Theme Submit Button */
 .theme-submit-btn {
   background: linear-gradient(135deg, #ff8a00 0%, #ff315c 100%);
   font-size: 15px;

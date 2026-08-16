@@ -19,15 +19,13 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, subject, message } = formData;
-
     const text = `*New Contact Inquiry - Pixsy Media*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Subject:* ${encodeURIComponent(subject)}%0A*Message:* ${encodeURIComponent(message)}`;
-
     const whatsappUrl = `https://wa.me/91${adminMobile}?text=${text}`;
     window.open(whatsappUrl, '_blank');
   };
 
   return (
-    <section className="contact-section py-5 position-relative overflow-hidden">
+    <section className="contact-section py-5 position-relative overflow-hidden bg-light">
       {/* Background Pro Gradient Orbs */}
       <div className="contact-bg-circle contact-bg-circle-1"></div>
       <div className="contact-bg-circle contact-bg-circle-2"></div>
@@ -40,7 +38,7 @@ const ContactForm = () => {
               <Sparkles size={14} />
               Get In Touch
             </span>
-            <h2 className="fw-900 display-6 text-dark mb-2">
+            <h2 className="fw-bold display-6 text-dark mb-2">
               Let's Build Something <span className="contact-gradient-text">Amazing</span>
             </h2>
             <p className="text-muted">Fill out the form below and your message will be sent instantly to WhatsApp!</p>
@@ -49,90 +47,82 @@ const ContactForm = () => {
 
         <div className="row justify-content-center">
           <div className="col-lg-8">
-            <div className="contact-form-wrapper p-4 p-md-5 rounded-4 bg-white shadow-lg border">
+            <div className="contact-form-wrapper p-4 p-md-5 rounded-4 bg-white shadow-lg border border-2 border-start-0 border-end-0 border-bottom-0 border-warning">
               <form onSubmit={handleSubmit} className="row g-4">
 
                 {/* Name Field */}
                 <div className="col-md-6">
-                  <div className="form-group position-relative">
-                    <label className="form-label fw-bold text-dark mb-2">Your Name</label>
-                    <div className="input-group">
-                      <span className="input-group-text bg-light border-end-0 rounded-start-3 ps-3 text-secondary">
-                        <User size={18} />
-                      </span>
-                      <input
-                        type="text"
-                        name="name"
-                        className="form-control bg-light border-start-0 py-3 shadow-none"
-                        placeholder="Enter your name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+                  <label className="form-label fw-bold text-dark mb-2">Your Name</label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light border-end-0 text-secondary ps-3">
+                      <User size={18} />
+                    </span>
+                    <input
+                      type="text"
+                      name="name"
+                      className="form-control bg-light border-start-0 py-3 shadow-none"
+                      placeholder="Enter your name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                 </div>
 
                 {/* Email Field */}
                 <div className="col-md-6">
-                  <div className="form-group position-relative">
-                    <label className="form-label fw-bold text-dark mb-2">Your Email</label>
-                    <div className="input-group">
-                      <span className="input-group-text bg-light border-end-0 rounded-start-3 ps-3 text-secondary">
-                        <Mail size={18} />
-                      </span>
-                      <input
-                        type="email"
-                        name="email"
-                        className="form-control bg-light border-start-0 py-3 shadow-none"
-                        placeholder="Enter your email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+                  <label className="form-label fw-bold text-dark mb-2">Your Email</label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light border-end-0 text-secondary ps-3">
+                      <Mail size={18} />
+                    </span>
+                    <input
+                      type="email"
+                      name="email"
+                      className="form-control bg-light border-start-0 py-3 shadow-none"
+                      placeholder="Enter your email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                 </div>
 
                 {/* Subject Field */}
                 <div className="col-12">
-                  <div className="form-group position-relative">
-                    <label className="form-label fw-bold text-dark mb-2">Subject</label>
-                    <div className="input-group">
-                      <span className="input-group-text bg-light border-end-0 rounded-start-3 ps-3 text-secondary">
-                        <Sparkles size={18} />
-                      </span>
-                      <input
-                        type="text"
-                        name="subject"
-                        className="form-control bg-light border-start-0 py-3 shadow-none"
-                        placeholder="Project discussion / Inquiry"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
+                  <label className="form-label fw-bold text-dark mb-2">Subject</label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light border-end-0 text-secondary ps-3">
+                      <Sparkles size={18} />
+                    </span>
+                    <input
+                      type="text"
+                      name="subject"
+                      className="form-control bg-light border-start-0 py-3 shadow-none"
+                      placeholder="Project discussion / Inquiry"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                 </div>
 
                 {/* Message Field */}
                 <div className="col-12">
-                  <div className="form-group position-relative">
-                    <label className="form-label fw-bold text-dark mb-2">Message</label>
-                    <div className="input-group">
-                      <span className="input-group-text bg-light border-end-0 rounded-start-3 ps-3 text-secondary align-items-start pt-3">
-                        <MessageSquare size={18} />
-                      </span>
-                      <textarea
-                        name="message"
-                        rows="5"
-                        className="form-control bg-light border-start-0 py-3 shadow-none"
-                        placeholder="Type your message here..."
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                      ></textarea>
-                    </div>
+                  <label className="form-label fw-bold text-dark mb-2">Message</label>
+                  <div className="input-group">
+                    <span className="input-group-text bg-light border-end-0 text-secondary ps-3 align-items-start pt-3">
+                      <MessageSquare size={18} />
+                    </span>
+                    <textarea
+                      name="message"
+                      rows="5"
+                      className="form-control bg-light border-start-0 py-3 shadow-none"
+                      placeholder="Type your message here..."
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                    ></textarea>
                   </div>
                 </div>
 

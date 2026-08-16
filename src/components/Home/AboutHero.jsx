@@ -1,4 +1,5 @@
 import React from "react";
+import { CodeXml, Megaphone, Check, ArrowRight } from "lucide-react";
 import "./AboutHero.css";
 
 export default function AboutHero() {
@@ -56,17 +57,21 @@ export default function AboutHero() {
                 We help organizations and companies improve business performance & enhance their competitiveness.
               </p>
 
-              {/* Service Features Grid */}
+              {/* Service Features Grid (Permanently Colorful Icons) */}
               <div className="row g-3 mb-4">
                 <div className="col-sm-6" data-aos="fade-up" data-aos-delay="200">
                   <div className="pixsy-feature-box">
-                    <div className="feature-icon">💻</div>
+                    <div className="feature-icon-wrapper feature-orange">
+                      <CodeXml size={22} />
+                    </div>
                     <h5>Website Development</h5>
                   </div>
                 </div>
                 <div className="col-sm-6" data-aos="fade-up" data-aos-delay="400">
                   <div className="pixsy-feature-box">
-                    <div className="feature-icon">📈</div>
+                    <div className="feature-icon-wrapper feature-blue">
+                      <Megaphone size={22} />
+                    </div>
                     <h5>Digital Marketing</h5>
                   </div>
                 </div>
@@ -75,20 +80,20 @@ export default function AboutHero() {
               {/* Checklist */}
               <ul className="pixsy-checklist">
                 <li data-aos="fade-up" data-aos-delay="300">
-                  <span className="check-icon">✓</span> Bringing new digital solutions to the market
+                  <span className="check-icon"><Check size={14} strokeWidth={3} /></span> Bringing new digital solutions to the market
                 </li>
                 <li data-aos="fade-up" data-aos-delay="400">
-                  <span className="check-icon">✓</span> Included among the leading creative technology agencies
+                  <span className="check-icon"><Check size={14} strokeWidth={3} /></span> Included among the leading creative technology agencies
                 </li>
                 <li data-aos="fade-up" data-aos-delay="500">
-                  <span className="check-icon">✓</span> Backed by over 300 senior digital professionals
+                  <span className="check-icon"><Check size={14} strokeWidth={3} /></span> Backed by over 300 senior digital professionals
                 </li>
               </ul>
 
               {/* Action Button */}
               <div className="mt-4" data-aos="fade-up" data-aos-delay="600">
                 <a href="/contact" className="pixsy-main-btn">
-                  Learn More <span>→</span>
+                  Learn More <ArrowRight size={18} />
                 </a>
               </div>
 

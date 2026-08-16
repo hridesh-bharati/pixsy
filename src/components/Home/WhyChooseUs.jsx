@@ -1,4 +1,3 @@
-// src/components/Home/WhyChooseUs.jsx
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -21,10 +20,9 @@ const WhyChooseUs = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Heading Gradient Running Animation
-      const headingChars = headingRef.current?.querySelectorAll('.gradient-text');
-      if (headingChars) {
-        gsap.to(headingChars, {
+      // Running Color Animation for Heading
+      if (headingRef.current) {
+        gsap.to(headingRef.current, {
           backgroundPosition: '200% 50%',
           duration: 4,
           repeat: -1,
@@ -32,53 +30,29 @@ const WhyChooseUs = () => {
         });
       }
 
-      // Background Orbs Floating
-      gsap.to('.why-bg-circle-1', {
-        x: 60,
-        y: -40,
-        scale: 1.1,
-        duration: 7,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-      });
-
-      gsap.to('.why-bg-circle-2', {
-        x: -70,
-        y: 50,
-        scale: 1.2,
-        duration: 9,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-      });
-
-      // Alternating Left / Right 360deg Rotation Cards Animation with Bidirectional ScrollTrigger
-      const cards = sectionRef.current?.querySelectorAll('.why-card');
-      cards?.forEach((card, index) => {
-        const isEven = index % 2 === 0; // Even cards left se, Odd cards right se aayenge
+      // Cards default screen par dikhenge, jab upar scroll karoge tab rotate hokar jayenge
+      const cards = sectionRef.current.querySelectorAll('.why-card');
+      cards.forEach((card, index) => {
+        const isEven = index % 2 === 0;
 
         gsap.fromTo(
           card,
           {
             opacity: 0,
-            x: isEven ? -200 : 200,
-            rotation: isEven ? -360 : 360,
-            scale: 0.7
+            x: isEven ? -150 : 150,
+            rotate: isEven ? -360 : 360,
           },
           {
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 75%', // Jab section screen par aayega tab cards smooth animate hokar aayenge
+              toggleActions: 'play none none reverse',
+            },
             opacity: 1,
             x: 0,
-            rotation: 0,
-            scale: 1,
-            duration: 0.9,
+            rotate: 0,
+            duration: 1,
             ease: 'power3.out',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 88%',
-              end: 'bottom 12%',
-              toggleActions: 'play reverse play reverse', // Scrolldown par aana aur scrollup/down par wapas jana
-            },
           }
         );
       });
@@ -127,10 +101,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="why-choose-us" style={{ overflowX: 'hidden' }}>
-      {/* Pro Animated Circular Gradient Background Orbs */}
-      <div className="why-bg-circle why-bg-circle-1"></div>
-      <div className="why-bg-circle why-bg-circle-2"></div>
+    <section ref={sectionRef} className="why-choose-us">
       <div className="why-grid-pattern"></div>
 
       <div className="container position-relative z-2">
@@ -139,7 +110,9 @@ const WhyChooseUs = () => {
             <Sparkles size={14} />
             Why Choose Us
           </span>
-          <h2 ref={headingRef}>Why <span className="gradient-text">Pixsy Media</span></h2>
+          <h2>
+            Why <span ref={headingRef} className="gradient-text">Pixsy Media</span>
+          </h2>
           <p>We combine creativity, technology, and strategy to deliver exceptional results</p>
         </div>
 

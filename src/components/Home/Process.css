@@ -256,7 +256,6 @@
   font-size: 17px;
   font-weight: 800;
   color: var(--card-color);
-  /* Heading gets the vibrant brand color */
   margin: 0 0 2px 0;
   transition: color 0.4s ease;
 }
@@ -265,7 +264,6 @@
   font-size: 13px;
   font-weight: 700;
   color: #334155;
-  /* Rich dark tone for subheading */
   transition: color 0.4s ease;
   display: block;
 }
@@ -274,7 +272,6 @@
   font-size: 14px;
   line-height: 1.6;
   color: #475569;
-  /* Rich paragraph color */
 }
 
 /* Hover State Text & Icon Color Change for Readability */
@@ -343,6 +340,7 @@
 .timeline-dot-inner {
   width: 36px;
   height: 36px;
+  border-radius: screens 50%;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -364,36 +362,47 @@
 }
 
 /* =========================================
-   RESPONSIVE (MOBILE VIEW)
+   RESPONSIVE (MOBILE VIEW) - WIDER CARDS & LESS GAP
 ========================================= */
 @media (max-width: 768px) {
+  .process-section .container {
+    padding: 0 16px;
+  }
+
+  .process-timeline-list {
+    gap: 40px;
+    /* Gap ko kam kar diya hai */
+  }
+
   .process-timeline-line {
-    left: 25px;
+    left: 20px;
+    /* Line ko thoda aur left shift kiya */
     transform: none;
   }
 
-  .process-timeline-item {
-    width: 100% !important;
-    align-self: flex-start !important;
-    padding-left: 65px !important;
-    padding-right: 0 !important;
-    justify-content: flex-start !important;
-  }
-
+  .process-timeline-item,
   .process-timeline-item.left-card,
   .process-timeline-item.right-card {
-    padding-left: 65px !important;
+    width: 100% !important;
+    align-self: flex-start !important;
+    padding-left: 50px !important;
+    /* Left space kam karke cards ko wide kiya */
     padding-right: 0 !important;
+    justify-content: flex-start !important;
   }
 
   .timeline-center-node,
   .process-timeline-item.left-card .timeline-center-node,
   .process-timeline-item.right-card .timeline-center-node {
-    left: -3px !important;
+    left: -8px !important;
+    /* Node ko line ke upar properly align kiya */
     right: auto !important;
   }
 
   .timeline-content {
-    max-width: 100%;
+    max-width: 100% !important;
+    /* Cards ab 100% width lenge taaki wo wide dikhein */
+    padding: 20px;
+    /* Mobile ke liye padding thodi optimize ki */
   }
 }
