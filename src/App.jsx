@@ -1,11 +1,8 @@
 // src/App.jsx
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, setPersistence, browserLocalPersistence } from "firebase/auth";
 import { auth } from "./lib/firebase";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 import Home from "./components/Home/Home";
 import Navbar from "./components/layout/Navbar";
@@ -31,37 +28,44 @@ function AppContent() {
   const location = useLocation();
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true, easing: "ease-in-out" });
-
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
 
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-        const email = currentUser.email ? currentUser.email.trim().toLowerCase() : "";
-        if (email === "hridesh027@gmail.com") {
-          setRole("admin");
-        } else {
-          setRole("user");
-        }
-      } else {
-        setUser(null);
-        setRole(null);
-      }
-      setLoading(false);
-    });
+    // Explicitly enforce local session persistence so login state saves reliably across reloads
+    setPersistence(auth, browserLocalPersistence)
+      .then(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+          if (currentUser) {
+            setUser(currentUser);
+            const email = currentUser.email ? currentUser.email.trim().toLowerCase() : "";
+            if (email === "hridesh027@gmail.com") {
+              setRole("admin");
+            } else {
+              setRole("user");
+            }
+          } else {
+            setUser(null);
+            setRole(null);
+          }
+          setLoading(false);
+        });
+
+        return () => unsubscribe();
+      })
+      .catch((error) => {
+        console.error("Auth persistence error:", error);
+        setLoading(false);
+      });
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      unsubscribe();
     };
   }, []);
 
   if (loading) {
     return (
       <div className="text-center p-5" style={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
-        Loading authentication...
+        Loading...
       </div>
     );
   }
