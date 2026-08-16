@@ -55,6 +55,59 @@ const Sidebar = ({ activeTab, setActiveTab, onLogout }) => {
     }
   ];
 
+  // Reusable Navigation List Renderer to keep code DRY
+  const renderNavLinks = (isMobile = false) => (
+    <ul className="nav nav-pills flex-column mb-auto gap-3">
+      {menuItems.map((item) => {
+        const isActive = activeTab === item.id || (item.id === 'profile' && activeTab === 'edit-project' || activeTab === 'edit-profile');
+        return (
+          <li key={item.id}>
+            <button
+              onClick={() => {
+                setActiveTab(item.id);
+                if (isMobile) {
+                  const closeBtn = document.querySelector('.btn-close-white');
+                  if (closeBtn) closeBtn.click();
+                }
+              }}
+              className={`nav-link text-white w-100 text-start d-flex align-items-center gap-3 py-2 px-3 border-0 transition-all ${isActive ? 'fw-bold shadow' : 'opacity-75'}`}
+              style={{
+                background: isActive ? item.gradient : 'rgba(255, 255, 255, 0.05)',
+                boxShadow: isActive ? `0 8px 20px ${item.shadowColor}` : 'none',
+                borderRadius: '12px',
+                transform: !isMobile && isActive ? 'translateX(4px)' : 'none',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              <div
+                className="rounded-3 d-flex align-items-center justify-content-center p-2"
+                style={{
+                  backgroundColor: isActive ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.08)',
+                  width: '38px',
+                  height: '38px'
+                }}
+              >
+                {item.icon}
+              </div>
+              <span>{item.label}</span>
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  );
+
+  const renderLogoutButton = () => (
+    <button
+      onClick={onLogout}
+      className="btn btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2 rounded-pill py-2 border-0 shadow-sm"
+      style={{ background: 'rgba(255, 255, 255, 0.1)' }}
+    >
+      <LogOut size={16} />
+      <span>Logout</span>
+    </button>
+  );
+
   return (
     <>
       {/* Desktop Colorful Sidebar */}
@@ -62,49 +115,9 @@ const Sidebar = ({ activeTab, setActiveTab, onLogout }) => {
         <div className="sidebar-brand mb-4 px-2">
           <h4 className="fw-bold m-0 text-white">Pixsy <span style={{ color: '#ff0080' }}>Admin</span></h4>
         </div>
-
-        <ul className="nav nav-pills flex-column mb-auto gap-3">
-          {menuItems.map((item) => {
-            const isActive = activeTab === item.id || (item.id === 'profile' && activeTab === 'edit-profile');
-            return (
-              <li key={item.id}>
-                <button
-                  onClick={() => setActiveTab(item.id)}
-                  className={`nav-link text-white w-100 text-start d-flex align-items-center gap-3 py-2 px-3 border-0 transition-all ${isActive ? 'fw-bold shadow' : 'opacity-75'}`}
-                  style={{
-                    background: isActive ? item.gradient : 'rgba(255, 255, 255, 0.05)',
-                    boxShadow: isActive ? `0 8px 20px ${item.shadowColor}` : 'none',
-                    borderRadius: '12px',
-                    transform: isActive ? 'translateX(4px)' : 'none',
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  <div
-                    className="rounded-3 d-flex align-items-center justify-content-center p-2"
-                    style={{
-                      backgroundColor: isActive ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.08)',
-                      width: '38px',
-                      height: '38px'
-                    }}
-                  >
-                    {item.icon}
-                  </div>
-                  <span>{item.label}</span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-
+        {renderNavLinks(false)}
         <hr className="text-secondary" />
-        <button
-          onClick={onLogout}
-          className="btn btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2 rounded-pill py-2 border-0 shadow-sm"
-          style={{ background: 'rgba(255, 255, 255, 0.1)' }}
-        >
-          <LogOut size={16} />
-          <span>Logout</span>
-        </button>
+        {renderLogoutButton()}
       </div>
 
       {/* Mobile Offcanvas Colorful Sidebar */}
@@ -116,50 +129,9 @@ const Sidebar = ({ activeTab, setActiveTab, onLogout }) => {
           <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body d-flex flex-column p-3">
-          <ul className="nav nav-pills flex-column mb-auto gap-3">
-            {menuItems.map((item) => {
-              const isActive = activeTab === item.id || (item.id === 'profile' && activeTab === 'edit-profile');
-              return (
-                <li key={item.id}>
-                  <button
-                    onClick={() => {
-                      setActiveTab(item.id);
-                      const closeBtn = document.querySelector('.btn-close-white');
-                      if (closeBtn) closeBtn.click();
-                    }}
-                    className={`nav-link text-white w-100 text-start d-flex align-items-center gap-3 py-2.5 px-3 border-0 ${isActive ? 'fw-bold shadow' : 'opacity-75'}`}
-                    style={{
-                      background: isActive ? item.gradient : 'rgba(255, 255, 255, 0.05)',
-                      boxShadow: isActive ? `0 8px 20px ${item.shadowColor}` : 'none',
-                      borderRadius: '12px'
-                    }}
-                  >
-                    <div
-                      className="rounded-3 d-flex align-items-center justify-content-center p-2"
-                      style={{
-                        backgroundColor: isActive ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.08)',
-                        width: '38px',
-                        height: '38px'
-                      }}
-                    >
-                      {item.icon}
-                    </div>
-                    <span>{item.label}</span>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-
+          {renderNavLinks(true)}
           <hr className="text-secondary" />
-          <button
-            onClick={onLogout}
-            className="btn btn-outline-light w-100 d-flex align-items-center justify-content-center gap-2 rounded-pill py-2 border-0"
-            style={{ background: 'rgba(255, 255, 255, 0.1)' }}
-          >
-            <LogOut size={16} />
-            <span>Logout</span>
-          </button>
+          {renderLogoutButton()}
         </div>
       </div>
     </>

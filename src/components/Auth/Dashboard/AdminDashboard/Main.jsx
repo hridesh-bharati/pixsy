@@ -11,8 +11,8 @@ import EditProjects from './EditProjects';
 import ManageBlogs from './Blogs/ManageBlogs';
 import EditBlog from './Blogs/EditBlog';
 import ServiceLeads from './Services/ServiceLeads';
-import Profile from './Profile';
-import ProfileEdit from './ProfileEdit';
+import Profile from './Profile/Profile';
+import ProfileEdit from './Profile/ProfileEdit';
 import { Menu } from 'lucide-react';
 import './AdminDashboard.css';
 

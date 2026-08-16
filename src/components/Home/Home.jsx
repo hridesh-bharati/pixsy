@@ -1,7 +1,6 @@
 import React from "react";
 import "./Home.css";
 import AboutHero from "./AboutHero";
-import WebServicesStats from "./WebServicesStats";
 import ProfessionalServices from "./ProfessionalServices";
 import Gallery from "./Gallery/Gallery";
 import WhyChooseUs from "./WhyChooseUs";
@@ -34,7 +33,6 @@ export default function Home() {
         </button>
       </div>
       <AboutHero />
-      <WebServicesStats />
       <ProfessionalServices />
       <Gallery
         items={[

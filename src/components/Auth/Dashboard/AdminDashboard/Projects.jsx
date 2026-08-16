@@ -35,7 +35,7 @@ const Projects = ({ setActiveTab, setEditingProject }) => {
     setEditingProject(proj);
     setActiveTab('add-project');
   };
-
+  const brandGradient = 'linear-gradient(135deg, #7928ca 0%, #ff0080 100%)';
   return (
     <div className="container-fluid px-0">
       <div className="d-flex justify-content-between align-items-center mb-4">
@@ -44,7 +44,9 @@ const Projects = ({ setActiveTab, setEditingProject }) => {
           <p className="text-muted small mb-0">View and manage your portfolio projects.</p>
         </div>
         <button
-          className="btn btn-primary btn-sm rounded-pill px-3 py-2 fw-semibold d-flex align-items-center gap-2"
+
+          className="btn btn-sm text-white rounded-pill px-3 py-2 fw-bolder d-flex align-items-center gap-2"
+          style={{ background: brandGradient }}
           onClick={() => { setEditingProject(null); setActiveTab('add-project'); }}
         >
           <Plus size={16} /> Add Project

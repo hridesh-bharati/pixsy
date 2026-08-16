@@ -1,4 +1,5 @@
-// src\components\Auth\Dashboard\AdminDashboard\Profile.jsx
+
+// src\components\Auth\Dashboard\AdminDashboard\Profile\Profile.jsx
 
 import React from 'react';
 import { User, Mail, Phone, Info, Shield, Calendar, Edit3, ArrowLeft } from 'lucide-react';
