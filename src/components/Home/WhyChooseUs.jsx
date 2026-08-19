@@ -23,7 +23,7 @@ const WhyChooseUs = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Running Color Animation for Heading (Matching Services style)
+      // Running Color Animation for Heading
       if (headingRef.current) {
         gsap.to(headingRef.current, {
           backgroundPosition: '200% 50%',
@@ -33,7 +33,7 @@ const WhyChooseUs = () => {
         });
       }
 
-      // Cards animation
+      // Cards staggered animation
       const cards = sectionRef.current.querySelectorAll('.why-card');
       cards.forEach((card, index) => {
         const isEven = index % 2 === 0;
@@ -42,19 +42,19 @@ const WhyChooseUs = () => {
           card,
           {
             opacity: 0,
-            x: isEven ? -150 : 150,
-            rotate: isEven ? -360 : 360,
+            x: isEven ? -100 : 100,
+            y: 50,
           },
           {
             scrollTrigger: {
-              trigger: sectionRef.current,
-              start: 'top 75%',
+              trigger: card,
+              start: 'top 85%',
               toggleActions: 'play none none reverse',
             },
             opacity: 1,
             x: 0,
-            rotate: 0,
-            duration: 1,
+            y: 0,
+            duration: 0.8,
             ease: 'power3.out',
           }
         );
@@ -125,28 +125,24 @@ const WhyChooseUs = () => {
         </div>
 
         <div className="why-grid">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <div
-                key={index}
-                className="why-card"
-                style={{ "--card-color": feature.color }}
-              >
-                {/* Corner Gradient Flare */}
-                <div className="why-card-flare"></div>
+          {features.map(({ icon: Icon, title, desc, color }, index) => (
+            <div
+              key={index}
+              className="why-card"
+              style={{ "--card-color": color }}
+            >
+              <div className="why-card-flare"></div>
 
-                <div className="why-card-inner">
-                  <div className="why-icon-wrapper">
-                    <Icon size={26} />
-                  </div>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.desc}</p>
-                  <div className="why-card-line"></div>
+              <div className="why-card-inner">
+                <div className="why-icon-wrapper">
+                  <Icon size={26} />
                 </div>
+                <h3 className="why-card-title">{title}</h3>
+                <p>{desc}</p>
+                <div className="why-card-line"></div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>

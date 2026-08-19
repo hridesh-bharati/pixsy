@@ -1,7 +1,7 @@
 /* src/components/Home/CardFeatures/Cards.css */
 .services-marquee-section {
   width: 100%;
-  padding: 10px 0;
+  padding: 14px 0;
   background-color: #ffffff;
   overflow: hidden;
   position: relative;
@@ -37,7 +37,7 @@
 
 .marquee-track {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   width: max-content;
   animation: scrollMarquee 35s linear infinite;
 }
@@ -46,19 +46,19 @@
   animation-play-state: paused;
 }
 
-/* Smaller Card Style with Vibrant Colorful Background & NO BORDERS */
+/* Vibrant Light Cards Style with Soft Colored Tint & NO BORDERS */
 .service-card {
   background: linear-gradient(135deg,
-      color-mix(in srgb, var(--card-color-start) 15%, #ffffff),
-      color-mix(in srgb, var(--card-color-end) 12%, #ffffff));
-  border: none;
-  border-radius: 10px;
-  padding: 10px 14px;
+      color-mix(in srgb, var(--card-color-start) 12%, #ffffff),
+      color-mix(in srgb, var(--card-color-end) 8%, #ffffff));
+  border: 1px solid color-mix(in srgb, var(--card-color-start) 20%, #f1f5f9);
+  border-radius: 12px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  min-width: 220px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  gap: 12px;
+  min-width: 230px;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
@@ -66,7 +66,8 @@
 
 .service-card:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-color: color-mix(in srgb, var(--card-color-start) 40%, transparent);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--card-color-start) 15%, transparent);
 }
 
 /* Decorative Bottom Line */
@@ -77,7 +78,7 @@
   width: 100%;
   height: 3px;
   background: linear-gradient(90deg, var(--card-color-start), var(--card-color-end));
-  opacity: 0.9;
+  opacity: 0.8;
   transition: height 0.3s ease;
 }
 
@@ -86,19 +87,19 @@
   opacity: 1;
 }
 
-/* Icon Box - Colorful */
+/* Icon Box - Vivid & Clean */
 .service-icon-box {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(135deg, var(--card-color-start), var(--card-color-end));
   color: #ffffff;
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   transition: all 0.4s ease;
-  box-shadow: 0 3px 8px color-mix(in srgb, var(--card-color-end) 40%, transparent);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--card-color-end) 35%, transparent);
 }
 
 .service-card:hover .service-icon-box {
@@ -107,60 +108,60 @@
 
 /* Service Info */
 .service-info h4 {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #0f172a;
-  margin: 0 0 1px 0;
+  margin: 0 0 2px 0;
 }
 
 .service-info p {
-  font-size: 10.5px;
-  color: #475569;
+  font-size: 11px;
+  color: #64748b;
   margin: 0;
 }
 
 /* =========================================
-   DEFINING 8 UNIQUE COLOR VARIATIONS 
+   DEFINING 8 BRIGHT & VIBRANT COLOR VARIATIONS
 ========================================= */
 
 .service-card.color-1 {
-  --card-color-start: #ff6b00;
-  --card-color-end: #ff2770;
+  --card-color-start: #ff7e1d;
+  --card-color-end: #ff3377;
 }
 
 .service-card.color-2 {
-  --card-color-start: #ff2770;
-  --card-color-end: #873cff;
+  --card-color-start: #ff3377;
+  --card-color-end: #9b4dff;
 }
 
 .service-card.color-3 {
-  --card-color-start: #873cff;
-  --card-color-end: #2865ff;
+  --card-color-start: #9b4dff;
+  --card-color-end: #3b75ff;
 }
 
 .service-card.color-4 {
-  --card-color-start: #2865ff;
-  --card-color-end: #ff6b00;
+  --card-color-start: #3b75ff;
+  --card-color-end: #00c6ff;
 }
 
 .service-card.color-5 {
-  --card-color-start: #ff6b00;
-  --card-color-end: #873cff;
+  --card-color-start: #00c6ff;
+  --card-color-end: #00df89;
 }
 
 .service-card.color-6 {
-  --card-color-start: #ff2770;
-  --card-color-end: #2865ff;
+  --card-color-start: #00df89;
+  --card-color-end: #ffaa00;
 }
 
 .service-card.color-7 {
-  --card-color-start: #873cff;
-  --card-color-end: #ff6b00;
+  --card-color-start: #ffaa00;
+  --card-color-end: #ff3377;
 }
 
 .service-card.color-8 {
-  --card-color-start: #2865ff;
-  --card-color-end: #ff2770;
+  --card-color-start: #3b75ff;
+  --card-color-end: #9b4dff;
 }
 
 /* Infinite Scroll Keyframes */

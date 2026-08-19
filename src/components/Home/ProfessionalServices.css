@@ -92,14 +92,6 @@
   transition: all 0.4s ease;
 }
 
-.banner-arrow {
-  margin-left: auto;
-  color: #7036ff;
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: all 0.4s ease;
-}
-
 .banner-icon-box {
   width: 45px;
   height: 45px;
@@ -124,8 +116,14 @@
   font-weight: 700;
   margin: 0;
   line-height: 1.4;
-  color: #0f172a;
-  transition: color 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+/* Brand Gradient Text Helper for Top Cards & Headings */
+.pixsy-gradient-text {
+  background: linear-gradient(90deg, #ff8a00, #ff315c, #d21cff, #3b4cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .pixsy-top-card:hover {
@@ -153,11 +151,6 @@
 
 .pixsy-top-card:hover .pixsy-top-icon {
   color: #ffffff;
-}
-
-.pixsy-top-card:hover .banner-arrow {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 /* =========================================
@@ -203,7 +196,6 @@
   line-height: 1.7;
   margin: 0;
 }
-
 
 /* =========================================
    UNIFIED DYNAMIC SERVICE CARDS (DRY)
@@ -359,15 +351,12 @@
   .top-card-img-wrapper {
     height: 180px;
   }
-
 }
 
 @media (max-width: 767px) {
   .pixsy-prof-services-section {
     padding: 60px 0;
   }
-
-
 
   .top-card-img-wrapper {
     height: 160px;

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { CodeXml, Megaphone, Check, ArrowRight, Sparkles } from "lucide-react";
+import "./AboutHero.css";
 
 export default function AboutHero() {
   const headingRef = useRef(null);
@@ -18,26 +19,22 @@ export default function AboutHero() {
 
   useEffect(() => {
     const handleTyping = () => {
-      const i = loopNum % 1; // single string loop
       const fullStr = fullText;
 
       if (isDeleting) {
         setDisplayedText(fullStr.substring(0, displayedText.length - 1));
-        setTypingSpeed(25); // Faster when deleting
+        setTypingSpeed(25);
       } else {
         setDisplayedText(fullStr.substring(0, displayedText.length + 1));
-        setTypingSpeed(40); // Normal typing speed
+        setTypingSpeed(40);
       }
 
-      // If word is completely typed, wait then start deleting
       if (!isDeleting && displayedText === fullStr) {
-        setTimeout(() => setIsDeleting(true), 2000); // Wait 2s before deleting
-      }
-      // If word is completely deleted, switch back to typing
-      else if (isDeleting && displayedText === "") {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && displayedText === "") {
         setIsDeleting(false);
         setLoopNum(loopNum + 1);
-        setTimeout(() => { }, 500); // Small pause before re-typing
+        setTimeout(() => { }, 500);
       }
     };
 
@@ -178,83 +175,6 @@ export default function AboutHero() {
 
         </div>
       </div>
-
-      <style>{`
-        .process-gradient-text {
-          background: linear-gradient(135deg, #ff6b00, #ff2468, #a52aff, #315cff, #ff6b00);
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          display: inline-block;
-        }
-
-        .min-height-typed {
-          min-height: 72px; 
-        }
-
-        .typewriter-cursor {
-          display: inline-block;
-          font-weight: 300;
-          color: #ff2468;
-          animation: blink 0.8s infinite;
-          margin-left: 2px;
-        }
-
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-
-        .pixsy-feature-box {
-          background: #f8fafc;
-          border: none !important;
-          border-left: 5px solid transparent !important;
-          border-image: linear-gradient(135deg, #ff6b00, #ff2468, #a52aff, #315cff) 1 !important;
-          padding: 14px 16px;
-          border-radius: 12px;
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          transition: all 0.3s ease;
-        }
-
-        .pixsy-feature-box:hover {
-          background: #ffffff;
-          box-shadow: 0 10px 25px rgba(49, 92, 255, 0.08);
-          transform: translateY(-3px);
-        }
-
-        .feature-icon-wrapper {
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-          color: #ffffff;
-        }
-
-        .feature-orange {
-          background: linear-gradient(135deg, #ff8a00, #ff315c);
-          box-shadow: 0 4px 12px rgba(255, 138, 0, 0.25);
-        }
-
-        .feature-blue {
-          background: linear-gradient(135deg, #3b4cff, #d21cff);
-          box-shadow: 0 4px 12px rgba(59, 76, 255, 0.25);
-        }
-
-        .pixsy-about-images img {
-          border-radius: 20px;
-        }
-
-        @media (max-width: 991px) {
-          .pixsy-about-images {
-            margin-top: 2rem !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

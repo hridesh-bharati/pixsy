@@ -19,7 +19,6 @@ export default function ProfessionalServices() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    // Parallax effect on mesh overlay using GSAP
     const ctx = gsap.context(() => {
       gsap.to(".pixsy-mesh-overlay", {
         scrollTrigger: {
@@ -35,6 +34,7 @@ export default function ProfessionalServices() {
     return () => ctx.revert();
   }, []);
 
+  // All three cards now use the brand gradient text and have arrows removed
   const topCards = [
     {
       title: "Perfect solutions that business demands",
@@ -106,34 +106,28 @@ export default function ProfessionalServices() {
       <div className="pixsy-mesh-overlay"></div>
 
       <div className="container-fluid position-relative z-2">
-        {/* Top 3 Image Cards Section with AOS */}
+        {/* Top 3 Image Cards */}
         <div className="row g-4 mb-5 pb-4 justify-content-center">
-          {topCards.map((card, index) => (
-            <div
-              className="col-12 col-md-4"
-              key={index}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
+          {topCards.map(({ title, image, icon }, index) => (
+            <div className="col-12 col-md-4" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
               <div className="pixsy-top-card">
                 <div className="top-card-img-wrapper">
-                  <img src={card.image} alt={card.title} />
+                  <img src={image} alt={title} />
                   <div className="top-card-overlay-gradient"></div>
                   <div className="top-card-badge">
                     <Zap size={14} />
                   </div>
                 </div>
                 <div className="top-card-banner">
-                  <div className="banner-icon-box">{card.icon}</div>
-                  <h5>{card.title}</h5>
-                  <ArrowRight className="banner-arrow" size={16} />
+                  <div className="banner-icon-box">{icon}</div>
+                  <h5 className="pixsy-gradient-text">{title}</h5>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Section Header with AOS */}
+        {/* Section Header */}
         <div className="container m-auto row align-items-center mb-5 pt-3" data-aos="fade-up">
           <div className="col-lg-6">
             <div className="pixsy-small-title">
@@ -152,7 +146,7 @@ export default function ProfessionalServices() {
           </div>
         </div>
 
-        {/* 5 Cards in 1 Row with Staggered AOS */}
+        {/* Services Cards */}
         <div className="row g-2 justify-content-center my-4">
           {services.map((service, index) => (
             <div
@@ -169,9 +163,7 @@ export default function ProfessionalServices() {
             >
               <div className="pixsy-service-card-modern">
                 <div className="service-card-header">
-                  <div className="service-icon-wrapper">
-                    {service.icon}
-                  </div>
+                  <div className="service-icon-wrapper">{service.icon}</div>
                   <span className="service-number">0{index + 1}</span>
                 </div>
 
