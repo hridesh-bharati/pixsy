@@ -1,3 +1,4 @@
+// src/components/Home/WhyChooseUs/WhyChooseUs.jsx
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -18,9 +19,11 @@ const WhyChooseUs = () => {
   const sectionRef = useRef(null);
   const headingRef = useRef(null);
 
+  const brandGradient = 'linear-gradient(135deg, #ff6b00, #ff2468, #a52aff, #315cff)';
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Running Color Animation for Heading
+      // Running Color Animation for Heading (Matching Services style)
       if (headingRef.current) {
         gsap.to(headingRef.current, {
           backgroundPosition: '200% 50%',
@@ -30,7 +33,7 @@ const WhyChooseUs = () => {
         });
       }
 
-      // Cards default screen par dikhenge, jab upar scroll karoge tab rotate hokar jayenge
+      // Cards animation
       const cards = sectionRef.current.querySelectorAll('.why-card');
       cards.forEach((card, index) => {
         const isEven = index % 2 === 0;
@@ -45,7 +48,7 @@ const WhyChooseUs = () => {
           {
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: 'top 75%', // Jab section screen par aayega tab cards smooth animate hokar aayenge
+              start: 'top 75%',
               toggleActions: 'play none none reverse',
             },
             opacity: 1,
@@ -66,37 +69,37 @@ const WhyChooseUs = () => {
       icon: Rocket,
       title: 'Fast Delivery',
       desc: 'We deliver projects on time with agile methodology and rapid development cycles.',
-      color: '#ff8a00'
+      color: '#ff6b00'
     },
     {
       icon: Users,
       title: 'Expert Team',
       desc: 'Our team of 50+ experienced professionals ensures top-quality results every time.',
-      color: '#ff315c'
+      color: '#ff2468'
     },
     {
       icon: Shield,
       title: 'Secure Solutions',
       desc: 'Enterprise-grade security with regular audits and compliance standards.',
-      color: '#d21cff'
+      color: '#a52aff'
     },
     {
       icon: Clock,
       title: '24/7 Support',
       desc: 'Round-the-clock support with dedicated account managers for your business.',
-      color: '#3b4cff'
+      color: '#315cff'
     },
     {
       icon: Zap,
       title: 'Performance Focused',
       desc: 'Optimized solutions that deliver speed, efficiency, and measurable results.',
-      color: '#1267ff'
+      color: '#ff8c00'
     },
     {
       icon: Award,
       title: 'Quality Guarantee',
       desc: '100% satisfaction guarantee with rigorous testing and quality assurance.',
-      color: '#ff8a00'
+      color: '#e040a0'
     }
   ];
 
@@ -106,14 +109,19 @@ const WhyChooseUs = () => {
 
       <div className="container position-relative z-2">
         <div className="section-header">
-          <span className="section-tag">
-            <Sparkles size={14} />
-            Why Choose Us
+          <span
+            className="badge px-3 py-1 rounded-pill fw-bold text-white mb-3 shadow-sm d-inline-block"
+            style={{ background: brandGradient, fontSize: '11px', letterSpacing: '1.5px' }}
+          >
+            <Sparkles size={12} className="me-1" />
+            WHY CHOOSE US
           </span>
-          <h2>
-            Why <span ref={headingRef} className="gradient-text">Pixsy Media</span>
+          <h2 className="fw-bold text-dark mb-3" style={{ fontSize: '2.2rem', lineHeight: '1.3' }}>
+            Why <span ref={headingRef} className="process-gradient-text">Pixsy Media</span>
           </h2>
-          <p>We combine creativity, technology, and strategy to deliver exceptional results</p>
+          <p className="text-muted mx-auto" style={{ maxWidth: '600px', fontSize: '0.95rem', lineHeight: '1.6' }}>
+            We combine creativity, technology, and strategy to deliver exceptional results
+          </p>
         </div>
 
         <div className="why-grid">

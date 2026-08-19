@@ -1,9 +1,9 @@
 /* ========================================
-   WHY CHOOSE US SECTION
+   WHY CHOOSE US SECTION STYLES
 ======================================== */
 .why-choose-us {
-  padding: 120px 24px;
-  background: #f8fafc;
+  padding: 100px 24px;
+  background: #f8f9fa;
   position: relative;
   overflow: hidden;
 }
@@ -26,43 +26,16 @@
 .why-choose-us .section-header {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 70px;
+  margin: 0 auto 60px;
 }
 
-.why-choose-us .section-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 18px;
-  background: rgba(255, 138, 0, 0.1);
-  border-radius: 50px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #ff8a00;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.why-choose-us .section-header h2 {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: 900;
-  color: #0f172a;
-  line-height: 1.1;
-  margin-bottom: 16px;
-}
-
-.why-choose-us .section-header .gradient-text {
-  background: linear-gradient(90deg, #ff8a00, #ff315c, #d21cff, #3b4cff, #1267ff);
+/* Matching the exact colorful moving gradient from PixsyServices */
+.why-choose-us .process-gradient-text {
+  background: linear-gradient(135deg, #ff6b00, #ff2468, #a52aff, #315cff, #ff6b00);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-}
-
-.why-choose-us .section-header p {
-  color: #64748b;
-  font-size: 1.1rem;
 }
 
 .why-grid {
@@ -71,16 +44,14 @@
   gap: 30px;
 }
 
-/* ========================================
-   CARD DESIGN WITH HOVER SLIDE FILL
-======================================== */
+/* Card Styling */
 .why-card {
   position: relative;
   padding: 36px 28px;
   background: #ffffff;
   border-radius: 20px;
   border: 2px solid #e2e8f0;
-  border-left: 6px solid var(--card-color, #ff8a00);
+  border-left: 6px solid var(--card-color, #ff6b00);
   box-shadow: 0 12px 35px rgba(15, 23, 42, 0.06);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
@@ -88,7 +59,6 @@
   z-index: 2;
 }
 
-/* Corner Flare */
 .why-card-flare {
   position: absolute;
   top: -40px;
@@ -108,7 +78,6 @@
   opacity: 0.3;
 }
 
-/* Slide Fill Effect from Left to Right on Hover */
 .why-card::before {
   content: '';
   position: absolute;
@@ -116,7 +85,7 @@
   left: 0;
   width: 0%;
   height: 100%;
-  background: var(--card-color, #ff8a00);
+  background: var(--card-color, #ff6b00);
   transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
   z-index: 1;
 }
@@ -127,7 +96,7 @@
 
 .why-card:hover {
   transform: translateY(-8px);
-  border-color: var(--card-color, #ff8a00);
+  border-color: var(--card-color, #ff6b00);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
 }
 
@@ -175,7 +144,7 @@
   width: 40px;
   height: 3px;
   border-radius: 2px;
-  background: var(--card-color, #ff8a00);
+  background: var(--card-color, #ff6b00);
   transition: width 0.3s ease, background 0.4s ease;
 }
 
@@ -184,15 +153,11 @@
   background: #ffffff;
 }
 
-/* Hover State Text Color Change for Readability */
 .why-card:hover h3,
 .why-card:hover p {
   color: #ffffff;
 }
 
-/* ========================================
-   RESPONSIVE
-======================================== */
 @media (max-width: 768px) {
   .why-choose-us {
     padding: 60px 16px;
@@ -202,23 +167,5 @@
     grid-template-columns: 1fr;
     max-width: 400px;
     margin: 0 auto;
-  }
-
-  .why-card {
-    padding: 28px 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .why-choose-us {
-    padding: 40px 12px;
-  }
-
-  .why-card h3 {
-    font-size: 1.1rem;
-  }
-
-  .why-card p {
-    font-size: 0.9rem;
   }
 }
