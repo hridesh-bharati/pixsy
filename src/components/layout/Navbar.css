@@ -19,14 +19,43 @@
 .pixsy-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none !important;
   color: #111827;
   padding: 0;
 }
 
 .pixsy-brand img {
-  width: 50px;
+  width: 45px;
+}
+
+.pixsy-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+/* Running Color Gradient Text Effect */
+.process-gradient-text {
+  background: linear-gradient(135deg, #ff6b00, #ff2468, #a52aff, #315cff, #ff6b00);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pixsy-brand-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.pixsy-brand-tagline {
+  font-size: 10px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff6b00, #ff2770, #873cff, #2865ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
 }
 
 /* =========================================
@@ -135,11 +164,6 @@
     background: white;
     border-radius: 18px;
     box-shadow: 0 15px 40px rgba(20, 30, 70, 0.10);
-    text-align: center;
-  }
-
-  .pixsy-navbar .navbar-nav.mx-auto {
-    align-items: center;
   }
 
   .pixsy-navbar .nav-link {

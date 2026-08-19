@@ -1,26 +1,36 @@
 // src/components/Navbar/Navbar.jsx
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { LogIn, LayoutDashboard } from "lucide-react";
+import { gsap } from "gsap";
 import "./Navbar.css";
 
 export default function Navbar({ user, role }) {
   const dashboardPath = role === 'admin' ? '/admin-dashboard' : '/user-dashboard';
+  const brandHeadingRef = useRef(null);
 
-  // Function to automatically close mobile navbar on click
-  const closeNavbar = () => {
-    const navbarCollapse = document.getElementById("pixsyNavbar");
-    if (navbarCollapse && navbarCollapse.classList.contains("show")) {
-      navbarCollapse.classList.remove("show");
+  useEffect(() => {
+    // Running color animation matching WhyChooseUs/Services
+    if (brandHeadingRef.current) {
+      gsap.to(brandHeadingRef.current, {
+        backgroundPosition: '200% 50%',
+        duration: 4,
+        repeat: -1,
+        ease: 'sine.inOut',
+      });
     }
-  };
+  }, []);
 
   return (
     <nav className="navbar navbar-expand-lg pixsy-navbar sticky-top">
       <div className="container">
-        {/* Left: Brand Logo */}
-        <Link className="navbar-brand pixsy-brand" to="/" onClick={closeNavbar}>
+        {/* Left: Brand Logo & Full Animated Title */}
+        <Link className="navbar-brand pixsy-brand" to="/">
           <img src="/images/logo.webp" className="img-fluid" alt="Pixsy Logo" />
+          <div className="pixsy-brand-text">
+            <span ref={brandHeadingRef} className="pixsy-brand-title process-gradient-text">Pixsy Media</span>
+            <span className="pixsy-brand-tagline d-lg-none">We're develop digital india</span>
+          </div>
         </Link>
 
         <button
@@ -39,22 +49,22 @@ export default function Navbar({ user, role }) {
           {/* Center: Navigation Links */}
           <ul className="navbar-nav mx-auto align-items-lg-center gap-lg-2">
             <li className="nav-item">
-              <NavLink to="/" end className="nav-link" onClick={closeNavbar}>Home</NavLink>
+              <NavLink to="/" end className="nav-link">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/our-services" className="nav-link" onClick={closeNavbar}>Services</NavLink>
+              <NavLink to="/our-services" className="nav-link">Services</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/about-us" className="nav-link" onClick={closeNavbar}>About Us</NavLink>
+              <NavLink to="/about-us" className="nav-link">About Us</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/blog" className="nav-link" onClick={closeNavbar}>Blog</NavLink>
+              <NavLink to="/blog" className="nav-link">Blog</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/our-team" className="nav-link" onClick={closeNavbar}>Team</NavLink>
+              <NavLink to="/our-team" className="nav-link">Team</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/contact-us" className="nav-link" onClick={closeNavbar}>Contact Us</NavLink>
+              <NavLink to="/contact-us" className="nav-link">Contact Us</NavLink>
             </li>
           </ul>
 
@@ -62,12 +72,12 @@ export default function Navbar({ user, role }) {
           <div className="navbar-nav ms-auto mt-3 mt-lg-0">
             <div className="nav-item">
               {user ? (
-                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to={dashboardPath} onClick={closeNavbar}>
+                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to={dashboardPath}>
                   <LayoutDashboard size={16} />
                   <span>Dashboard</span>
                 </Link>
               ) : (
-                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to="/login" onClick={closeNavbar}>
+                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to="/login">
                   <LogIn size={16} />
                   <span>Login</span> <span>→</span>
                 </Link>
