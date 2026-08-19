@@ -54,8 +54,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div><Cards /></div>
       <div><AboutHero /></div>
+      <div><Cards /></div>
       <div><ProfessionalServices /></div>
       <div><WhyChooseUs /></div>
       <div><PixsyServices /></div>
