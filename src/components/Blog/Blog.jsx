@@ -26,8 +26,8 @@ const Blog = () => {
 
   // Filter only by Search Term (Title or Content)
   const filteredPosts = blogs.filter(post =>
-    post.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    post.content?.toLowerCase().includes(searchTerm.toLowerCase())
+    post.title?.includes(searchTerm) ||
+    post.content?.includes(searchTerm)
   );
 
   return (

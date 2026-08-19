@@ -24,7 +24,7 @@ const Login = () => {
 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      const email = userCredential.user.email.trim().toLowerCase();
+      const email = userCredential.user.email.trim();
 
       const role = email === 'Pixsymedia78@gmail.com' ? 'admin' : 'user';
 

@@ -63,7 +63,7 @@ export default function Main({ user }) {
         if (data) {
           const allLeads = Object.entries(data).map(([id, val]) => ({ id, ...val }));
           const myLeads = allLeads.filter(
-            (lead) => lead.email?.trim().toLowerCase() === user.email?.trim().toLowerCase()
+            (lead) => lead.email?.trim() === user.email?.trim()
           ).reverse();
           setUserLeads(myLeads);
         }

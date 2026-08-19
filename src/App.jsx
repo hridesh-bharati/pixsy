@@ -37,7 +37,7 @@ function AppContent() {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
           if (currentUser) {
             setUser(currentUser);
-            const email = currentUser.email ? currentUser.email.trim().toLowerCase() : "";
+            const email = currentUser.email ? currentUser.email.trim() : "";
             if (email === "Pixsymedia78@gmail.com") {
               setRole("admin");
             } else {
