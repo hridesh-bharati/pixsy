@@ -21,15 +21,28 @@ export default function Navbar({ user, role }) {
     }
   }, []);
 
+  // Function to automatically close the mobile navbar collapse when a link is clicked
+  const handleNavLinkClick = () => {
+    const navbarCollapse = document.getElementById("pixsyNavbar");
+    if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+      const bsCollapse = window.bootstrap?.Collapse?.getInstance(navbarCollapse);
+      if (bsCollapse) {
+        bsCollapse.hide();
+      } else {
+        navbarCollapse.classList.remove("show");
+      }
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg pixsy-navbar sticky-top">
       <div className="container">
         {/* Left: Brand Logo & Full Animated Title */}
-        <Link className="navbar-brand pixsy-brand" to="/">
+        <Link className="navbar-brand pixsy-brand" to="/" onClick={handleNavLinkClick}>
           <img src="/images/logo.webp" className="img-fluid" alt="Pixsy Logo" />
           <div className="pixsy-brand-text">
             <span ref={brandHeadingRef} className="pixsy-brand-title process-gradient-text">Pixsy Media</span>
-            <span className="pixsy-brand-tagline d-lg-none">We're Partner of Your Innovations</span>
+            <span className="pixsy-brand-tagline">We're Partner of Your Innovations</span>
           </div>
         </Link>
 
@@ -49,22 +62,22 @@ export default function Navbar({ user, role }) {
           {/* Center: Navigation Links */}
           <ul className="navbar-nav mx-auto align-items-lg-center gap-lg-2">
             <li className="nav-item">
-              <NavLink to="/" end className="nav-link">Home</NavLink>
+              <NavLink to="/" end className="nav-link" onClick={handleNavLinkClick}>Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/our-services" className="nav-link">Services</NavLink>
+              <NavLink to="/our-services" className="nav-link" onClick={handleNavLinkClick}>Services</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/about-us" className="nav-link">About Us</NavLink>
+              <NavLink to="/about-us" className="nav-link" onClick={handleNavLinkClick}>About Us</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/blog" className="nav-link">Blog</NavLink>
+              <NavLink to="/blog" className="nav-link" onClick={handleNavLinkClick}>Blog</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/our-team" className="nav-link">Team</NavLink>
+              <NavLink to="/our-team" className="nav-link" onClick={handleNavLinkClick}>Team</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/contact-us" className="nav-link">Contact Us</NavLink>
+              <NavLink to="/contact-us" className="nav-link" onClick={handleNavLinkClick}>Contact Us</NavLink>
             </li>
           </ul>
 
@@ -72,12 +85,12 @@ export default function Navbar({ user, role }) {
           <div className="navbar-nav ms-auto mt-3 mt-lg-0">
             <div className="nav-item">
               {user ? (
-                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to={dashboardPath}>
+                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to={dashboardPath} onClick={handleNavLinkClick}>
                   <LayoutDashboard size={16} />
                   <span>Dashboard</span>
                 </Link>
               ) : (
-                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to="/login">
+                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to="/login" onClick={handleNavLinkClick}>
                   <LogIn size={16} />
                   <span>Login</span> <span>→</span>
                 </Link>
