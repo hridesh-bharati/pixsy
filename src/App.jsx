@@ -23,6 +23,7 @@ import ResetPassword from "./components/Auth/AuthSystem/ResetPassword";
 import Logout from "./components/Auth/AuthSystem/Logout";
 import AdminDashboard from "./components/Auth/Dashboard/AdminDashboard/Main";
 import UserDashboard from "./components/Auth/Dashboard/UserDashboard/Main";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 function AppContent() {
   const [user, setUser] = useState(null);
@@ -114,6 +115,7 @@ function AppContent() {
         <Route path="/user-dashboard" element={user && role === 'user' ? <UserDashboard user={user} /> : <Navigate to="/login" />} />
       </Routes>
       {!hideOnMobileAdmin && <Footer />}
+      <ScrollToTop />
     </>
   );
 }
