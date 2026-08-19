@@ -35,7 +35,7 @@ export default function Cards() {
             return (
               <div className={`service-card ${colorClass}`} key={`1-${index}`}>
                 <div className="service-icon-box">
-                  <IconComponent size={26} strokeWidth={2.5} />
+                  <IconComponent size={22} strokeWidth={2.5} />
                 </div>
                 <div className="service-info">
                   <h4>{service.title}</h4>
@@ -52,7 +52,7 @@ export default function Cards() {
             return (
               <div className={`service-card ${colorClass}`} key={`2-${index}`}>
                 <div className="service-icon-box">
-                  <IconComponent size={26} strokeWidth={2.5} />
+                  <IconComponent size={22} strokeWidth={2.5} />
                 </div>
                 <div className="service-info">
                   <h4>{service.title}</h4>
@@ -67,3 +67,4 @@ export default function Cards() {
     </div>
   );
 }
+

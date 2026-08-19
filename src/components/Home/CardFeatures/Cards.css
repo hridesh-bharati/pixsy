@@ -1,10 +1,7 @@
-/* =========================================
-   COLOURFUL SERVICES MARQUEE STYLES
-========================================= */
-
+/* src/components/Home/CardFeatures/Cards.css */
 .services-marquee-section {
   width: 100%;
-  padding: 0;
+  padding: 10px 0;
   background-color: #ffffff;
   overflow: hidden;
   position: relative;
@@ -16,7 +13,7 @@
   content: '';
   position: absolute;
   top: 0;
-  width: 100px;
+  width: 80px;
   height: 100%;
   z-index: 2;
   pointer-events: none;
@@ -40,7 +37,7 @@
 
 .marquee-track {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   width: max-content;
   animation: scrollMarquee 35s linear infinite;
 }
@@ -49,28 +46,27 @@
   animation-play-state: paused;
 }
 
-/* Base Card Style with Bootstrap-inspired Soft Colorful Background */
+/* Smaller Card Style with Vibrant Colorful Background & NO BORDERS */
 .service-card {
   background: linear-gradient(135deg,
-      color-mix(in srgb, var(--card-color-start) 10%, #ffffff),
-      color-mix(in srgb, var(--card-color-end) 7%, #ffffff));
-  border: 1px solid color-mix(in srgb, var(--card-color-end) 25%, #e2e8f0);
-  border-radius: 12px;
-  padding: 14px 18px;
+      color-mix(in srgb, var(--card-color-start) 15%, #ffffff),
+      color-mix(in srgb, var(--card-color-end) 12%, #ffffff));
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-width: 255px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  gap: 10px;
+  min-width: 220px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
 }
 
 .service-card:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  border-color: var(--card-color-end);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* Decorative Bottom Line */
@@ -86,54 +82,45 @@
 }
 
 .service-card:hover .card-bottom-line {
-  height: 5px;
+  height: 4px;
   opacity: 1;
 }
 
 /* Icon Box - Colorful */
 .service-icon-box {
-  width: 42px;
-  height: 42px;
-  background: color-mix(in srgb, var(--card-color-end) 15%, #ffffff);
-  color: var(--card-color-end);
-  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--card-color-start), var(--card-color-end));
+  color: #ffffff;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   transition: all 0.4s ease;
-  border: 2px solid color-mix(in srgb, var(--card-color-end) 20%, transparent);
+  box-shadow: 0 3px 8px color-mix(in srgb, var(--card-color-end) 40%, transparent);
 }
 
 .service-card:hover .service-icon-box {
-  background: linear-gradient(135deg, var(--card-color-start), var(--card-color-end));
-  color: #ffffff;
-  transform: rotate(6deg) scale(1.06);
-  border-color: rgba(255, 255, 255, 0.4);
+  transform: rotate(6deg) scale(1.08);
 }
 
 /* Service Info */
 .service-info h4 {
-  font-size: 14.5px;
+  font-size: 13px;
   font-weight: 700;
   color: #0f172a;
-  margin: 0 0 2px 0;
-  transition: color 0.3s ease;
+  margin: 0 0 1px 0;
 }
 
 .service-info p {
-  font-size: 11.5px;
+  font-size: 10.5px;
   color: #475569;
   margin: 0;
-  transition: color 0.3s ease;
-}
-
-.service-card:hover .service-info h4 {
-  color: #000000;
 }
 
 /* =========================================
-   DEFINING 8 UNIQUE VARIATIONS 
+   DEFINING 8 UNIQUE COLOR VARIATIONS 
 ========================================= */
 
 .service-card.color-1 {
