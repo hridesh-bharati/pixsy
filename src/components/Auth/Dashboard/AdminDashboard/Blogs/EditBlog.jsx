@@ -42,7 +42,7 @@ export default function EditBlog({ editingBlog, setActiveTab, setEditingBlog }) 
     if (!formData.title || !formData.content) return;
 
     setSaving(true);
-    const payload = { ...formData, author: 'Abhilasha' };
+    const payload = { ...formData, author: 'abhilasha singh' };
 
     try {
       if (editingBlog?.id) {

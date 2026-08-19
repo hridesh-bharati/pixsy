@@ -1,89 +1,53 @@
-/* =========================================
-   MINIMAL CONTACT CSS
-========================================= */
+/* src/components/ContactForm.css */
 
 .contact-section {
   position: relative;
-  overflow: hidden;
 }
 
-/* Background Glowing Orbs */
+/* Background Glowing Gradient Orbs */
 .contact-bg-circle {
   position: absolute;
-  width: 450px;
-  height: 450px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.12;
-  pointer-events: none;
+  filter: blur(80px);
   z-index: 1;
+  opacity: 0.12;
 }
 
 .contact-bg-circle-1 {
-  top: 5%;
-  left: 10%;
-  background: radial-gradient(circle, #ff8a00 0%, #ff315c 100%);
+  top: -40px;
+  left: -40px;
+  background: linear-gradient(135deg, #ff6b00, #ff2770);
 }
 
 .contact-bg-circle-2 {
-  bottom: 5%;
-  right: 10%;
-  background: radial-gradient(circle, #3b4cff 0%, #d21cff 100%);
+  bottom: -40px;
+  right: -40px;
+  background: linear-gradient(135deg, #873cff, #2865ff);
 }
 
-.contact-grid-pattern {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.contact-badge {
-  font-size: 12px;
-  font-weight: 700;
-  color: #ff8a00;
-  background: rgba(255, 138, 0, 0.1);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  border: 1px solid rgba(255, 138, 0, 0.15);
-}
-
-.contact-gradient-text {
-  background: linear-gradient(90deg, #ff8a00, #ff315c, #d21cff, #3b4cff);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Form Wrapper Left Orange Accent Border */
-.contact-form-wrapper {
-  border-left: 6px solid #ff8a00 !important;
-}
-
-/* Bootstrap Input Focus Override */
+/* Form Input & Focus States Customization */
 .form-control:focus {
   background-color: #ffffff !important;
-  border-color: #ff8a00 !important;
-  box-shadow: 0 0 0 4px rgba(255, 138, 0, 0.12) !important;
+  border-color: #873cff !important;
+  box-shadow: 0 0 0 4px rgba(135, 60, 255, 0.1) !important;
 }
 
 .input-group:focus-within .input-group-text {
-  border-color: #ff8a00 !important;
-  color: #ff8a00 !important;
+  border-color: #873cff !important;
+  color: #873cff !important;
+  background-color: #ffffff !important;
 }
 
-/* Theme Submit Button */
-.theme-submit-btn {
-  background: linear-gradient(135deg, #ff8a00 0%, #ff315c 100%);
-  font-size: 15px;
-  transition: all 0.35s ease;
-  box-shadow: 0 8px 25px rgba(255, 138, 0, 0.3);
+/* Submit Button hover animation */
+button[type="submit"] {
+  transition: all 0.3s ease;
+  background-size: 200% auto !important;
 }
 
-.theme-submit-btn:hover {
+button[type="submit"]:hover {
+  background-position: right center;
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(255, 138, 0, 0.4);
-  background: linear-gradient(135deg, #e57c00 0%, #e0284f 100%);
+  box-shadow: 0 10px 20px rgba(135, 60, 255, 0.3) !important;
 }

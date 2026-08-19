@@ -1,3 +1,4 @@
+// src/components/ContactForm.jsx
 import React, { useState } from 'react';
 import { Send, User, Mail, MessageSquare, Sparkles } from 'lucide-react';
 import './ContactForm.css';
@@ -26,35 +27,36 @@ const ContactForm = () => {
 
   return (
     <section className="contact-section py-5 position-relative overflow-hidden bg-light">
-      {/* Background Pro Gradient Orbs */}
+      {/* Background Glowing Orbs */}
       <div className="contact-bg-circle contact-bg-circle-1"></div>
       <div className="contact-bg-circle contact-bg-circle-2"></div>
-      <div className="contact-grid-pattern"></div>
 
       <div className="container position-relative z-2">
+        {/* Section Header */}
         <div className="row justify-content-center">
           <div className="col-lg-8 text-center mb-5">
-            <span className="contact-badge px-3 py-2 rounded-pill d-inline-flex align-items-center gap-2 mb-3">
-              <Sparkles size={14} />
-              Get In Touch
+            <span className="badge rounded-pill px-3 py-2 mb-3 fw-bold text-warning bg-warning bg-opacity-10 border border-warning border-opacity-10 d-inline-flex align-items-center gap-2" style={{ fontSize: '0.75rem', letterSpacing: '1.5px' }}>
+              <Sparkles size={14} /> GET IN TOUCH
             </span>
             <h2 className="fw-bold display-6 text-dark mb-2">
-              Let's Build Something <span className="contact-gradient-text">Amazing</span>
+              Let's Build Something <span style={{ background: "linear-gradient(135deg, #ff6b00, #ff2770, #873cff, #2865ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Amazing</span>
             </h2>
-            <p className="text-muted">Fill out the form below and your message will be sent instantly to WhatsApp!</p>
+            <p className="text-muted fs-6">Fill out the form below and your message will be sent instantly to WhatsApp!</p>
           </div>
         </div>
 
+        {/* Contact Form Card */}
         <div className="row justify-content-center">
           <div className="col-lg-8">
-            <div className="contact-form-wrapper p-4 p-md-5 rounded-4 bg-white shadow-lg border border-2 border-start-0 border-end-0 border-bottom-0 border-warning">
-              <form onSubmit={handleSubmit} className="row g-4">
+            <div className="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white bg-opacity-90 position-relative overflow-hidden">
+              <div className="position-absolute top-0 start-0 end-0" style={{ height: '4px', background: 'linear-gradient(135deg, #ff6b00, #ff2770, #873cff, #2865ff)' }}></div>
 
-                {/* Name Field */}
+              <form onSubmit={handleSubmit} className="row g-4">
+                {/* Name */}
                 <div className="col-md-6">
-                  <label className="form-label fw-bold text-dark mb-2">Your Name</label>
+                  <label className="form-label fw-semibold text-dark mb-2">Your Name</label>
                   <div className="input-group">
-                    <span className="input-group-text bg-light border-end-0 text-secondary ps-3">
+                    <span className="input-group-text bg-light border-end-0 text-muted ps-3">
                       <User size={18} />
                     </span>
                     <input
@@ -69,11 +71,11 @@ const ContactForm = () => {
                   </div>
                 </div>
 
-                {/* Email Field */}
+                {/* Email */}
                 <div className="col-md-6">
-                  <label className="form-label fw-bold text-dark mb-2">Your Email</label>
+                  <label className="form-label fw-semibold text-dark mb-2">Your Email</label>
                   <div className="input-group">
-                    <span className="input-group-text bg-light border-end-0 text-secondary ps-3">
+                    <span className="input-group-text bg-light border-end-0 text-muted ps-3">
                       <Mail size={18} />
                     </span>
                     <input
@@ -88,11 +90,11 @@ const ContactForm = () => {
                   </div>
                 </div>
 
-                {/* Subject Field */}
+                {/* Subject */}
                 <div className="col-12">
-                  <label className="form-label fw-bold text-dark mb-2">Subject</label>
+                  <label className="form-label fw-semibold text-dark mb-2">Subject</label>
                   <div className="input-group">
-                    <span className="input-group-text bg-light border-end-0 text-secondary ps-3">
+                    <span className="input-group-text bg-light border-end-0 text-muted ps-3">
                       <Sparkles size={18} />
                     </span>
                     <input
@@ -107,11 +109,11 @@ const ContactForm = () => {
                   </div>
                 </div>
 
-                {/* Message Field */}
+                {/* Message */}
                 <div className="col-12">
-                  <label className="form-label fw-bold text-dark mb-2">Message</label>
+                  <label className="form-label fw-semibold text-dark mb-2">Message</label>
                   <div className="input-group">
-                    <span className="input-group-text bg-light border-end-0 text-secondary ps-3 align-items-start pt-3">
+                    <span className="input-group-text bg-light border-end-0 text-muted ps-3 align-items-start pt-3">
                       <MessageSquare size={18} />
                     </span>
                     <textarea
@@ -128,13 +130,17 @@ const ContactForm = () => {
 
                 {/* Submit Button */}
                 <div className="col-12 text-center mt-4">
-                  <button type="submit" className="theme-submit-btn w-100 py-3 rounded-3 text-white fw-bold d-flex align-items-center justify-content-center gap-2 border-0">
+                  <button
+                    type="submit"
+                    className="btn text-white w-100 py-3 rounded-3 fw-bold d-flex align-items-center justify-content-center gap-2 border-0 shadow-sm"
+                    style={{ background: "linear-gradient(135deg, #ff6b00, #ff2770, #873cff, #2865ff)" }}
+                  >
                     <span>Send Message via WhatsApp</span>
                     <Send size={16} />
                   </button>
                 </div>
-
               </form>
+
             </div>
           </div>
         </div>

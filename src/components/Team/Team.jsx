@@ -16,7 +16,7 @@ const Team = () => {
   }, []);
 
   const founder = {
-    name: 'Abhilasha',
+    name: 'abhilasha singh',
     title: 'Founder & CEO',
     handle: 'pixsymedia',
     bio: 'Visionary leader and digital strategist dedicated to transforming brands through innovative media, creative direction, and tech solutions at PixsyMedia.',

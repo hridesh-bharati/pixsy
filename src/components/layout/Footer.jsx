@@ -110,17 +110,19 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
       <div className="footer-bottom">
         <div className="container">
-          <p>
+          <p className="mb-0">
             &copy; {currentYear} <span className="logo-gradient">Pixsy Media</span>.
             All rights reserved.
           </p>
+          <div className="text-muted">
+            Developed by <a href="https://www.awebgrow.com" className="text-decoration-none fw-semibold text-warning">https://www.awebgrow.com</a>
+          </div>
           <div className="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookie Policy</a>
+            <a href="#" className="text-decoration-none">Privacy Policy</a>
+            <a href="#" className="text-decoration-none">Terms of Service</a>
+            <a href="#" className="text-decoration-none">Cookie Policy</a>
           </div>
         </div>
       </div>
