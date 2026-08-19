@@ -25,6 +25,10 @@ import AdminDashboard from "./components/Auth/Dashboard/AdminDashboard/Main";
 import UserDashboard from "./components/Auth/Dashboard/UserDashboard/Main";
 import ScrollToTop from "./components/common/ScrollToTop";
 
+// Skeleton Components Import (Aapne bataya ki ye src/components/common me hain)
+import SkeletonMobile from "./components/common/SkeletonMobile";
+import SkeletonPC from "./components/common/SkeletonPC";
+
 function AppContent() {
   const [user, setUser] = useState(null);
   const [role, setRole] = useState(null);
@@ -83,12 +87,9 @@ function AppContent() {
     };
   }, []);
 
+  // Agar app load ho rahi hai, toh device ke hisaab se skeleton return karein
   if (loading) {
-    return (
-      <div className="text-center p-5" style={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
-        Loading...
-      </div>
-    );
+    return isMobile ? <SkeletonMobile /> : <SkeletonPC />;
   }
 
   // Hide Navbar & Footer on Admin Dashboard route ONLY on mobile devices

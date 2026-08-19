@@ -36,18 +36,13 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+  // Modal popup timer - Ab page refresh par har baar trigger hoga
   useEffect(() => {
-    // Check session storage so modal only shows once per page session / reload
-    const hasSeenModal = sessionStorage.getItem("hasSeenWebsiteModal");
+    const timer = setTimeout(() => {
+      setShowModal(true);
+    }, 1200);
 
-    if (!hasSeenModal) {
-      const timer = setTimeout(() => {
-        setShowModal(true);
-        sessionStorage.setItem("hasSeenWebsiteModal", "true");
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, []);
 
   const handleChange = (e) => {
@@ -72,7 +67,7 @@ export default function Home() {
       {/* Full-Screen Hero Banner with Blurred Background Layer */}
       <div className="w-100 mb-0 bg-white position-relative hero-banner-container" data-aos="fade-in">
 
-        {/* Base Layer with 90% Blur and subtle overlay to prevent white flashing */}
+        {/* Base Layer with Blur and subtle overlay */}
         <div
           className="position-absolute inset-0 w-100 h-100"
           style={{
@@ -80,9 +75,9 @@ export default function Home() {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            filter: 'blur(20px)', // High blur effect as requested
-            transform: 'scale(1.1)', // Prevents blur edge clipping
-            opacity: 0.9, // 90% visibility/blur blend
+            filter: 'blur(20px)',
+            transform: 'scale(1.1)',
+            opacity: 0.9,
             zIndex: 1
           }}
         />
@@ -149,7 +144,8 @@ export default function Home() {
           tabIndex="-1"
           style={{
             backgroundColor: "rgba(0,0,0,0.6)",
-            backdropFilter: "blur(3px)"
+            backdropFilter: "blur(3px)",
+            zIndex: 1050
           }}
         >
           <div
