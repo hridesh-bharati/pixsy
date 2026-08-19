@@ -26,7 +26,7 @@ const SignUp = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
       await updateProfile(userCredential.user, { displayName: formData.name });
 
-      const role = formData.email.trim() === 'Pixsymedia78@gmail.com' ? 'admin' : 'user';
+      const role = formData.email.trim() === 'pixsymedia78@gmail.com' ? 'admin' : 'user';
 
       if (role === 'admin') {
         navigate('/admin-dashboard');
@@ -67,7 +67,7 @@ const SignUp = () => {
               <input
                 type="text"
                 name="name"
-                placeholder="Hridesh Bharati"
+                placeholder="User name"
                 value={formData.name}
                 onChange={handleChange}
                 required

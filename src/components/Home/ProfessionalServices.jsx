@@ -17,57 +17,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ProfessionalServices() {
   const sectionRef = useRef(null);
-  const topCardsRef = useRef(null);
-  const headerRef = useRef(null);
-  const servicesRef = useRef(null);
 
   useEffect(() => {
+    // Parallax effect on mesh overlay using GSAP
     const ctx = gsap.context(() => {
-      // Top Cards Animation
-      gsap.from(".pixsy-top-card", {
-        scrollTrigger: {
-          trigger: topCardsRef.current,
-          start: "top 95%",
-          toggleActions: "play none none none",
-        },
-        opacity: 0,
-        y: 40,
-        stagger: 0.1,
-        duration: 0.7,
-        ease: "power2.out",
-        immediateRender: false,
-      });
-
-      // Header Animation
-      gsap.from(headerRef.current, {
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: "top 95%",
-          toggleActions: "play none none none",
-        },
-        opacity: 0,
-        y: 30,
-        duration: 0.7,
-        ease: "power2.out",
-        immediateRender: false,
-      });
-
-      // Services Cards Animation
-      gsap.from(".pixsy-service-card-modern", {
-        scrollTrigger: {
-          trigger: servicesRef.current,
-          start: "top 95%",
-          toggleActions: "play none none none",
-        },
-        opacity: 0,
-        y: 40,
-        stagger: 0.08,
-        duration: 0.7,
-        ease: "power2.out",
-        immediateRender: false,
-      });
-
-      // Parallax effect on mesh overlay
       gsap.to(".pixsy-mesh-overlay", {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -77,7 +30,6 @@ export default function ProfessionalServices() {
         },
         y: -30,
       });
-
     }, sectionRef);
 
     return () => ctx.revert();
@@ -154,10 +106,15 @@ export default function ProfessionalServices() {
       <div className="pixsy-mesh-overlay"></div>
 
       <div className="container-fluid position-relative z-2">
-        {/* Top 3 Image Cards Section */}
-        <div ref={topCardsRef} className="row g-4 mb-5 pb-4 justify-content-center">
+        {/* Top 3 Image Cards Section with AOS */}
+        <div className="row g-4 mb-5 pb-4 justify-content-center">
           {topCards.map((card, index) => (
-            <div className="col-12 col-md-4" key={index}>
+            <div
+              className="col-12 col-md-4"
+              key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
               <div className="pixsy-top-card">
                 <div className="top-card-img-wrapper">
                   <img src={card.image} alt={card.title} />
@@ -176,11 +133,11 @@ export default function ProfessionalServices() {
           ))}
         </div>
 
-        {/* Section Header */}
-        <div ref={headerRef} className="container  m-auto row align-items-center mb-5 pt-3">
+        {/* Section Header with AOS */}
+        <div className="container m-auto row align-items-center mb-5 pt-3" data-aos="fade-up">
           <div className="col-lg-6">
             <div className="pixsy-small-title">
-              <Sparkles sizelet={14} />
+              <Sparkles size={14} />
               What We're Offering
             </div>
             <h2 className="pixsy-main-heading">
@@ -195,12 +152,14 @@ export default function ProfessionalServices() {
           </div>
         </div>
 
-        {/* 5 Cards in 1 Row */}
-        <div ref={servicesRef} className="row g-2 justify-content-center my-4">
+        {/* 5 Cards in 1 Row with Staggered AOS */}
+        <div className="row g-2 justify-content-center my-4">
           {services.map((service, index) => (
             <div
               className="col-12 col-sm-6 col-md-6 col-lg-2"
               key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 80}
               style={{
                 "--card-primary": service.primary,
                 "--card-bg": service.bgGradient,

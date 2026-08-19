@@ -11,7 +11,6 @@ import EditProjects from './EditProjects';
 import ManageBlogs from './Blogs/ManageBlogs';
 import EditBlog from './Blogs/EditBlog';
 import ServiceLeads from './Services/ServiceLeads';
-import TeamManagement from './Team/TeamManagement';
 import Profile from './Profile/Profile';
 import ProfileEdit from './Profile/ProfileEdit';
 import { Menu } from 'lucide-react';
@@ -75,7 +74,6 @@ const Main = ({ user }) => {
         {activeTab === 'blogs' && <ManageBlogs setActiveTab={setActiveTab} setEditingBlog={setEditingBlog} />}
         {activeTab === 'add-blog' && <EditBlog editingBlog={editingBlog} setActiveTab={setActiveTab} setEditingBlog={setEditingBlog} />}
         {activeTab === 'service-leads' && <ServiceLeads setActiveTab={setActiveTab} />}
-        {activeTab === 'team' && <TeamManagement />}
         {activeTab === 'profile' && <Profile user={user} userData={userData} setActiveTab={setActiveTab} />}
         {activeTab === 'edit-profile' && <ProfileEdit user={user} userData={userData} setActiveTab={setActiveTab} setUserData={setUserData} />}
       </div>

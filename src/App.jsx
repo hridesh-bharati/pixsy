@@ -4,6 +4,10 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-route
 import { onAuthStateChanged, setPersistence, browserLocalPersistence } from "firebase/auth";
 import { auth } from "./lib/firebase";
 
+// 1. AOS Imports yahan add karein
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import Home from "./components/Home/Home";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -27,6 +31,22 @@ function AppContent() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const location = useLocation();
 
+  // 2. Global AOS Initialization
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation speed (milliseconds)
+      once: false,    // false rakhne se animation har baar scroll karne par chalegi
+      mirror: true,   // Up & down dono scroll par animation trigger hogi
+      offset: 50,     // Kitna scroll hone ke baad animation shuru ho
+    });
+  }, []);
+
+  // 3. Jab bhi route/page change ho, AOS ko refresh karein taaki naye pages par animations load ho sakein
+  useEffect(() => {
+    window.scrollTo(0, 0); // Page change hone par top par scroll karein
+    AOS.refresh();
+  }, [location.pathname]);
+
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
@@ -38,7 +58,7 @@ function AppContent() {
           if (currentUser) {
             setUser(currentUser);
             const email = currentUser.email ? currentUser.email.trim() : "";
-            if (email === "Pixsymedia78@gmail.com") {
+            if (email === "pixsymedia78@gmail.com") {
               setRole("admin");
             } else {
               setRole("user");

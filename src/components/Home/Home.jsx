@@ -1,3 +1,4 @@
+// src/components/Home.jsx
 import React, { useEffect, useState } from "react";
 import Cards from "./CardFeatures/Cards";
 import AboutHero from "./AboutHero";
@@ -7,12 +8,36 @@ import Process from "./Process";
 import Testimonials from "./Testimonials";
 import PixsyServices from "./Services/PixsyServices";
 
+// Multiple images for the infinite loop shatter slider
+const sliderImages = [
+  "/images/home-page-slider-1.webp",
+  "/images/home-page-slider-2.webp",
+  "/images/home-page-slider-1.webp"
+];
+
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  // Infinite Loop & Delay Trigger for Shatter Animation
+  useEffect(() => {
+    setIsAnimating(true);
+
+    const interval = setInterval(() => {
+      setIsAnimating(false); // Scatter / Fade out pieces
+      setTimeout(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % sliderImages.length);
+        setIsAnimating(true); // Re-assemble pieces for the next image
+      }, 500);
+    }, 3500); // 3.5 seconds interval per image
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
-    // Check session storage so it only shows once per page session / reload
+    // Check session storage so modal only shows once per page session / reload
     const hasSeenModal = sessionStorage.getItem("hasSeenWebsiteModal");
 
     if (!hasSeenModal) {
@@ -36,25 +61,70 @@ export default function Home() {
     setShowModal(false);
   };
 
+  // Clean columns and rows configuration
+  const cols = 12;
+  const rows = 5;
+  const totalPieces = cols * rows;
+  const piecesArray = Array.from({ length: totalPieces });
+
   return (
-    <main>
-      {/* Single Hero Image Banner */}
-      <div className="w-100 overflow-hidden mb-4">
-        <img
-          src="/images/home-page-slider-1.webp"
-          className="w-100 d-block"
-          alt="Pixsy Media Banner"
-          style={{ objectFit: "cover" }}
-        />
+    <main className="overflow-hidden">
+      {/* Full-Screen Hero Banner with Correct Background Mapping */}
+      <div className="w-100 mb-0 bg-white position-relative" style={{ height: '580px' }} data-aos="fade-in">
+        <div
+          className="shatter-image-grid position-relative w-100 h-100 overflow-hidden m-0 p-0"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: `repeat(${cols}, 1fr)`,
+            gridTemplateRows: `repeat(${rows}, 1fr)`,
+            backgroundColor: '#ffffff',
+            gap: '0px',
+            border: 'none'
+          }}
+        >
+          {piecesArray.map((_, index) => {
+            const col = index % cols;
+            const row = Math.floor(index / cols);
+
+            const randomX = (index % 2 === 0 ? 1 : -1) * (250 + (index * 6));
+            const randomY = (index % 3 === 0 ? -1 : 1) * (200 + (index * 5));
+            const delay = (index % 12) * 0.015;
+
+            return (
+              <div
+                key={index}
+                className={`shatter-piece ${isAnimating ? 'assembled' : ''}`}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  backgroundImage: `url('${sliderImages[currentImageIndex]}')`,
+                  backgroundSize: `100vw 580px`,
+                  backgroundPosition: `${(col / (cols - 1)) * 100}% ${(row / (rows - 1)) * 100}%`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundColor: '#ffffff',
+                  margin: '0',
+                  padding: '0',
+                  border: 'none',
+                  outline: 'none',
+                  '-webkit-backface-visibility': 'hidden',
+                  backfaceVisibility: 'hidden',
+                  '--rand-x': `${randomX}px`,
+                  '--rand-y': `${randomY}px`,
+                  transitionDelay: `${delay}s`,
+                }}
+              />
+            );
+          })}
+        </div>
       </div>
 
-      <div><AboutHero /></div>
-      <div><Cards /></div>
-      <div><ProfessionalServices /></div>
-      <div><WhyChooseUs /></div>
-      <div><PixsyServices /></div>
-      <div><Process /></div>
-      <div><Testimonials /></div>
+      <div data-aos="fade-up"><Cards /></div>
+      <div data-aos="fade-up"><AboutHero /></div>
+      <div data-aos="fade-up"><ProfessionalServices /></div>
+      <div data-aos="fade-up"><WhyChooseUs /></div>
+      <div data-aos="fade-up"><PixsyServices /></div>
+      <div data-aos="fade-up"><Process /></div>
+      <div data-aos="fade-up"><Testimonials /></div>
 
       {/* Bootstrap Auto-popup Modal with Smooth Slide Down from Top */}
       {showModal && (
@@ -77,7 +147,7 @@ export default function Home() {
                 className="modal-header text-white border-0"
                 style={{ background: "linear-gradient(135deg, #ff6b00, #ff2770, #873cff, #2865ff)" }}
               >
-                <h5 className="modal-title fw-bold">Do you need a custom website??</h5>
+                <h5 className="modal-title fw-bold">Do you need a custom website?</h5>
                 <button type="button" className="btn-close btn-close-white" onClick={() => setShowModal(false)}></button>
               </div>
               <div className="modal-body p-4">
@@ -128,22 +198,39 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Inline CSS Keyframes for smooth top drop-down animation */}
-          <style>{`
-            @keyframes slideDownModal {
-              0% {
-                transform: translateY(-100px);
-                opacity: 0;
-              }
-              100% {
-                transform: translateY(0);
-                opacity: 1;
-              }
-            }
-          `}</style>
         </div>
       )}
+
+      {/* CSS Styles for 360° Rotation & Seamless Shatter Animation */}
+      <style>{`
+        .shatter-image-grid {
+          transform: translateZ(0);
+        }
+
+        .shatter-piece {
+          opacity: 0;
+          transform: translate(var(--rand-x), var(--rand-y)) rotate(360deg) scale(0.2);
+          transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
+          will-change: transform, opacity;
+          box-shadow: none !important;
+        }
+
+        .shatter-piece.assembled {
+          opacity: 1;
+          transform: translate(0, 0) rotate(0deg) scale(1);
+        }
+
+        @keyframes slideDownModal {
+          0% {
+            transform: translateY(-100px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+      `}</style>
     </main>
   );
 }

@@ -1,7 +1,7 @@
 // src/components/Auth/Dashboard/AdminDashboard/Sidebar.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, FolderGit2, PlusCircle, FileText, PlusSquare, ClipboardList, Users, User, Home, LogOut } from 'lucide-react';
+import { LayoutDashboard, FolderGit2, PlusCircle, FileText, PlusSquare, ClipboardList, User, Home, LogOut } from 'lucide-react';
 
 const Sidebar = ({ activeTab, setActiveTab, onLogout }) => {
   const navigate = useNavigate();
@@ -48,13 +48,6 @@ const Sidebar = ({ activeTab, setActiveTab, onLogout }) => {
       icon: <ClipboardList size={20} />,
       gradient: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
       shadowColor: 'rgba(17, 153, 142, 0.3)'
-    },
-    {
-      id: 'team',
-      label: 'Team Members',
-      icon: <Users size={20} />,
-      gradient: 'linear-gradient(135deg, #ff8a00 0%, #e52e71 100%)',
-      shadowColor: 'rgba(229, 46, 113, 0.3)'
     },
     {
       id: 'profile',

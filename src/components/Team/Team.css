@@ -1,54 +1,29 @@
-/* ========================================
-   TEAM SECTION - MINIMAL BOOTSTRAP DESIGN
-======================================== */
-.gradient-text-modern {
-  background: linear-gradient(135deg, #ff8a00, #ff315c, #d21cff, #3b4cff, #1267ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 300% 300%;
-  animation: gradientMoveModern 4s ease-in-out infinite;
-}
-
-@keyframes gradientMoveModern {
-
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
+/* src/components/Team/Team.css */
 
 .team-card-modern {
-  background-color: #ffffff;
-  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .team-card-modern:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.08) !important;
-  border-color: var(--card-color) !important;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
 }
 
-.team-card-modern::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--card-bg);
-  opacity: 1;
-  pointer-events: none;
-  border-radius: 1rem;
+/* Glassmorphism details box */
+.bg-white.rounded-4 {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
 }
 
-.social-icon-link:hover {
-  background-color: var(--social-color) !important;
-  color: #ffffff !important;
-  border-color: var(--social-color) !important;
-  transform: translateY(-2px);
+/* Custom styling for smooth transitions */
+img.object-fit-cover {
+  transition: transform 0.5s ease;
+}
+
+.card:hover img.object-fit-cover {
+  transform: scale(1.02);
 }

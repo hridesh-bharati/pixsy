@@ -1,21 +1,11 @@
 // src/components/Team/Team.jsx
-import React, { useState, useEffect } from 'react';
-import { ref, onValue } from 'firebase/database';
-import { db } from '../../lib/firebase';
+import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import {
-  Sparkles,
-  Briefcase,
-  MapPin,
-  Star
-} from 'lucide-react';
+import { Sparkles, Briefcase, MapPin, Star, CheckCircle2 } from 'lucide-react';
 import './Team.css';
 
 const Team = () => {
-  const [teamMembers, setTeamMembers] = useState([]);
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -23,140 +13,156 @@ const Team = () => {
       easing: 'ease-out-cubic',
       offset: 50,
     });
-
-    const teamRef = ref(db, 'teamMembers');
-    onValue(teamRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        const list = Object.entries(data).map(([id, val]) => ({ id, ...val }));
-        setTeamMembers(list);
-      } else {
-        setTeamMembers([]);
-      }
-      setLoading(false);
-    });
   }, []);
 
-  const socialIcons = [
-    (
-      <svg key="1" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-        <rect x="2" y="9" width="4" height="12" />
-        <circle cx="4" cy="4" r="2" />
-      </svg>
-    ),
-    (
-      <svg key="2" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-      </svg>
-    ),
-    (
-      <svg key="3" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-        <polyline points="22,6 12,13 2,6" />
-      </svg>
-    )
-  ];
+  const founder = {
+    name: 'Abhilasha',
+    title: 'Founder & CEO',
+    handle: 'pixsymedia',
+    bio: 'Visionary leader and digital strategist dedicated to transforming brands through innovative media, creative direction, and tech solutions at PixsyMedia.',
+    experience: '3+ Years Exp',
+    projects: '50+ Projects',
+    location: 'India',
+    image: '/images/founder-images/founder.jpg',
+  };
+
+  // Brand gradient string
+  const brandGradient = 'linear-gradient(135deg, #ff6b00, #ff2770, #873cff, #2865ff)';
 
   return (
     <section className="py-5 bg-light position-relative overflow-hidden">
-      <div className="container-fluid py-4">
+      <div className="container py-4">
         {/* Section Header */}
-        <div className="text-center mb-5" data-aos="fade-up">
-          <span className="badge rounded-pill px-3 py-2 mb-3 fw-bold text-warning bg-warning bg-opacity-10 border border-warning border-opacity-10 d-inline-flex align-items-center gap-2" style={{ fontSize: '0.75rem', letterSpacing: '1.5px' }}>
-            <Sparkles size={14} /> OUR TEAM
-          </span>
-          <h2 className="fw-bold display-5 text-dark mb-2">Meet Our <span className="gradient-text-modern">Experts</span></h2>
-          <p className="text-muted fs-6">Passionate professionals dedicated to your success</p>
+        <div className="text-center mb-5">
+          <div data-aos="fade-down" data-aos-delay="100">
+            <span
+              className="badge rounded-pill px-3 py-2 mb-3 fw-bold d-inline-flex align-items-center gap-2 shadow-sm text-white"
+              style={{
+                fontSize: '0.75rem',
+                letterSpacing: '1.5px',
+                background: brandGradient
+              }}
+            >
+              <Sparkles size={14} /> MEET THE FOUNDER
+            </span>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="200">
+            <h2 className="fw-bold display-5 text-dark mb-2">
+              The Mind Behind <span style={{ background: brandGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>PixsyMedia</span>
+            </h2>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="300">
+            <p className="text-muted fs-6">Passionate leadership dedicated to your ultimate success</p>
+          </div>
         </div>
 
-        {loading ? (
-          <div className="text-center py-5 text-muted">Loading experts...</div>
-        ) : teamMembers.length === 0 ? (
-          <div className="text-center py-5 text-muted bg-white rounded-4 shadow-sm">No team members available right now.</div>
-        ) : (
-          <div className="row g-4 justify-content-center">
-            {teamMembers.map((member, index) => (
+        {/* Founder Layout: Left Full Image, Right Info */}
+        <div className="row align-items-center g-5 justify-content-center">
+          {/* Left Column: Full-body Image */}
+          <div className="col-lg-5 col-md-8" data-aos="fade-right" data-aos-delay="400">
+            <div className="position-relative text-center">
               <div
-                key={member.id}
-                className="col-lg-3 col-md-6 col-sm-10"
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
+                className="position-absolute rounded-4 w-100 h-100 top-0 start-0"
+                style={{
+                  background: brandGradient,
+                  filter: 'blur(20px)',
+                  opacity: 0.25,
+                  zIndex: 0
+                }}
+              ></div>
+              <div
+                className="card border-0 shadow-lg rounded-4 overflow-hidden position-relative"
+                style={{ zIndex: 1, backgroundColor: '#ffffff' }}
               >
-                <div
-                  className="card border rounded-4 p-4 text-center h-100 position-relative overflow-hidden team-card-modern shadow-sm"
-                  style={{
-                    borderColor: '#f1f5f9',
-                    '--card-color': member.color || '#ff8a00',
-                    '--card-bg': member.bgColor || 'rgba(255, 138, 0, 0.04)'
-                  }}
-                >
-                  {/* Top Accent Line */}
-                  <div className="position-absolute top-0 start-0 end-0" style={{ height: '3px', backgroundColor: member.color || '#ff8a00' }}></div>
+                <img
+                  src={founder.image}
+                  alt={founder.name}
+                  className="w-100 object-fit-cover"
+                  style={{ maxHeight: '520px', objectPosition: 'top center' }}
+                />
+                <div className="position-absolute bottom-0 start-0 end-0 p-3 bg-dark bg-opacity-75 text-white text-start">
+                  <span className="badge px-2 py-1 mb-1 text-white" style={{ background: brandGradient }}>Leadership</span>
+                  <h6 className="mb-0 fw-bold">{founder.name} — {founder.title}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
 
-                  {/* Avatar Section */}
-                  <div className="position-relative d-inline-block mb-3">
-                    <div
-                      className="rounded-circle p-1 d-flex align-items-center justify-content-center bg-white shadow-sm mx-auto"
-                      style={{ width: '76px', height: '76px', border: `3px solid ${member.color || '#ff8a00'}` }}
-                    >
-                      <img src={member.avatar} alt={member.name} className="rounded-circle w-100 h-100 object-fit-cover" />
-                    </div>
-                    <div
-                      className="position-absolute top-0 start-0 w-100 h-100 rounded-circle filter-blur"
-                      style={{ background: `radial-gradient(circle, ${(member.color || '#ff8a00')}80, transparent)`, zIndex: -1, filter: 'blur(10px)', opacity: 0.6 }}
-                    ></div>
+          {/* Right Column: Info & Details */}
+          <div className="col-lg-6" data-aos="fade-left" data-aos-delay="500">
+            <div className="p-4 p-lg-5 bg-white rounded-4 shadow-sm border border-light position-relative">
+              <div className="position-absolute top-0 start-0 end-0 rounded-top" style={{ height: '4px', background: brandGradient }}></div>
+
+              <div data-aos="fade-up" data-aos-delay="600">
+                <h3 className="fw-bold text-dark mb-1">{founder.name}</h3>
+                <p className="fw-semibold mb-2" style={{ background: brandGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', display: 'inline-block' }}>
+                  {founder.title} @{founder.handle}
+                </p>
+              </div>
+
+              <div data-aos="fade-up" data-aos-delay="700">
+                <p className="text-muted mb-4">{founder.bio}</p>
+              </div>
+
+              {/* Stats Grid */}
+              <div className="row g-3 mb-4" data-aos="fade-up" data-aos-delay="800">
+                <div className="col-4">
+                  <div className="p-3 border rounded-3 text-center bg-light bg-opacity-50">
+                    <Briefcase size={20} className="mb-1 text-danger" />
+                    <div className="fw-bold text-dark" style={{ fontSize: '0.85rem' }}>{founder.experience}</div>
+                    <div className="text-muted" style={{ fontSize: '0.7rem' }}>Experience</div>
                   </div>
-
-                  {/* Info */}
-                  <div className="mb-3">
-                    <h5 className="fw-bold mb-1" style={{ color: member.color || '#ff8a00', fontSize: '1.1rem' }}>{member.name}</h5>
-                    <p className="text-secondary small fw-medium mb-1">{member.title}</p>
-                    <p className="text-muted" style={{ fontSize: '0.75rem' }}>@{member.handle}</p>
+                </div>
+                <div className="col-4">
+                  <div className="p-3 border rounded-3 text-center bg-light bg-opacity-50">
+                    <Star size={20} className="mb-1 text-warning" />
+                    <div className="fw-bold text-dark" style={{ fontSize: '0.85rem' }}>{founder.projects}</div>
+                    <div className="text-muted" style={{ fontSize: '0.7rem' }}>Completed</div>
                   </div>
-
-                  {/* Stats */}
-                  {(member.experience || member.projects || member.location) && (
-                    <div className="d-flex justify-content-center align-items-center gap-3 py-2 my-2 border-top border-bottom border-light text-muted small">
-                      {member.experience && (
-                        <div className="d-flex align-items-center gap-1" style={{ fontSize: '0.72rem' }}>
-                          <Briefcase size={12} style={{ color: member.color || '#ff8a00' }} />
-                          <span>{member.experience}</span>
-                        </div>
-                      )}
-                      {member.projects && (
-                        <div className="d-flex align-items-center gap-1" style={{ fontSize: '0.72rem' }}>
-                          <Star size={12} style={{ color: member.color || '#ff8a00' }} />
-                          <span>{member.projects}</span>
-                        </div>
-                      )}
-                      {member.location && (
-                        <div className="d-flex align-items-center gap-1" style={{ fontSize: '0.72rem' }}>
-                          <MapPin size={12} style={{ color: member.color || '#ff8a00' }} />
-                          <span>{member.location}</span>
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {/* Social Links */}
-                  <div className="d-flex justify-content-center gap-2 mt-auto pt-2">
-                    {socialIcons.map((icon, sIndex) => (
-                      <a
-                        key={sIndex}
-                        href="#"
-                        className="btn btn-light btn-sm rounded-2 d-flex align-items-center justify-content-center p-0 border text-muted social-icon-link"
-                        style={{ width: '32px', height: '32px', '--social-color': member.color || '#ff8a00' }}
-                      >
-                        {icon}
-                      </a>
-                    ))}
+                </div>
+                <div className="col-4">
+                  <div className="p-3 border rounded-3 text-center bg-light bg-opacity-50">
+                    <MapPin size={20} className="mb-1 text-primary" />
+                    <div className="fw-bold text-dark" style={{ fontSize: '0.85rem' }}>{founder.location}</div>
+                    <div className="text-muted" style={{ fontSize: '0.7rem' }}>Location</div>
                   </div>
                 </div>
               </div>
-            ))}
+
+              {/* Core Expertise / Highlights */}
+              <div className="mb-4" data-aos="fade-up" data-aos-delay="900">
+                <h6 className="fw-bold text-dark mb-3">Core Expertise</h6>
+                <div className="d-flex flex-column gap-2">
+                  <div className="d-flex align-items-center gap-2 text-muted small">
+                    <CheckCircle2 size={16} className="text-success" />
+                    <span>Strategic Brand Positioning & Digital Growth</span>
+                  </div>
+                  <div className="d-flex align-items-center gap-2 text-muted small">
+                    <CheckCircle2 size={16} className="text-success" />
+                    <span>Creative Direction & Media Production</span>
+                  </div>
+                  <div className="d-flex align-items-center gap-2 text-muted small">
+                    <CheckCircle2 size={16} className="text-success" />
+                    <span>Client Relationship Management & Scaling</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="d-flex gap-3" data-aos="fade-up" data-aos-delay="1000">
+                <a
+                  href="https://pixsymedia.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn text-white px-4 py-2 rounded-3 fw-semibold shadow-sm border-0"
+                  style={{ background: brandGradient }}
+                >
+                  Visit PixsyMedia
+                </a>
+              </div>
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

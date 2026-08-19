@@ -13,7 +13,6 @@ import {
 import './Cards.css';
 
 export default function Cards() {
-  // Colorful Web Services list with specific Lucide icons
   const services = [
     { title: 'Web Development', icon: CodeXml, desc: 'Modern & High-Performance' },
     { title: 'UI/UX Design', icon: Palette, desc: 'Creative User Experiences' },
@@ -26,13 +25,12 @@ export default function Cards() {
   ];
 
   return (
-    <div className="services-marquee-section">
+    <div className="services-marquee-section" data-aos="fade-up">
       <div className="marquee-container">
         {/* Infinite scrolling track (Duplicated) */}
         <div className="marquee-track">
           {services.map((service, index) => {
             const IconComponent = service.icon;
-            // Dynamic color class based on index for variety
             const colorClass = `color-${(index % 8) + 1}`;
             return (
               <div className={`service-card ${colorClass}`} key={`1-${index}`}>
@@ -43,12 +41,11 @@ export default function Cards() {
                   <h4>{service.title}</h4>
                   <p>{service.desc}</p>
                 </div>
-                {/* Decorative colorful line at bottom */}
                 <div className="card-bottom-line"></div>
               </div>
             );
           })}
-          {/* Duplicate set */}
+          {/* Duplicate set for seamless infinite loop */}
           {services.map((service, index) => {
             const IconComponent = service.icon;
             const colorClass = `color-${(index % 8) + 1}`;

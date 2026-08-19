@@ -166,23 +166,23 @@ const PixsyServices = () => {
           <span
             className="badge px-3 py-1 rounded-pill fw-bold text-white mb-3 shadow-sm d-inline-block"
             style={{ background: brandGradient, fontSize: '11px', letterSpacing: '1.5px' }}
+            data-aos="zoom-in"
           >
             <Sparkles size={12} className="me-1" />
             PIXSY MEDIA — PREMIUM DIGITAL SERVICES
           </span>
 
-          <h1 className="fw-bold text-dark mb-3" style={{ fontSize: '2.2rem', lineHeight: '1.3' }}>
+          <h1 className="fw-bold text-dark mb-3" style={{ fontSize: '2.2rem', lineHeight: '1.3' }} data-aos="fade-up">
             Elevate Your Brand With <br />
             <span ref={headingRef} className="process-gradient-text">Pixsy Media</span>
           </h1>
 
-
-          <p className="text-muted mx-auto mb-4" style={{ maxWidth: '600px', fontSize: '0.95rem', lineHeight: '1.6' }}>
+          <p className="text-muted mx-auto mb-4" style={{ maxWidth: '600px', fontSize: '0.95rem', lineHeight: '1.6' }} data-aos="fade-up" data-aos-delay="100">
             At Pixsy Media, we help businesses build a strong online presence and generate quality leads through result-driven digital marketing solutions.
           </p>
 
           {/* CATEGORY FILTER BUTTONS */}
-          <div className="d-flex flex-wrap justify-content-center gap-2 mb-2">
+          <div className="d-flex flex-wrap justify-content-center gap-2 mb-2" data-aos="fade-up" data-aos-delay="150">
             {filterOptions.map((filter) => (
               <button
                 key={filter.value}
@@ -199,7 +199,7 @@ const PixsyServices = () => {
             ))}
           </div>
 
-          <div className="mx-auto my-3" style={{ width: '50px', height: '3px', background: brandGradient, borderRadius: '4px' }}></div>
+          <div className="mx-auto my-3" style={{ width: '50px', height: '3px', background: brandGradient, borderRadius: '4px' }} data-aos="zoom-in"></div>
         </div>
       </div>
 
@@ -214,6 +214,8 @@ const PixsyServices = () => {
               <div
                 key={index}
                 className="col-lg-4 col-md-6"
+                data-aos="fade-up"
+                data-aos-delay={(index % 3) * 100}
               >
                 <div
                   className="card border-0 rounded-4 p-4 h-100 d-flex flex-column position-relative overflow-hidden premium-service-card"
@@ -312,7 +314,7 @@ const PixsyServices = () => {
 
         {/* LOAD MORE / SHOW LESS BUTTON */}
         {activeFilter === 'all' && (
-          <div className="text-center mt-5">
+          <div className="text-center mt-5" data-aos="fade-up">
             <button
               onClick={() => setShowAll(!showAll)}
               className="btn px-4 py-2.5 rounded-pill fw-bold shadow-sm d-inline-flex align-items-center gap-2 border bg-white text-dark"
@@ -329,7 +331,7 @@ const PixsyServices = () => {
       </div>
 
       {/* CTA SECTION */}
-      <div className="container py-5 text-center">
+      <div className="container py-5 text-center" data-aos="fade-up">
         <div
           className="card border-0 shadow-xl rounded-5 p-4 p-md-5 text-white position-relative overflow-hidden"
           style={{ background: brandGradient, boxShadow: '0 20px 60px rgba(255,107,0,0.3), 0 8px 20px rgba(0,0,0,0.1)' }}
@@ -380,7 +382,7 @@ const PixsyServices = () => {
                     <input
                       type="text"
                       className="form-control rounded-3 py-2 bg-light border-0"
-                      placeholder="Hridesh Bharati"
+                      placeholder="User name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required

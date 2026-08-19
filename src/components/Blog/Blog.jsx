@@ -95,7 +95,7 @@ const Blog = () => {
 
                       <div className="d-flex align-items-center justify-content-between pt-3 border-top mt-auto">
                         <span className="small fw-semibold text-secondary d-flex align-items-center gap-1">
-                          <User size={13} /> {post.author || 'Hridesh Bharati'}
+                          <User size={13} /> {post.author || 'Abhilasha'}
                         </span>
                         <Link to={`/blog/${post.id}`} className="text-primary text-decoration-none fw-bold small d-inline-flex align-items-center gap-1">
                           <span>Read More</span>

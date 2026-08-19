@@ -1,4 +1,5 @@
 /* src/components/Auth/Dashboard/AdminDashboard/AdminDashboard.css */
+
 .admin-layout {
   min-height: 100vh;
   background-color: #f8fafc;
@@ -24,6 +25,30 @@
 
 .admin-content {
   overflow-y: auto;
+}
+
+/* Glassmorphism Styles */
+.glass-banner,
+.glass-card {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.glass-container {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+.stat-card {
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12) !important;
 }
 
 @media (max-width: 768px) {

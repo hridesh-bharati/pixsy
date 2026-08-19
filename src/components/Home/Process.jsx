@@ -78,38 +78,6 @@ const Process = () => {
         }
       );
 
-      // Alternating Cards Animation (Left & Right Split)
-      const items = gsap.utils.toArray('.process-timeline-item');
-      items.forEach((item) => {
-        const isLeft = item.classList.contains('left-card');
-
-        gsap.from(item, {
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-          opacity: 0,
-          x: isLeft ? -70 : 70,
-          y: 40,
-          duration: 0.9,
-          ease: 'power3.out',
-        });
-      });
-
-      // Badge Animation
-      gsap.from('.process-badge', {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 90%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.6,
-        ease: 'back.out(1.7)',
-      });
-
     }, sectionRef);
 
     return () => ctx.revert();
@@ -179,14 +147,14 @@ const Process = () => {
       <div className="container position-relative z-2">
         {/* Header */}
         <div className="section-header">
-          <span className="process-badge">
+          <span className="process-badge" data-aos="zoom-in">
             <Briefcase size={14} />
             What We Do
           </span>
-          <h2 ref={headingRef}>
+          <h2 ref={headingRef} data-aos="fade-up">
             Our <span className="process-gradient-text">Services</span>
           </h2>
-          <p className="process-subtitle">
+          <p className="process-subtitle" data-aos="fade-up" data-aos-delay="100">
             We offer full-cycle software development services and digital solutions
           </p>
         </div>
@@ -207,6 +175,8 @@ const Process = () => {
                   key={index}
                   className={`process-timeline-item ${isEven ? 'left-card' : 'right-card'}`}
                   style={{ '--card-color': step.color }}
+                  data-aos={isEven ? 'fade-right' : 'fade-left'}
+                  data-aos-delay={index * 100}
                 >
                   {/* Content Card with Smooth Slide Color Fill on Hover */}
                   <div className="timeline-content">
@@ -224,7 +194,7 @@ const Process = () => {
                   </div>
 
                   {/* Center Node & Larger Animated Icon */}
-                  <div className="timeline-center-node">
+                  <div className="timeline-center-node" data-aos="zoom-in" data-aos-delay={index * 100 + 150}>
                     <div className="timeline-dot" style={{ borderColor: step.color }}>
                       <div className="timeline-dot-inner" style={{ background: step.color + '20', color: step.color }}>
                         <Icon size={18} />

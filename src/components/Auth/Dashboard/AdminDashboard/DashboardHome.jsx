@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../../../../lib/firebase';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import {
   Users,
   FolderGit2,
@@ -17,13 +19,20 @@ const DashboardHome = ({ user, userData }) => {
   const [counts, setCounts] = useState({
     projects: 0,
     blogs: 0,
-    leads: 60, // Updated base count as requested in your notes
+    leads: 60,
     clients: 6800
   });
   const [recentLeads, setRecentLeads] = useState([]);
   const [recentProjects, setRecentProjects] = useState([]);
 
   useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-out-cubic',
+      offset: 50,
+    });
+
     const projectsRef = ref(db, 'projects');
     onValue(projectsRef, (snapshot) => {
       const data = snapshot.val();
@@ -67,32 +76,36 @@ const DashboardHome = ({ user, userData }) => {
       title: 'Total Projects',
       count: counts.projects,
       icon: <FolderGit2 size={24} className="text-white opacity-75" />,
-      gradient: 'linear-gradient(135deg, #7c3aed, #8b5cf6)'
+      gradient: 'linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(139, 92, 246, 0.9))'
     },
     {
       title: 'Published Blogs',
       count: counts.blogs,
       icon: <FileText size={24} className="text-white opacity-75" />,
-      gradient: 'linear-gradient(135deg, #0ea5e9, #2563eb)'
+      gradient: 'linear-gradient(135deg, rgba(14, 165, 233, 0.9), rgba(37, 99, 235, 0.9))'
     },
     {
       title: 'Service Leads',
       count: `${counts.leads}+`,
       icon: <ClipboardList size={24} className="text-white opacity-75" />,
-      gradient: 'linear-gradient(135deg, #f97316, #ea580c)'
+      gradient: 'linear-gradient(135deg, rgba(249, 115, 22, 0.9), rgba(234, 88, 12, 0.9))'
     },
     {
       title: 'Community Members',
       count: `${counts.clients}+`,
       icon: <Users size={24} className="text-white opacity-75" />,
-      gradient: 'linear-gradient(135deg, #f43f5e, #e11d48)'
+      gradient: 'linear-gradient(135deg, rgba(244, 63, 94, 0.9), rgba(225, 29, 72, 0.9))'
     }
   ];
 
   return (
     <div className="container-fluid p-0">
-      {/* Top Banner */}
-      <div className="card border-0 shadow-sm rounded-4 p-4 mb-4 text-white position-relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)' }}>
+      {/* Top Banner with Glassmorphism */}
+      <div
+        className="card border-0 shadow-sm rounded-4 p-4 mb-4 text-white position-relative overflow-hidden glass-banner"
+        style={{ background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(79, 70, 229, 0.9))' }}
+        data-aos="fade-down"
+      >
         <div className="d-flex justify-content-between align-items-center flex-wrap gap-3 position-relative z-2">
           <div>
             <h3 className="fw-bold m-0 text-white mb-1">Admin Console</h3>
@@ -106,12 +119,12 @@ const DashboardHome = ({ user, userData }) => {
         </div>
       </div>
 
-      {/* Metric Cards - Changed col-md-6 to col-6 col-lg-3 for 2x2 grid on mobile */}
+      {/* Metric Cards with AOS & Glassmorphism */}
       <div className="row g-3 g-lg-4 mb-4">
         {statCards.map((card, idx) => (
-          <div key={idx} className="col-6 col-lg-3">
+          <div key={idx} className="col-6 col-lg-3" data-aos="fade-up" data-aos-delay={idx * 100}>
             <div
-              className="card border-0 shadow-sm p-3 p-lg-4 rounded-4 h-100 text-white position-relative overflow-hidden stat-card"
+              className="card border-0 shadow-sm p-3 p-lg-4 rounded-4 h-100 text-white position-relative overflow-hidden stat-card glass-card"
               style={{ background: card.gradient }}
             >
               <div className="d-flex align-items-center justify-content-between mb-2 mb-lg-3">
@@ -129,8 +142,8 @@ const DashboardHome = ({ user, userData }) => {
       {/* Recent Activity Sections */}
       <div className="row g-4">
         {/* Recent Service Inquiries */}
-        <div className="col-lg-6">
-          <div className="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white">
+        <div className="col-lg-6" data-aos="fade-right" data-aos-delay="400">
+          <div className="card border-0 shadow-sm rounded-4 p-4 h-100 glass-container">
             <div className="d-flex justify-content-between align-items-center mb-4">
               <h5 className="fw-bold text-dark m-0 d-flex align-items-center gap-2">
                 <ClipboardList size={20} className="text-primary" /> Recent Service Inquiries
@@ -145,7 +158,7 @@ const DashboardHome = ({ user, userData }) => {
             ) : (
               <div className="d-flex flex-column gap-3">
                 {recentLeads.map((lead) => (
-                  <div key={lead.id} className="p-3 rounded-3 bg-light border-0 d-flex justify-content-between align-items-center">
+                  <div key={lead.id} className="p-3 rounded-3 bg-white bg-opacity-50 border-0 d-flex justify-content-between align-items-center shadow-xs">
                     <div>
                       <span className="badge bg-dark px-2.5 py-1 rounded-pill mb-1" style={{ fontSize: '10px' }}>{lead.service}</span>
                       <h6 className="fw-bold text-dark m-0">{lead.name}</h6>
@@ -162,8 +175,8 @@ const DashboardHome = ({ user, userData }) => {
         </div>
 
         {/* Recent Projects */}
-        <div className="col-lg-6">
-          <div className="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white">
+        <div className="col-lg-6" data-aos="fade-left" data-aos-delay="500">
+          <div className="card border-0 shadow-sm rounded-4 p-4 h-100 glass-container">
             <div className="d-flex justify-content-between align-items-center mb-4">
               <h5 className="fw-bold text-dark m-0 d-flex align-items-center gap-2">
                 <FolderGit2 size={20} className="text-success" /> Active Portfolio Projects
@@ -178,10 +191,10 @@ const DashboardHome = ({ user, userData }) => {
             ) : (
               <div className="d-flex flex-column gap-3">
                 {recentProjects.map((proj) => (
-                  <div key={proj.id} className="p-3 rounded-3 bg-light border-0 d-flex justify-content-between align-items-center">
+                  <div key={proj.id} className="p-3 rounded-3 bg-white bg-opacity-50 border-0 d-flex justify-content-between align-items-center shadow-xs">
                     <div className="d-flex align-items-center gap-3">
                       {proj.imageUrl && (
-                        <img src={proj.imageUrl} alt="" className="rounded-2 object-fit-cover" style={{ width: '45px', height: '45px' }} />
+                        <img src={proj.imageUrl} alt="" className="rounded-2 object-fit-cover shadow-sm" style={{ width: '45px', height: '45px' }} />
                       )}
                       <div>
                         <h6 className="fw-bold text-dark m-0">{proj.title}</h6>
@@ -200,13 +213,6 @@ const DashboardHome = ({ user, userData }) => {
           </div>
         </div>
       </div>
-
-      <style>{`
-        .stat-card:hover {
-          transform: translateY(-3px);
-          transition: transform 0.2s ease;
-        }
-      `}</style>
     </div>
   );
 };
