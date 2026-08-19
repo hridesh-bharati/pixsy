@@ -1,5 +1,5 @@
 // src/components/AboutHero.jsx
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { CodeXml, Megaphone, Check, ArrowRight, Sparkles } from "lucide-react";
 
@@ -8,6 +8,42 @@ export default function AboutHero() {
   const sectionRef = useRef(null);
 
   const brandGradient = 'linear-gradient(135deg, #ff6b00, #ff2468, #a52aff, #315cff)';
+  const fullText = "Pixsy Media is a premier digital marketing and software development agency. We help organizations and companies improve business performance & enhance their competitiveness.";
+
+  // Typewriter state management
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(40);
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const i = loopNum % 1; // single string loop
+      const fullStr = fullText;
+
+      if (isDeleting) {
+        setDisplayedText(fullStr.substring(0, displayedText.length - 1));
+        setTypingSpeed(25); // Faster when deleting
+      } else {
+        setDisplayedText(fullStr.substring(0, displayedText.length + 1));
+        setTypingSpeed(40); // Normal typing speed
+      }
+
+      // If word is completely typed, wait then start deleting
+      if (!isDeleting && displayedText === fullStr) {
+        setTimeout(() => setIsDeleting(true), 2000); // Wait 2s before deleting
+      }
+      // If word is completely deleted, switch back to typing
+      else if (isDeleting && displayedText === "") {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+        setTimeout(() => { }, 500); // Small pause before re-typing
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, loopNum, typingSpeed]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -45,9 +81,10 @@ export default function AboutHero() {
                 <span ref={headingRef} className="process-gradient-text">Innovations</span>
               </h2>
 
-              <p className="text-secondary fs-6 mb-4 lh-base lead-text">
-                Pixsy Media is a premier digital marketing and software development agency.
-                We help organizations and companies improve business performance & enhance their competitiveness.
+              {/* Typewriter Paragraph Container */}
+              <p className="text-secondary fs-6 mb-4 lh-base lead-text min-height-typed">
+                {displayedText}
+                <span className="typewriter-cursor">|</span>
               </p>
 
               {/* Service Features Grid */}
@@ -149,6 +186,23 @@ export default function AboutHero() {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           display: inline-block;
+        }
+
+        .min-height-typed {
+          min-height: 72px; 
+        }
+
+        .typewriter-cursor {
+          display: inline-block;
+          font-weight: 300;
+          color: #ff2468;
+          animation: blink 0.8s infinite;
+          margin-left: 2px;
+        }
+
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
         }
 
         .pixsy-feature-box {
