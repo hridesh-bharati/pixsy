@@ -7,11 +7,20 @@ import "./Navbar.css";
 export default function Navbar({ user, role }) {
   const dashboardPath = role === 'admin' ? '/admin-dashboard' : '/user-dashboard';
 
+  // Function to automatically close mobile navbar on click
+  const closeNavbar = () => {
+    const navbarCollapse = document.getElementById("pixsyNavbar");
+    if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+      // Bootstrap native collapse toggle or removal of show class
+      navbarCollapse.classList.remove("show");
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg pixsy-navbar sticky-top">
       <div className="container">
         {/* Left: Brand Logo */}
-        <Link className="navbar-brand pixsy-brand" to="/">
+        <Link className="navbar-brand pixsy-brand" to="/" onClick={closeNavbar}>
           <img src="/images/logo.webp" className="img-fluid" alt="Pixsy Logo" />
         </Link>
 
@@ -31,22 +40,22 @@ export default function Navbar({ user, role }) {
           {/* Center: Navigation Links */}
           <ul className="navbar-nav mx-auto align-items-lg-center gap-lg-2">
             <li className="nav-item">
-              <NavLink to="/" end className="nav-link">Home</NavLink>
+              <NavLink to="/" end className="nav-link" onClick={closeNavbar}>Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/our-services" className="nav-link">Services</NavLink>
+              <NavLink to="/our-services" className="nav-link" onClick={closeNavbar}>Services</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/about-us" className="nav-link">About Us</NavLink>
+              <NavLink to="/about-us" className="nav-link" onClick={closeNavbar}>About Us</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/blog" className="nav-link">Blog</NavLink>
+              <NavLink to="/blog" className="nav-link" onClick={closeNavbar}>Blog</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/our-team" className="nav-link">Team</NavLink>
+              <NavLink to="/our-team" className="nav-link" onClick={closeNavbar}>Team</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/contact-us" className="nav-link">Contact Us</NavLink>
+              <NavLink to="/contact-us" className="nav-link" onClick={closeNavbar}>Contact Us</NavLink>
             </li>
           </ul>
 
@@ -54,12 +63,12 @@ export default function Navbar({ user, role }) {
           <div className="navbar-nav ms-auto mt-3 mt-lg-0">
             <div className="nav-item">
               {user ? (
-                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to={dashboardPath}>
+                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to={dashboardPath} onClick={closeNavbar}>
                   <LayoutDashboard size={16} />
                   <span>Dashboard</span>
                 </Link>
               ) : (
-                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to="/login">
+                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to="/login" onClick={closeNavbar}>
                   <LogIn size={16} />
                   <span>Login</span> <span>→</span>
                 </Link>
