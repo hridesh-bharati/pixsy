@@ -17,8 +17,8 @@ const DashboardHome = ({ user, userData }) => {
   const [counts, setCounts] = useState({
     projects: 0,
     blogs: 0,
-    leads: 0,
-    clients: 60
+    leads: 60, // Updated base count as requested in your notes
+    clients: 6800
   });
   const [recentLeads, setRecentLeads] = useState([]);
   const [recentProjects, setRecentProjects] = useState([]);
@@ -77,7 +77,7 @@ const DashboardHome = ({ user, userData }) => {
     },
     {
       title: 'Service Leads',
-      count: counts.leads,
+      count: `${counts.leads}+`,
       icon: <ClipboardList size={24} className="text-white opacity-75" />,
       gradient: 'linear-gradient(135deg, #f97316, #ea580c)'
     },
@@ -106,21 +106,21 @@ const DashboardHome = ({ user, userData }) => {
         </div>
       </div>
 
-      {/* Metric Cards */}
-      <div className="row g-4 mb-4">
+      {/* Metric Cards - Changed col-md-6 to col-6 col-lg-3 for 2x2 grid on mobile */}
+      <div className="row g-3 g-lg-4 mb-4">
         {statCards.map((card, idx) => (
-          <div key={idx} className="col-lg-3 col-md-6">
+          <div key={idx} className="col-6 col-lg-3">
             <div
-              className="card border-0 shadow-sm p-4 rounded-4 h-100 text-white position-relative overflow-hidden stat-card"
+              className="card border-0 shadow-sm p-3 p-lg-4 rounded-4 h-100 text-white position-relative overflow-hidden stat-card"
               style={{ background: card.gradient }}
             >
-              <div className="d-flex align-items-center justify-content-between mb-3">
-                <h3 className="fw-bold m-0 display-6 text-white">{card.count}</h3>
+              <div className="d-flex align-items-center justify-content-between mb-2 mb-lg-3">
+                <h3 className="fw-bold m-0 fs-4 fs-lg-2 text-white">{card.count}</h3>
                 <div className="p-2 rounded-3 bg-white bg-opacity-10">
                   {card.icon}
                 </div>
               </div>
-              <h6 className="text-white opacity-90 m-0 fw-semibold fs-6">{card.title}</h6>
+              <h6 className="text-white opacity-90 m-0 fw-semibold fs-7 fs-lg-6">{card.title}</h6>
             </div>
           </div>
         ))}

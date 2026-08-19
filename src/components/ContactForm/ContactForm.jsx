@@ -10,7 +10,7 @@ const ContactForm = () => {
     message: ''
   });
 
-  const adminMobile = "7267995307";
+  const adminMobile = "6200514381";
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

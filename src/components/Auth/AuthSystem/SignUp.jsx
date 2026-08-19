@@ -26,7 +26,7 @@ const SignUp = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
       await updateProfile(userCredential.user, { displayName: formData.name });
 
-      const role = formData.email.trim().toLowerCase() === 'hridesh027@gmail.com' ? 'admin' : 'user';
+      const role = formData.email.trim().toLowerCase() === 'Pixsymedia78@gmail.com' ? 'admin' : 'user';
 
       if (role === 'admin') {
         navigate('/admin-dashboard');

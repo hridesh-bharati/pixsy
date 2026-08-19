@@ -1,6 +1,10 @@
 {
   "name": "Pixsy Media",
   "short_name": "Pixsy",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0d6efd",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -14,8 +18,5 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ],
-  "theme_color": "#0d6efd",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }

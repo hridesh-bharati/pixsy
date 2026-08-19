@@ -38,7 +38,7 @@ function AppContent() {
           if (currentUser) {
             setUser(currentUser);
             const email = currentUser.email ? currentUser.email.trim().toLowerCase() : "";
-            if (email === "hridesh027@gmail.com") {
+            if (email === "Pixsymedia78@gmail.com") {
               setRole("admin");
             } else {
               setRole("user");

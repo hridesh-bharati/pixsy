@@ -1,8 +1,11 @@
 // src/components/Auth/Dashboard/AdminDashboard/Sidebar.jsx
 import React from 'react';
-import { LayoutDashboard, FolderGit2, PlusCircle, FileText, PlusSquare, ClipboardList, Users, User, LogOut } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { LayoutDashboard, FolderGit2, PlusCircle, FileText, PlusSquare, ClipboardList, Users, User, Home, LogOut } from 'lucide-react';
 
 const Sidebar = ({ activeTab, setActiveTab, onLogout }) => {
+  const navigate = useNavigate();
+
   const menuItems = [
     {
       id: 'dashboard',
@@ -65,6 +68,37 @@ const Sidebar = ({ activeTab, setActiveTab, onLogout }) => {
   // Reusable Navigation List Renderer to keep code DRY
   const renderNavLinks = (isMobile = false) => (
     <ul className="nav nav-pills flex-column mb-auto gap-2">
+      {/* Home / Main Button routing to '/' */}
+      <li>
+        <button
+          onClick={() => {
+            navigate('/');
+            if (isMobile) {
+              const closeBtn = document.querySelector('.btn-close-white');
+              if (closeBtn) closeBtn.click();
+            }
+          }}
+          className="nav-link text-white w-100 text-start d-flex align-items-center gap-3 py-2 px-3 border-0 transition-all opacity-75"
+          style={{
+            background: 'rgba(255, 255, 255, 0.05)',
+            borderRadius: '12px',
+            transition: 'all 0.3s ease'
+          }}
+        >
+          <div
+            className="rounded-3 d-flex align-items-center justify-content-center p-2"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.08)',
+              width: '38px',
+              height: '38px'
+            }}
+          >
+            <Home size={20} />
+          </div>
+          <span>Home</span>
+        </button>
+      </li>
+
       {menuItems.map((item) => {
         const isActive = activeTab === item.id || (item.id === 'profile' && (activeTab === 'edit-project' || activeTab === 'edit-profile'));
         return (

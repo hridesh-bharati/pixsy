@@ -32,7 +32,7 @@ export default function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const text = `Hello, I want a website!%0A*Name:* ${encodeURIComponent(formData.name)}%0A*Phone:* ${encodeURIComponent(formData.phone)}%0A*Message:* ${encodeURIComponent(formData.message)}`;
-    window.open(`https://wa.me/917267995307?text=${text}`, "_blank");
+    window.open(`https://wa.me/916200514381?text=${text}`, "_blank");
     setShowModal(false);
   };
 

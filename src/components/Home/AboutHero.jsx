@@ -21,7 +21,9 @@ export default function AboutHero() {
               </div>
 
               {/* Image 2 (Overlapping) */}
-              <div className="w-75 align-self-end  position-relative" style={{ zIndex: 2 }}>
+              <div className="w-75 align-self-end  position-relative" style={{
+                zIndex: 2, marginTop: " -31px"
+              }}>
                 <img
                   src="/images/card2.webp"
                   alt="Team meeting"

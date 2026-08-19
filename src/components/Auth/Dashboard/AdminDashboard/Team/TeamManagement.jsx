@@ -126,7 +126,7 @@ const TeamManagement = () => {
           </div>
           <div className="col-md-4">
             <label className="form-label small fw-semibold text-muted">Email Address</label>
-            <input type="email" name="email" value={formData.email} onChange={handleChange} className="form-control" placeholder="e.g. hridesh027@gmail.com" />
+            <input type="email" name="email" value={formData.email} onChange={handleChange} className="form-control" placeholder="e.g. Pixsymedia78@gmail.com" />
           </div>
           <div className="col-md-4">
             <label className="form-label small fw-semibold text-muted d-flex align-items-center gap-1">
