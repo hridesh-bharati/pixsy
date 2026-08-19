@@ -29,7 +29,7 @@ export default function Navbar({ user, role }) {
           <img src="/images/logo.webp" className="img-fluid" alt="Pixsy Logo" />
           <div className="pixsy-brand-text">
             <span ref={brandHeadingRef} className="pixsy-brand-title process-gradient-text">Pixsy Media</span>
-            <span className="pixsy-brand-tagline d-lg-none">We're develop digital india</span>
+            <span className="pixsy-brand-tagline d-lg-none">We're Partner of Your Innovations</span>
           </div>
         </Link>
 
