@@ -21,7 +21,7 @@ export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  // Infinite Loop & Delay Trigger for Shatter Animation
+  // Infinite Loop & Delay Trigger for Smooth Shatter Animation
   useEffect(() => {
     setIsAnimating(true);
 
@@ -30,8 +30,8 @@ export default function Home() {
       setTimeout(() => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % sliderImages.length);
         setIsAnimating(true); // Re-assemble pieces for the next image
-      }, 500);
-    }, 3500); // 3.5 seconds interval per image
+      }, 300);
+    }, 2000); // 3.5 seconds interval per image
 
     return () => clearInterval(interval);
   }, []);
@@ -69,17 +69,34 @@ export default function Home() {
 
   return (
     <main className="overflow-hidden">
-      {/* Full-Screen Hero Banner with Carousel-like Clean Height */}
+      {/* Full-Screen Hero Banner with Blurred Background Layer */}
       <div className="w-100 mb-0 bg-white position-relative hero-banner-container" data-aos="fade-in">
+
+        {/* Base Layer with 90% Blur and subtle overlay to prevent white flashing */}
+        <div
+          className="position-absolute inset-0 w-100 h-100"
+          style={{
+            backgroundImage: `url('${sliderImages[currentImageIndex]}')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            filter: 'blur(20px)', // High blur effect as requested
+            transform: 'scale(1.1)', // Prevents blur edge clipping
+            opacity: 0.9, // 90% visibility/blur blend
+            zIndex: 1
+          }}
+        />
+
+        {/* Shatter Animation Grid Layer */}
         <div
           className="shatter-image-grid position-relative w-100 h-100 overflow-hidden m-0 p-0"
           style={{
             display: 'grid',
             gridTemplateColumns: `repeat(${cols}, 1fr)`,
             gridTemplateRows: `repeat(${rows}, 1fr)`,
-            backgroundColor: '#ffffff',
             gap: '0px',
-            border: 'none'
+            border: 'none',
+            zIndex: 2
           }}
         >
           {piecesArray.map((_, index) => {
@@ -98,11 +115,9 @@ export default function Home() {
                   width: '100%',
                   height: '100%',
                   backgroundImage: `url('${sliderImages[currentImageIndex]}')`,
-                  // Fixed background sizing mapping the full image across the whole grid matrix
                   backgroundSize: `${cols * 100}% ${rows * 100}%`,
                   backgroundPosition: `${(col / (cols - 1)) * 100}% ${(row / (rows - 1)) * 100}%`,
                   backgroundRepeat: 'no-repeat',
-                  backgroundColor: '#ffffff',
                   margin: '0',
                   padding: '0',
                   border: 'none',
