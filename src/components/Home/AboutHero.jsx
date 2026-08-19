@@ -14,16 +14,16 @@ export default function AboutHero() {
               {/* Image 1 */}
               <div className="w-75">
                 <img
-                  src="/images/slider1.png"
+                  src="/images/card3.webp"
                   alt="Team collaborating"
                   className="img-fluid rounded-4 shadow-lg w-100 object-fit-cover"
                 />
               </div>
 
               {/* Image 2 (Overlapping) */}
-              <div className="w-75 align-self-end mt-n5 position-relative" style={{ zIndex: 2 }}>
+              <div className="w-75 align-self-end  position-relative" style={{ zIndex: 2 }}>
                 <img
-                  src="/images/slider2.png"
+                  src="/images/card2.webp"
                   alt="Team meeting"
                   className="img-fluid rounded-4 shadow-lg w-100 object-fit-cover"
                 />

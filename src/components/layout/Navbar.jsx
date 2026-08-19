@@ -12,7 +12,7 @@ export default function Navbar({ user, role }) {
       <div className="container">
         {/* Left: Brand Logo */}
         <Link className="navbar-brand pixsy-brand" to="/">
-          <img src="/images/logo.jpg" className="img-fluid" alt="Pixsy Logo" />
+          <img src="/images/logo.webp" className="img-fluid" alt="Pixsy Logo" />
         </Link>
 
         <button

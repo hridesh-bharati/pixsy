@@ -1,6 +1,6 @@
 // src/components/Auth/Dashboard/AdminDashboard/Sidebar.jsx
 import React from 'react';
-import { LayoutDashboard, FolderGit2, PlusCircle, FileText, PlusSquare, ClipboardList, User, LogOut } from 'lucide-react';
+import { LayoutDashboard, FolderGit2, PlusCircle, FileText, PlusSquare, ClipboardList, Users, User, LogOut } from 'lucide-react';
 
 const Sidebar = ({ activeTab, setActiveTab, onLogout }) => {
   const menuItems = [
@@ -47,6 +47,13 @@ const Sidebar = ({ activeTab, setActiveTab, onLogout }) => {
       shadowColor: 'rgba(17, 153, 142, 0.3)'
     },
     {
+      id: 'team',
+      label: 'Team Members',
+      icon: <Users size={20} />,
+      gradient: 'linear-gradient(135deg, #ff8a00 0%, #e52e71 100%)',
+      shadowColor: 'rgba(229, 46, 113, 0.3)'
+    },
+    {
       id: 'profile',
       label: 'Profile',
       icon: <User size={20} />,
@@ -57,9 +64,9 @@ const Sidebar = ({ activeTab, setActiveTab, onLogout }) => {
 
   // Reusable Navigation List Renderer to keep code DRY
   const renderNavLinks = (isMobile = false) => (
-    <ul className="nav nav-pills flex-column mb-auto gap-3">
+    <ul className="nav nav-pills flex-column mb-auto gap-2">
       {menuItems.map((item) => {
-        const isActive = activeTab === item.id || (item.id === 'profile' && activeTab === 'edit-project' || activeTab === 'edit-profile');
+        const isActive = activeTab === item.id || (item.id === 'profile' && (activeTab === 'edit-project' || activeTab === 'edit-profile'));
         return (
           <li key={item.id}>
             <button

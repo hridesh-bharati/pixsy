@@ -1,42 +1,6 @@
 /* ========================================
-   TEAM SECTION - MODERN DESIGN
+   TEAM SECTION - MINIMAL BOOTSTRAP DESIGN
 ======================================== */
-.team-section-modern {
-  padding: 24px;
-  background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.team-section-modern .container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* ========================================
-   HEADER
-======================================== */
-.team-header-modern {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.team-badge-modern {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 18px;
-  background: linear-gradient(135deg, rgba(255, 138, 0, 0.1), rgba(255, 49, 92, 0.1));
-  border-radius: 50px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #ff8a00;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  border: 1px solid rgba(255, 138, 0, 0.1);
-}
-
 .gradient-text-modern {
   background: linear-gradient(135deg, #ff8a00, #ff315c, #d21cff, #3b4cff, #1267ff);
   -webkit-background-clip: text;
@@ -58,58 +22,15 @@
   }
 }
 
-.team-header-modern h2 {
-  font-size: clamp(2.3rem, 4vw, 3.2rem);
-  font-weight: 900;
-  color: #0a0a1a;
-  line-height: 1.1;
-  margin-bottom: 10px;
-}
-
-.team-header-modern p {
-  color: #64748b;
-  font-size: 1.05rem;
-}
-
-/* ========================================
-   TEAM GRID
-======================================== */
-.team-grid-modern {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-}
-
-/* ========================================
-   TEAM CARD (COMPACT HEIGHT)
-======================================== */
 .team-card-modern {
-  position: relative;
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 22px 20px 18px;
-  /* Padding kam ki gayi hai taaki card compact/short ho */
-  text-align: center;
-  border: 1px solid #f1f5f9;
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  overflow: hidden;
-}
-
-.team-card-modern::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--card-color);
-  opacity: 0.9;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
 }
 
 .team-card-modern:hover {
   transform: translateY(-6px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-  border-color: var(--card-border);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.08) !important;
+  border-color: var(--card-color) !important;
 }
 
 .team-card-modern::after {
@@ -122,198 +43,12 @@
   background: var(--card-bg);
   opacity: 1;
   pointer-events: none;
+  border-radius: 1rem;
 }
 
-/* ========================================
-   AVATAR (RESTORED STRONG SHADOW & GLOW)
-======================================== */
-.team-avatar-modern {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 10px;
-  z-index: 1;
-}
-
-.avatar-ring {
-  width: 76px;
-  /* Size thoda compact */
-  height: 76px;
-  border-radius: 50%;
-  padding: 3px;
-  border: 3px solid;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 20px var(--card-color);
-  /* Purani strong shadow wapas */
-  background: #ffffff;
-}
-
-.avatar-ring img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-}
-
-.avatar-glow {
-  position: absolute;
-  top: -25px;
-  left: -25px;
-  right: -25px;
-  bottom: -25px;
-  border-radius: 50%;
-  opacity: 0.6;
-  /* Pehle jaisa deep glow */
-  z-index: -1;
-  filter: blur(10px);
-}
-
-/* ========================================
-   INFO
-======================================== */
-.team-info-modern {
-  position: relative;
-  z-index: 1;
-}
-
-.team-info-modern h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 2px;
-}
-
-.team-title {
-  font-size: 0.85rem;
-  color: #64748b;
-  font-weight: 500;
-  margin-bottom: 2px;
-}
-
-.team-handle {
-  font-size: 0.75rem;
-  color: #94a3b8;
-  font-weight: 400;
-}
-
-/* ========================================
-   STATS (COMPACT MARGINS)
-======================================== */
-.team-stats {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin: 12px 0;
-  padding: 8px 0;
-  border-top: 1px solid #f1f5f9;
-  border-bottom: 1px solid #f1f5f9;
-  position: relative;
-  z-index: 1;
-}
-
-.stat-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.72rem;
-  color: #64748b;
-  font-weight: 500;
-}
-
-.stat-item span {
-  font-size: 0.68rem;
-}
-
-/* ========================================
-   ACTIONS (Social + Connect)
-======================================== */
-.team-actions {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.team-social {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-
-.social-link {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f8fafc;
-  border: 1px solid #f1f5f9;
-  color: #94a3b8;
-  transition: all 0.3s ease;
-}
-
-.social-link:hover {
-  background: var(--social-color);
-  color: #ffffff;
+.social-icon-link:hover {
+  background-color: var(--social-color) !important;
+  color: #ffffff !important;
+  border-color: var(--social-color) !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* ========================================
-   CONNECT BUTTON
-======================================== */
-.connect-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  width: 100%;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 10px;
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 0.8rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 1;
-}
-
-.connect-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-}
-
-.connect-btn svg {
-  transition: transform 0.3s ease;
-}
-
-.connect-btn:hover svg {
-  transform: translateX(3px);
-}
-
-/* ========================================
-   RESPONSIVE
-======================================== */
-@media (max-width: 1024px) {
-  .team-grid-modern {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .team-section-modern {
-    padding: 50px 16px;
-  }
-
-  .team-grid-modern {
-    grid-template-columns: 1fr;
-    max-width: 340px;
-    margin: 0 auto;
-  }
 }

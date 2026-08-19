@@ -86,17 +86,17 @@ export default function ProfessionalServices() {
   const topCards = [
     {
       title: "Perfect solutions that business demands",
-      image: "/images/slider1.png",
+      image: "/images/card1.webp",
       icon: <Code className="pixsy-top-icon" />,
     },
     {
       title: "Providing excellent technology solutions",
-      image: "/images/slider2.png",
+      image: "/images/card2.webp",
       icon: <TrendingUp className="pixsy-top-icon" />,
     },
     {
       title: "We eagerly put in use new IT innovations",
-      image: "/images/slider3.png",
+      image: "/images/card5.webp",
       icon: <ShieldCheck className="pixsy-top-icon" />,
     },
   ];
