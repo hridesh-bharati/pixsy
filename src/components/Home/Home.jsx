@@ -69,8 +69,8 @@ export default function Home() {
 
   return (
     <main className="overflow-hidden">
-      {/* Full-Screen Hero Banner with Correct Background Mapping */}
-      <div className="w-100 mb-0 bg-white position-relative" style={{ height: '580px' }} data-aos="fade-in">
+      {/* Full-Screen Hero Banner with Carousel-like Clean Height */}
+      <div className="w-100 mb-0 bg-white position-relative hero-banner-container" data-aos="fade-in">
         <div
           className="shatter-image-grid position-relative w-100 h-100 overflow-hidden m-0 p-0"
           style={{
@@ -98,7 +98,8 @@ export default function Home() {
                   width: '100%',
                   height: '100%',
                   backgroundImage: `url('${sliderImages[currentImageIndex]}')`,
-                  backgroundSize: `100vw 580px`,
+                  // Fixed background sizing mapping the full image across the whole grid matrix
+                  backgroundSize: `${cols * 100}% ${rows * 100}%`,
                   backgroundPosition: `${(col / (cols - 1)) * 100}% ${(row / (rows - 1)) * 100}%`,
                   backgroundRepeat: 'no-repeat',
                   backgroundColor: '#ffffff',
@@ -126,7 +127,7 @@ export default function Home() {
       <div data-aos="fade-up"><Process /></div>
       <div data-aos="fade-up"><Testimonials /></div>
 
-      {/* Bootstrap Auto-popup Modal with Smooth Slide Down from Top */}
+      {/* Bootstrap Auto-popup Modal */}
       {showModal && (
         <div
           className="modal fade show d-block"
@@ -201,8 +202,25 @@ export default function Home() {
         </div>
       )}
 
-      {/* CSS Styles for 360° Rotation & Seamless Shatter Animation */}
+      {/* CSS Styles */}
       <style>{`
+        .hero-banner-container {
+          width: 100%;
+          height: 520px;
+        }
+
+        @media (max-width: 992px) {
+          .hero-banner-container {
+            height: 420px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .hero-banner-container {
+            height: 300px;
+          }
+        }
+
         .shatter-image-grid {
           transform: translateZ(0);
         }
