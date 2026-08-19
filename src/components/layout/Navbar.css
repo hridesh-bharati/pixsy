@@ -135,6 +135,11 @@
     background: white;
     border-radius: 18px;
     box-shadow: 0 15px 40px rgba(20, 30, 70, 0.10);
+    text-align: center;
+  }
+
+  .pixsy-navbar .navbar-nav.mx-auto {
+    align-items: center;
   }
 
   .pixsy-navbar .nav-link {

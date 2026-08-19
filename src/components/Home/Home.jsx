@@ -31,7 +31,7 @@ export default function Home() {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % sliderImages.length);
         setIsAnimating(true); // Re-assemble pieces for the next image
       }, 300);
-    }, 2000); // 3.5 seconds interval per image
+    }, 3500); // 3.5 seconds interval per image
 
     return () => clearInterval(interval);
   }, []);

@@ -29,38 +29,9 @@ export default function AboutHero() {
       <div className="container">
         <div className="row align-items-center g-4 g-lg-5">
 
-          {/* Left Column: Image Collage */}
-          <div className="col-lg-6" data-aos="fade-right">
-            <div className="position-relative d-flex flex-column gap-3 pe-lg-3 pixsy-about-images">
-              <div className="w-75 img-box-1">
-                <img
-                  src="/images/card3.webp"
-                  alt="Team collaborating"
-                  className="img-fluid rounded-4 shadow-lg w-100 object-fit-cover"
-                />
-              </div>
-              <div className="w-75 align-self-end position-relative img-box-2" style={{ zIndex: 2 }}>
-                <img
-                  src="/images/card2.webp"
-                  alt="Team meeting"
-                  className="img-fluid rounded-4 shadow-lg w-100 object-fit-cover"
-                />
-              </div>
-              <div
-                className="position-absolute bottom-0 start-0 m-3 p-3 text-white rounded-4 shadow-lg pixsy-floating-badge"
-                style={{ zIndex: 5, background: "linear-gradient(135deg, #a62dff, #315cff)" }}
-                data-aos="zoom-in"
-                data-aos-delay="200"
-              >
-                <strong>6800+</strong>
-                <span className="opacity-75 fw-bold fs-7">Satisfied Clients</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Content & Bullet Points */}
-          <div className="col-lg-6 pixsy-about-content" data-aos="fade-left">
-            <div className="ps-lg-3">
+          {/* Right Column: Content - Mobile pe TOP (order-1) */}
+          <div className="col-lg-6 order-1 order-lg-2 pixsy-about-content" data-aos="fade-left">
+            <div className="ps-lg-3 text-center text-lg-start">
               <span
                 className="badge px-3 py-1 rounded-pill fw-bold text-white mb-3 shadow-sm d-inline-block"
                 style={{ background: brandGradient, fontSize: '11px', letterSpacing: '1.5px' }}
@@ -82,7 +53,6 @@ export default function AboutHero() {
               {/* Service Features Grid */}
               <div className="row g-3 mb-4">
                 <div className="col-sm-6" data-aos="fade-up" data-aos-delay="100">
-                  {/* Updated with clean gradient left border and no other borders */}
                   <div className="p-3 bg-light rounded-3 d-flex align-items-center gap-3 shadow-sm pixsy-feature-box">
                     <div className="text-white p-2 rounded-2 d-flex align-items-center justify-content-center feature-icon-wrapper feature-orange" style={{ width: "40px", height: "40px" }}>
                       <CodeXml size={20} />
@@ -92,7 +62,6 @@ export default function AboutHero() {
                 </div>
 
                 <div className="col-sm-6" data-aos="fade-up" data-aos-delay="200">
-                  {/* Updated with clean gradient left border and no other borders */}
                   <div className="p-3 bg-light rounded-3 d-flex align-items-center gap-3 shadow-sm pixsy-feature-box">
                     <div className="text-white p-2 rounded-2 d-flex align-items-center justify-content-center feature-icon-wrapper feature-blue" style={{ width: "40px", height: "40px" }}>
                       <Megaphone size={20} />
@@ -103,7 +72,7 @@ export default function AboutHero() {
               </div>
 
               {/* Checklist */}
-              <ul className="list-unstyled d-flex flex-column gap-3 mb-4 pixsy-checklist">
+              <ul className="list-unstyled d-flex flex-column gap-3 mb-4 pixsy-checklist text-start">
                 <li className="d-flex align-items-center gap-2 fw-semibold text-secondary" data-aos="fade-up" data-aos-delay="150">
                   <span className="badge bg-primary-subtle text-primary rounded-circle p-1 d-flex align-items-center justify-content-center check-icon" style={{ width: "22px", height: "22px" }}>
                     <Check size={14} strokeWidth={3} />
@@ -134,10 +103,45 @@ export default function AboutHero() {
             </div>
           </div>
 
+          {/* Left Column: Image Collage - Mobile pe BOTTOM (order-2) */}
+          <div className="col-lg-6 order-2 order-lg-1" data-aos="fade-right">
+            <div className="position-relative d-flex flex-column gap-3 pe-lg-3 pixsy-about-images" style={{ marginTop: '-20px' }}>
+              {/* First Image - zIndex 1 (niche) */}
+              <div className="w-75 img-box-1" style={{ position: 'relative', zIndex: 1 }}>
+                <img
+                  src="/images/card3.webp"
+                  alt="Team collaborating"
+                  className="img-fluid rounded-4 shadow-lg w-100 object-fit-cover"
+                  style={{ height: '200px' }}
+                />
+              </div>
+
+              {/* Second Image - zIndex 2 (upar) */}
+              <div className="w-75 align-self-end position-relative img-box-2" style={{ zIndex: 2, marginTop: '-40px' }}>
+                <img
+                  src="/images/card2.webp"
+                  alt="Team meeting"
+                  className="img-fluid rounded-4 shadow-lg w-100 object-fit-cover"
+                  style={{ height: '200px' }}
+                />
+              </div>
+
+              {/* Floating Badge */}
+              <div
+                className="position-absolute bottom-0 start-0 m-3 p-3 text-white rounded-4 shadow-lg pixsy-floating-badge"
+                style={{ zIndex: 5, background: "linear-gradient(135deg, #a62dff, #315cff)" }}
+                data-aos="zoom-in"
+                data-aos-delay="200"
+              >
+                <strong>6800+</strong>
+                <span className="opacity-75 fw-bold fs-7">Satisfied Clients</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      {/* Updated CSS for Left Gradient Border & Clean Layout */}
       <style>{`
         .process-gradient-text {
           background: linear-gradient(135deg, #ff6b00, #ff2468, #a52aff, #315cff, #ff6b00);
@@ -147,7 +151,6 @@ export default function AboutHero() {
           display: inline-block;
         }
 
-        /* Feature Boxes: Removed all 4 sides border, added ONLY left gradient border */
         .pixsy-feature-box {
           background: #f8fafc;
           border: none !important;
@@ -190,6 +193,12 @@ export default function AboutHero() {
 
         .pixsy-about-images img {
           border-radius: 20px;
+        }
+
+        @media (max-width: 991px) {
+          .pixsy-about-images {
+            margin-top: 2rem !important;
+          }
         }
       `}</style>
     </section>

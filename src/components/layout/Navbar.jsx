@@ -11,7 +11,6 @@ export default function Navbar({ user, role }) {
   const closeNavbar = () => {
     const navbarCollapse = document.getElementById("pixsyNavbar");
     if (navbarCollapse && navbarCollapse.classList.contains("show")) {
-      // Bootstrap native collapse toggle or removal of show class
       navbarCollapse.classList.remove("show");
     }
   };
