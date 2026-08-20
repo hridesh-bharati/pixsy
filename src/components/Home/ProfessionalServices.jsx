@@ -20,6 +20,8 @@ export default function ProfessionalServices() {
       bgColor: "#EEF2FF",
       iconColor: "#4F46E5",
       hoverColor: "#4F46E5",
+      shadowColor: "rgba(79, 70, 229, 0.08)",
+      hoverShadowColor: "rgba(79, 70, 229, 0.25)",
     },
     {
       icon: <ShoppingCart size={32} strokeWidth={2.5} />,
@@ -28,6 +30,8 @@ export default function ProfessionalServices() {
       bgColor: "#FEF2F2",
       iconColor: "#DC2626",
       hoverColor: "#DC2626",
+      shadowColor: "rgba(220, 38, 38, 0.08)",
+      hoverShadowColor: "rgba(220, 38, 38, 0.25)",
     },
     {
       icon: <PenTool size={32} strokeWidth={2.5} />,
@@ -36,6 +40,8 @@ export default function ProfessionalServices() {
       bgColor: "#FFFBEB",
       iconColor: "#F59E0B",
       hoverColor: "#F59E0B",
+      shadowColor: "rgba(245, 158, 11, 0.08)",
+      hoverShadowColor: "rgba(245, 158, 11, 0.25)",
     },
     {
       icon: <BarChart3 size={32} strokeWidth={2.5} />,
@@ -44,6 +50,8 @@ export default function ProfessionalServices() {
       bgColor: "#F5F3FF",
       iconColor: "#7C3AED",
       hoverColor: "#7C3AED",
+      shadowColor: "rgba(124, 58, 237, 0.08)",
+      hoverShadowColor: "rgba(124, 58, 237, 0.25)",
     },
     {
       icon: <Megaphone size={32} strokeWidth={2.5} />,
@@ -52,6 +60,8 @@ export default function ProfessionalServices() {
       bgColor: "#ECFEFF",
       iconColor: "#06B6D4",
       hoverColor: "#06B6D4",
+      shadowColor: "rgba(6, 182, 212, 0.08)",
+      hoverShadowColor: "rgba(6, 182, 212, 0.25)",
     },
     {
       icon: <Palette size={32} strokeWidth={2.5} />,
@@ -60,6 +70,8 @@ export default function ProfessionalServices() {
       bgColor: "#ECFDF5",
       iconColor: "#10B981",
       hoverColor: "#10B981",
+      shadowColor: "rgba(16, 185, 129, 0.08)",
+      hoverShadowColor: "rgba(16, 185, 129, 0.25)",
     },
   ];
 
@@ -113,7 +125,7 @@ export default function ProfessionalServices() {
                 className="card h-100 p-3 rounded-4 position-relative service-card bg-white d-flex flex-column"
                 style={{
                   border: "1px solid #f1f3f5",
-                  boxShadow: "0 2px 12px rgba(0, 0, 0, 0.03)",
+                  boxShadow: `0 4px 20px ${service.shadowColor}`,
                   transition: "all 0.3s ease",
                   minWidth: "180px",
                   maxWidth: "220px",
@@ -230,11 +242,11 @@ export default function ProfessionalServices() {
           }
         }
 
-        /* Card hover effects */
+        /* Card hover effects - Purple color shadow */
         .service-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08) !important;
-          border-color: transparent !important;
+          transform: translateY(-8px) scale(1.02);
+          box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2) !important;
+          border-color: #7C3AED33 !important;
         }
 
         .service-card:hover .arrow-icon-box {
@@ -246,14 +258,15 @@ export default function ProfessionalServices() {
           color: #fff !important;
         }
 
-        /* Each card gets its own hover color */
+        /* Each card gets its own hover color with purple shadow */
         ${services.map((service, i) => `
+          .service-col-item:nth-child(${i + 1}) .service-card:hover {
+            border-color: ${service.hoverColor}40 !important;
+            box-shadow: 0 20px 40px ${service.hoverShadowColor} !important;
+          }
           .service-col-item:nth-child(${i + 1}) .service-card:hover .arrow-icon-box {
             background: ${service.hoverColor} !important;
             border-color: ${service.hoverColor} !important;
-          }
-          .service-col-item:nth-child(${i + 1}) .service-card:hover {
-            border-color: ${service.hoverColor}33 !important;
           }
           .service-col-item:nth-child(${i + 1}) .service-card:hover .icon-wrapper {
             background: ${service.hoverColor} !important;
