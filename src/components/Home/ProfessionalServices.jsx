@@ -14,54 +14,60 @@ import {
 export default function ProfessionalServices() {
   const services = [
     {
-      icon: <Monitor size={28} strokeWidth={2.5} />,
+      icon: <Monitor size={32} strokeWidth={2.5} />,
       title: "Website Development",
       description: "Fast, responsive & SEO friendly websites that convert.",
-      gradient: "linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%)",
-      shadowColor: "rgba(79, 70, 229, 0.25)",
+      bgColor: "#EEF2FF",
+      iconColor: "#4F46E5",
+      hoverColor: "#4F46E5",
     },
     {
-      icon: <ShoppingCart size={28} strokeWidth={2.5} />,
+      icon: <ShoppingCart size={32} strokeWidth={2.5} />,
       title: "E-Commerce Solutions",
       description: "Powerful online stores that sell & scale your business.",
-      gradient: "linear-gradient(135deg, #dc2626 0%, #f43f5e 100%)",
-      shadowColor: "rgba(220, 38, 38, 0.25)",
+      bgColor: "#FEF2F2",
+      iconColor: "#DC2626",
+      hoverColor: "#DC2626",
     },
     {
-      icon: <PenTool size={28} strokeWidth={2.5} />,
+      icon: <PenTool size={32} strokeWidth={2.5} />,
       title: "UI/UX Design",
       description: "Beautiful, user-friendly designs that create lasting impressions.",
-      gradient: "linear-gradient(135deg, #d97706 0%, #f59e0b 100%)",
-      shadowColor: "rgba(245, 158, 11, 0.25)",
+      bgColor: "#FFFBEB",
+      iconColor: "#F59E0B",
+      hoverColor: "#F59E0B",
     },
     {
-      icon: <BarChart3 size={28} strokeWidth={2.5} />,
+      icon: <BarChart3 size={32} strokeWidth={2.5} />,
       title: "SEO & Digital Marketing",
       description: "Rank higher, get found & grow with result-driven strategies.",
-      gradient: "linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)",
-      shadowColor: "rgba(124, 58, 237, 0.25)",
+      bgColor: "#F5F3FF",
+      iconColor: "#7C3AED",
+      hoverColor: "#7C3AED",
     },
     {
-      icon: <Megaphone size={28} strokeWidth={2.5} />,
+      icon: <Megaphone size={32} strokeWidth={2.5} />,
       title: "Social Media Management",
       description: "Engage your audience & grow your brand across platforms.",
-      gradient: "linear-gradient(135deg, #0891b2 0%, #06b6d4 100%)",
-      shadowColor: "rgba(6, 182, 212, 0.25)",
+      bgColor: "#ECFEFF",
+      iconColor: "#06B6D4",
+      hoverColor: "#06B6D4",
     },
     {
-      icon: <Palette size={28} strokeWidth={2.5} />,
+      icon: <Palette size={32} strokeWidth={2.5} />,
       title: "Branding & Identity",
       description: "Unique branding that builds trust & makes you unforgettable.",
-      gradient: "linear-gradient(135deg, #059669 0%, #10b981 100%)",
-      shadowColor: "rgba(16, 185, 129, 0.25)",
+      bgColor: "#ECFDF5",
+      iconColor: "#10B981",
+      hoverColor: "#10B981",
     },
   ];
 
   return (
     <section className="py-5 bg-white text-dark overflow-hidden">
-      <div className="container-fluid px-3 px-lg-4 py-4">
+      <div className="container-fluid px-3 px-lg-4 py-3">
         {/* Header Section */}
-        <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-5 px-lg-3 gap-2">
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 px-lg-3 gap-2">
           <div>
             <div
               className="text-uppercase fw-bold text-muted mb-1"
@@ -94,8 +100,8 @@ export default function ProfessionalServices() {
           </div>
         </div>
 
-        {/* Services Grid */}
-        <div className="services-grid">
+        {/* Services Row - No Scrollbar */}
+        <div className="services-row-container d-flex flex-nowrap gap-3 px-lg-2">
           {services.map((service, index) => (
             <div
               className="service-col-item"
@@ -104,51 +110,75 @@ export default function ProfessionalServices() {
               data-aos-delay={index * 100}
             >
               <div
-                className="card h-100 p-3 rounded-4 position-relative service-card text-white d-flex flex-column"
+                className="card h-100 p-3 rounded-4 position-relative service-card bg-white d-flex flex-column"
                 style={{
-                  background: service.gradient,
-                  boxShadow: `0 8px 25px ${service.shadowColor}`,
+                  border: "1px solid #f1f3f5",
+                  boxShadow: "0 2px 12px rgba(0, 0, 0, 0.03)",
                   transition: "all 0.3s ease",
-                  minHeight: "210px",
-                  border: "none",
+                  minWidth: "180px",
+                  maxWidth: "220px",
                 }}
               >
-                <div className="card-body d-flex flex-column p-0 justify-content-between">
-                  <div>
-                    {/* Icon container */}
-                    <div
-                      className="mb-2 d-inline-flex justify-content-center align-items-center rounded-3 bg-white bg-opacity-25 text-white"
-                      style={{
-                        width: "48px",
-                        height: "48px",
-                      }}
-                    >
-                      {service.icon}
-                    </div>
-
-                    {/* Title */}
-                    <h6
-                      className="fw-bold mb-1 text-white"
-                      style={{
-                        fontSize: "0.95rem",
-                        lineHeight: "1.2",
-                        fontWeight: 700,
-                      }}
-                    >
-                      {service.title}
-                    </h6>
+                <div className="card-body d-flex flex-column p-0">
+                  {/* Icon with colorful background - BOLD */}
+                  <div
+                    className="mb-3 d-flex justify-content-center align-items-center mx-auto"
+                    style={{
+                      width: "60px",
+                      height: "60px",
+                      borderRadius: "16px",
+                      backgroundColor: service.bgColor,
+                      color: service.iconColor,
+                      transition: "all 0.3s ease",
+                    }}
+                  >
+                    {React.cloneElement(service.icon, {
+                      style: {
+                        color: service.iconColor,
+                        strokeWidth: 2.5,
+                      }
+                    })}
                   </div>
+
+                  {/* Title - BOLD */}
+                  <h6
+                    className="fw-bold mb-2 text-dark text-center"
+                    style={{
+                      fontSize: "0.95rem",
+                      lineHeight: "1.3",
+                      fontWeight: 700,
+                    }}
+                  >
+                    {service.title}
+                  </h6>
 
                   {/* Description */}
                   <p
-                    className="text-white text-opacity-85 mb-0"
+                    className="text-muted mb-3 text-center"
                     style={{
-                      lineHeight: "1.3",
+                      lineHeight: "1.4",
                       fontSize: "0.75rem",
+                      flex: 1,
                     }}
                   >
                     {service.description}
                   </p>
+
+                  {/* Bottom Arrow with color */}
+                  <div className="mt-auto d-flex justify-content-center">
+                    <div
+                      className="rounded-circle d-inline-flex align-items-center justify-content-center arrow-icon-box"
+                      style={{
+                        width: "34px",
+                        height: "34px",
+                        border: "1.5px solid #e2e8f0",
+                        backgroundColor: "#fff",
+                        transition: "all 0.3s ease",
+                      }}
+                    >
+                      <ArrowRight size={15} className="text-secondary" strokeWidth={2.5} />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -164,37 +194,72 @@ export default function ProfessionalServices() {
           background-clip: text;
         }
 
-        .services-grid {
-          display: grid;
-          grid-template-columns: repeat(6, 1fr);
-          gap: 1.25rem;
-          padding: 0.5rem 0.25rem;
+        /* No scrollbar */
+        .services-row-container {
+          scroll-behavior: smooth;
+          overflow-x: auto;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .services-row-container::-webkit-scrollbar {
+          display: none;
+        }
+
+        /* PC: 6 cards in a row */
+        .service-col-item {
+          flex: 0 0 calc(16.666% - 14px);
+          min-width: 170px;
+          max-width: 220px;
+        }
+
+        @media (max-width: 1200px) {
+          .service-col-item {
+            flex: 0 0 200px;
+          }
         }
 
         @media (max-width: 992px) {
-          .services-grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+          .service-col-item {
+            flex: 0 0 190px;
           }
         }
 
-        @media (max-width: 576px) {
-          .services-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
+        @media (max-width: 768px) {
+          .service-col-item {
+            flex: 0 0 180px;
           }
         }
 
-        .service-card {
-          overflow: hidden;
-          width: 100%;
-        }
-
+        /* Card hover effects */
         .service-card:hover {
-          transform: translateY(-6px);
-          filter: brightness(1.05);
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+          transform: translateY(-5px);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08) !important;
+          border-color: transparent !important;
         }
+
+        .service-card:hover .arrow-icon-box {
+          background: #6366f1 !important;
+          border-color: #6366f1 !important;
+        }
+
+        .service-card:hover .arrow-icon-box svg {
+          color: #fff !important;
+        }
+
+        /* Each card gets its own hover color */
+        ${services.map((service, i) => `
+          .service-col-item:nth-child(${i + 1}) .service-card:hover .arrow-icon-box {
+            background: ${service.hoverColor} !important;
+            border-color: ${service.hoverColor} !important;
+          }
+          .service-col-item:nth-child(${i + 1}) .service-card:hover {
+            border-color: ${service.hoverColor}33 !important;
+          }
+          .service-col-item:nth-child(${i + 1}) .service-card:hover .icon-wrapper {
+            background: ${service.hoverColor} !important;
+            color: #fff !important;
+          }
+        `).join('')}
       `}</style>
     </section>
   );
