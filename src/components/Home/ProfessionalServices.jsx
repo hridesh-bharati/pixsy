@@ -127,12 +127,12 @@ export default function ProfessionalServices() {
                   border: "1px solid #f1f3f5",
                   boxShadow: `0 4px 20px ${service.shadowColor}`,
                   transition: "all 0.3s ease",
-                  minWidth: "180px",
-                  maxWidth: "220px",
+                  minWidth: "220px",
+                  maxWidth: "270px",
                 }}
               >
                 <div className="card-body d-flex flex-column p-0">
-                  {/* Icon with colorful background - BOLD */}
+                  {/* Icon with colorful background */}
                   <div
                     className="mb-3 d-flex justify-content-center align-items-center mx-auto"
                     style={{
@@ -152,7 +152,7 @@ export default function ProfessionalServices() {
                     })}
                   </div>
 
-                  {/* Title - BOLD */}
+                  {/* Title */}
                   <h6
                     className="fw-bold mb-2 text-dark text-center"
                     style={{
@@ -217,35 +217,34 @@ export default function ProfessionalServices() {
           display: none;
         }
 
-        /* PC: 6 cards in a row */
+        /* Updated wider card sizing */
         .service-col-item {
-          flex: 0 0 calc(16.666% - 14px);
-          min-width: 170px;
-          max-width: 220px;
+          flex: 0 0 240px;
+          min-width: 220px;
+          max-width: 270px;
         }
 
         @media (max-width: 1200px) {
           .service-col-item {
-            flex: 0 0 200px;
+            flex: 0 0 230px;
           }
         }
 
         @media (max-width: 992px) {
           .service-col-item {
-            flex: 0 0 190px;
+            flex: 0 0 220px;
           }
         }
 
         @media (max-width: 768px) {
           .service-col-item {
-            flex: 0 0 180px;
+            flex: 0 0 210px;
           }
         }
 
-        /* Card hover effects - Purple color shadow */
+        /* Card hover effects - Shadow maintained */
         .service-card:hover {
           transform: translateY(-8px) scale(1.02);
-          box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2) !important;
           border-color: #7C3AED33 !important;
         }
 
@@ -258,7 +257,7 @@ export default function ProfessionalServices() {
           color: #fff !important;
         }
 
-        /* Each card gets its own hover color with purple shadow */
+        /* Each card gets its own hover color with matching shadow */
         ${services.map((service, i) => `
           .service-col-item:nth-child(${i + 1}) .service-card:hover {
             border-color: ${service.hoverColor}40 !important;
