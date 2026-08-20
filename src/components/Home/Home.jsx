@@ -1,5 +1,6 @@
 // src/components/Home.jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { gsap } from "gsap";
 import Cards from "./CardFeatures/Cards";
 import AboutHero from "./AboutHero";
 import ProfessionalServices from "./ProfessionalServices";
@@ -7,42 +8,47 @@ import WhyChooseUs from "./WhyChooseUs";
 import Process from "./Process";
 import Testimonials from "./Testimonials";
 import PixsyServices from "./Services/PixsyServices";
-
-// Multiple images for the infinite loop shatter slider
-const sliderImages = [
-  "/images/home-page-slider-1.webp",
-  "/images/home-page-slider-2.webp",
-  "/images/home-page-slider-1.webp"
-];
+import "./Home.css";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
 
-  // Infinite Loop & Delay Trigger for Smooth Shatter Animation
-  useEffect(() => {
-    setIsAnimating(true);
+  const leftBtnRef = useRef(null);
+  const rightBtnRef = useRef(null);
+  const heroHeadingRef = useRef(null);
 
-    const interval = setInterval(() => {
-      setIsAnimating(false); // Scatter / Fade out pieces
-      setTimeout(() => {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % sliderImages.length);
-        setIsAnimating(true); // Re-assemble pieces for the next image
-      }, 300);
-    }, 3500); // 3.5 seconds interval per image
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // Modal popup timer - Ab page refresh par har baar trigger hoga
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowModal(true);
     }, 1200);
-
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    // GSAP Running color gradient animation for Home heading text
+    if (heroHeadingRef.current) {
+      gsap.to(heroHeadingRef.current, {
+        backgroundPosition: '200% 50%',
+        duration: 4,
+        repeat: -1,
+        ease: 'sine.inOut',
+      });
+    }
+
+    // GSAP slide in animations for buttons
+    if (leftBtnRef.current && rightBtnRef.current) {
+      gsap.fromTo(
+        leftBtnRef.current,
+        { x: -100, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.5 }
+      );
+      gsap.fromTo(
+        rightBtnRef.current,
+        { x: 100, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.5 }
+      );
+    }
   }, []);
 
   const handleChange = (e) => {
@@ -56,76 +62,61 @@ export default function Home() {
     setShowModal(false);
   };
 
-  // Clean columns and rows configuration
-  const cols = 12;
-  const rows = 5;
-  const totalPieces = cols * rows;
-  const piecesArray = Array.from({ length: totalPieces });
-
   return (
-    <main className="overflow-hidden">
-      {/* Full-Screen Hero Banner with Blurred Background Layer */}
-      <div className="w-100 mb-0 bg-white position-relative hero-banner-container" data-aos="fade-in">
+    <main className="home-container overflow-hidden">
+      {/* Background Section */}
+      <div className="hero-background-wrapper">
+        <div className="container hero-content-wrapper">
+          <div className="row align-items-center">
+            <div className="col-lg-6 text-start">
+              {/* Heading: Top to Bottom */}
+              <h4
+                className="fw-bold hero-subtitle mb-3"
+                data-aos="fade-down"
+                data-aos-duration="1000"
+              >
+                Creative. Innovative. Result Driven.
+              </h4>
 
-        {/* Base Layer with Blur and subtle overlay */}
-        <div
-          className="position-absolute inset-0 w-100 h-100"
-          style={{
-            backgroundImage: `url('${sliderImages[currentImageIndex]}')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            filter: 'blur(20px)',
-            transform: 'scale(1.1)',
-            opacity: 0.9,
-            zIndex: 1
-          }}
-        />
+              <h1
+                className="display-4 fw-bold text-white mb-4 hero-main-title"
+                data-aos="fade-down"
+                data-aos-duration="1200"
+                data-aos-delay="200"
+              >
+                We Create Digital Experiences That <span ref={heroHeadingRef} className="process-gradient-text">Grow Brands</span>
+              </h1>
 
-        {/* Shatter Animation Grid Layer */}
-        <div
-          className="shatter-image-grid position-relative w-100 h-100 overflow-hidden m-0 p-0"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: `repeat(${cols}, 1fr)`,
-            gridTemplateRows: `repeat(${rows}, 1fr)`,
-            gap: '0px',
-            border: 'none',
-            zIndex: 2
-          }}
-        >
-          {piecesArray.map((_, index) => {
-            const col = index % cols;
-            const row = Math.floor(index / cols);
+              {/* Paragraph: Bottom to Top */}
+              <p
+                className="lead text-light opacity-75 mb-4"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="400"
+              >
+                Pixsy Media is a creative digital agency delivering websites, branding and digital marketing solutions that help businesses stand out and grow faster.
+              </p>
 
-            const randomX = (index % 2 === 0 ? 1 : -1) * (250 + (index * 6));
-            const randomY = (index % 3 === 0 ? -1 : 1) * (200 + (index * 5));
-            const delay = (index % 12) * 0.015;
-
-            return (
-              <div
-                key={index}
-                className={`shatter-piece ${isAnimating ? 'assembled' : ''}`}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  backgroundImage: `url('${sliderImages[currentImageIndex]}')`,
-                  backgroundSize: `${cols * 100}% ${rows * 100}%`,
-                  backgroundPosition: `${(col / (cols - 1)) * 100}% ${(row / (rows - 1)) * 100}%`,
-                  backgroundRepeat: 'no-repeat',
-                  margin: '0',
-                  padding: '0',
-                  border: 'none',
-                  outline: 'none',
-                  '-webkit-backface-visibility': 'hidden',
-                  backfaceVisibility: 'hidden',
-                  '--rand-x': `${randomX}px`,
-                  '--rand-y': `${randomY}px`,
-                  transitionDelay: `${delay}s`,
-                }}
-              />
-            );
-          })}
+              {/* Buttons: Left & Right */}
+              <div className="d-flex flex-wrap gap-3">
+                <button
+                  ref={leftBtnRef}
+                  onClick={() => setShowModal(true)}
+                  className="btn btn-lg rounded-pill px-4 text-white fw-semibold shadow-sm"
+                  style={{ background: "linear-gradient(135deg, #ff6b00, #ff2770)" }}
+                >
+                  Explore Our Work &rarr;
+                </button>
+                <button
+                  ref={rightBtnRef}
+                  onClick={() => setShowModal(true)}
+                  className="btn btn-outline-light btn-lg rounded-pill px-4 fw-semibold"
+                >
+                  Our Services &rarr;
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -212,54 +203,6 @@ export default function Home() {
           </div>
         </div>
       )}
-
-      {/* CSS Styles */}
-      <style>{`
-        .hero-banner-container {
-          width: 100%;
-          height: 520px;
-        }
-
-        @media (max-width: 992px) {
-          .hero-banner-container {
-            height: 420px;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .hero-banner-container {
-            height: 300px;
-          }
-        }
-
-        .shatter-image-grid {
-          transform: translateZ(0);
-        }
-
-        .shatter-piece {
-          opacity: 0;
-          transform: translate(var(--rand-x), var(--rand-y)) rotate(360deg) scale(0.2);
-          transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
-          will-change: transform, opacity;
-          box-shadow: none !important;
-        }
-
-        .shatter-piece.assembled {
-          opacity: 1;
-          transform: translate(0, 0) rotate(0deg) scale(1);
-        }
-
-        @keyframes slideDownModal {
-          0% {
-            transform: translateY(-100px);
-            opacity: 0;
-          }
-          100% {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-      `}</style>
     </main>
   );
 }

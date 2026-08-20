@@ -1,7 +1,7 @@
 // src/components/Navbar/Navbar.jsx
 import React, { useRef, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { LogIn, LayoutDashboard } from "lucide-react";
+import { LayoutDashboard } from "lucide-react";
 import { gsap } from "gsap";
 import "./Navbar.css";
 
@@ -10,7 +10,6 @@ export default function Navbar({ user, role }) {
   const brandHeadingRef = useRef(null);
 
   useEffect(() => {
-    // Running color animation matching WhyChooseUs/Services
     if (brandHeadingRef.current) {
       gsap.to(brandHeadingRef.current, {
         backgroundPosition: '200% 50%',
@@ -21,81 +20,49 @@ export default function Navbar({ user, role }) {
     }
   }, []);
 
-  // Function to automatically close the mobile navbar collapse when a link is clicked
-  const handleNavLinkClick = () => {
-    const navbarCollapse = document.getElementById("pixsyNavbar");
-    if (navbarCollapse && navbarCollapse.classList.contains("show")) {
-      const bsCollapse = window.bootstrap?.Collapse?.getInstance(navbarCollapse);
-      if (bsCollapse) {
-        bsCollapse.hide();
-      } else {
-        navbarCollapse.classList.remove("show");
-      }
-    }
-  };
-
   return (
     <nav className="navbar navbar-expand-lg pixsy-navbar sticky-top">
       <div className="container">
-        {/* Left: Brand Logo & Full Animated Title */}
-        <Link className="navbar-brand pixsy-brand" to="/" onClick={handleNavLinkClick}>
-          <img src="/images/logo.webp" className="img-fluid" alt="Pixsy Logo" />
-          <div className="pixsy-brand-text">
-            <span ref={brandHeadingRef} className="pixsy-brand-title process-gradient-text">Pixsy Media</span>
-            <span className="pixsy-brand-tagline">We're Partner of Your Innovations</span>
+        {/* Left: Brand Logo & Running Color Animated Title */}
+        <Link className="navbar-brand d-flex align-items-center text-decoration-none" to="/">
+          <img src="/images/logo.webp" className="img-fluid" alt="Pixsy Logo" style={{ width: '40px' }} />
+          <div className="ms-2">
+            <span ref={brandHeadingRef} className="fw-bold fs-5 process-gradient-text">Pixsy Media</span>
+            <div style={{ fontSize: '10px', color: '#ff4d4d' }}>We're Partner of Your Innovations</div>
           </div>
         </Link>
 
-        <button
-          className="navbar-toggler pixsy-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#pixsyNavbar"
-          aria-controls="pixsyNavbar"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button className="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#pixsyNavbar" aria-controls="pixsyNavbar" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
 
         <div className="collapse navbar-collapse" id="pixsyNavbar">
-          {/* Center: Navigation Links */}
-          <ul className="navbar-nav mx-auto align-items-lg-center gap-lg-2">
+          <ul className="navbar-nav mx-auto align-items-lg-center gap-lg-3">
             <li className="nav-item">
-              <NavLink to="/" end className="nav-link" onClick={handleNavLinkClick}>Home</NavLink>
+              <NavLink to="/" end className="nav-link">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/our-services" className="nav-link" onClick={handleNavLinkClick}>Services</NavLink>
+              <NavLink to="/our-services" className="nav-link">Services</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/about-us" className="nav-link" onClick={handleNavLinkClick}>About Us</NavLink>
+              <NavLink to="/about-us" className="nav-link">About Us</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/blog" className="nav-link" onClick={handleNavLinkClick}>Blog</NavLink>
+              <NavLink to="/blog" className="nav-link">Blog</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/our-team" className="nav-link" onClick={handleNavLinkClick}>Team</NavLink>
+              <NavLink to="/our-team" className="nav-link">Team</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/contact-us" className="nav-link" onClick={handleNavLinkClick}>Contact Us</NavLink>
+              <NavLink to="/contact-us" className="nav-link">Contact Us</NavLink>
             </li>
           </ul>
 
-          {/* Right: Dashboard / Login Button */}
           <div className="navbar-nav ms-auto mt-3 mt-lg-0">
-            <div className="nav-item">
-              {user ? (
-                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to={dashboardPath} onClick={handleNavLinkClick}>
-                  <LayoutDashboard size={16} />
-                  <span>Dashboard</span>
-                </Link>
-              ) : (
-                <Link className="pixsy-nav-btn text-decoration-none d-flex align-items-center gap-2" to="/login" onClick={handleNavLinkClick}>
-                  <LogIn size={16} />
-                  <span>Login</span> <span>→</span>
-                </Link>
-              )}
-            </div>
+            <Link className="btn btn-primary rounded-pill px-4 py-2 d-flex align-items-center justify-content-center gap-2 text-white fw-semibold shadow-sm" to={dashboardPath} style={{ background: "linear-gradient(135deg, #ff6b00, #ff2770, #873cff)", border: "none" }}>
+              <LayoutDashboard size={18} />
+              <span>Dashboard</span>
+            </Link>
           </div>
         </div>
       </div>

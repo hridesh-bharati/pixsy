@@ -1,189 +1,132 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  Code,
-  TrendingUp,
-  ShieldCheck,
-  Layout,
-  Database,
-  ArrowRight,
-  Sparkles,
-  Zap
-} from "lucide-react";
-import "./ProfessionalServices.css";
-
-gsap.registerPlugin(ScrollTrigger);
+// src/components/ProfessionalServices.jsx
+import React from "react";
+import { Link } from "react-router-dom";
+import { Monitor, ShoppingCart, PenTool, BarChart3, Megaphone, Palette, ArrowRight } from "lucide-react";
 
 export default function ProfessionalServices() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to(".pixsy-mesh-overlay", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-        },
-        y: -30,
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  // All three cards now use the brand gradient text and have arrows removed
-  const topCards = [
-    {
-      title: "Perfect solutions that business demands",
-      image: "/images/card1.webp",
-      icon: <Code className="pixsy-top-icon" />,
-    },
-    {
-      title: "Providing excellent technology solutions",
-      image: "/images/card2.webp",
-      icon: <TrendingUp className="pixsy-top-icon" />,
-    },
-    {
-      title: "We eagerly put in use new IT innovations",
-      image: "/images/card5.webp",
-      icon: <ShieldCheck className="pixsy-top-icon" />,
-    },
-  ];
-
   const services = [
     {
-      title: "Product Development",
-      icon: <Code className="pixsy-service-icon" />,
-      description: "Providing the best IT solutions for non IT businesses with robust architecture.",
-      primary: "#ff8a00",
-      bgGradient: "linear-gradient(135deg, #fff9f2 0%, #ffffff 100%)",
-      accentColor: "#d97500",
-      descColor: "#7a5e45",
+      icon: <Monitor size={28} className="text-primary" />,
+      title: "Website Development",
+      description: "Fast, responsive & SEO friendly websites that convert."
     },
     {
-      title: "Digital Marketing",
-      icon: <TrendingUp className="pixsy-service-icon" />,
-      description: "We are a creative & full service digital marketing agency growing your brand.",
-      primary: "#ff315c",
-      bgGradient: "linear-gradient(135deg, #fff4f6 0%, #ffffff 100%)",
-      accentColor: "#e01b45",
-      descColor: "#7a4852",
+      icon: <ShoppingCart size={28} className="text-danger" />,
+      title: "E-Commerce Solutions",
+      description: "Powerful online stores that sell & scale your business."
     },
     {
-      title: "Security System",
-      icon: <ShieldCheck className="pixsy-service-icon" />,
-      description: "Pixsy has the best smart security systems to protect your enterprise infrastructure.",
-      primary: "#d21cff",
-      bgGradient: "linear-gradient(135deg, #fbf4ff 0%, #ffffff 100%)",
-      accentColor: "#b00fd9",
-      descColor: "#6e4c7a",
+      icon: <PenTool size={28} className="text-warning" />,
+      title: "UI/UX Design",
+      description: "Beautiful, user-friendly designs that create lasting impressions."
     },
     {
-      title: "UI/UX Designing",
-      icon: <Layout className="pixsy-service-icon" />,
-      description: "We create vibrant, intuitive, and minimalist user-centered web designs.",
-      primary: "#3b4cff",
-      bgGradient: "linear-gradient(135deg, #f4f5ff 0%, #ffffff 100%)",
-      accentColor: "#2837d4",
-      descColor: "#4d527a",
+      icon: <BarChart3 size={28} className="text-purple" />,
+      title: "SEO & Digital Marketing",
+      description: "Rank higher, get found & grow with result-driven strategies."
     },
     {
-      title: "Data Analysis",
-      icon: <Database className="pixsy-service-icon" />,
-      description: "Help you gain flexible analytical insights out of complex enterprise data.",
-      primary: "#1267ff",
-      bgGradient: "linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%)",
-      accentColor: "#004fd9",
-      descColor: "#455d7a",
+      icon: <Megaphone size={28} className="text-info" />,
+      title: "Social Media Management",
+      description: "Engage your audience & grow your brand across platforms."
     },
+    {
+      icon: <Palette size={28} className="text-success" />,
+      title: "Branding & Identity",
+      description: "Unique branding that builds trust & makes you unforgettable."
+    }
   ];
 
   return (
-    <section ref={sectionRef} className="pixsy-prof-services-section">
-      <div className="pixsy-mesh-overlay"></div>
-
-      <div className="container-fluid position-relative z-2">
-        {/* Top 3 Image Cards */}
-        <div className="row g-4 mb-5 pb-4 justify-content-center">
-          {topCards.map(({ title, image, icon }, index) => (
-            <div className="col-12 col-md-4" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
-              <div className="pixsy-top-card">
-                <div className="top-card-img-wrapper">
-                  <img src={image} alt={title} />
-                  <div className="top-card-overlay-gradient"></div>
-                  <div className="top-card-badge">
-                    <Zap size={14} />
-                  </div>
-                </div>
-                <div className="top-card-banner">
-                  <div className="banner-icon-box">{icon}</div>
-                  <h5 className="pixsy-gradient-text">{title}</h5>
-                </div>
-              </div>
+    <section className="py-5 bg-white text-dark">
+      <div className="container py-4">
+        {/* Top Header Layout matching screenshot */}
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-5 gap-3">
+          <div>
+            <div className="text-uppercase fw-bold text-muted small mb-1" style={{ letterSpacing: "1px", fontSize: "11px" }}>
+              WHAT WE DO
             </div>
-          ))}
-        </div>
-
-        {/* Section Header */}
-        <div className="container m-auto row align-items-center mb-5 pt-3" data-aos="fade-up">
-          <div className="col-lg-6">
-            <div className="pixsy-small-title">
-              <Sparkles size={14} />
-              What We're Offering
-            </div>
-            <h2 className="pixsy-main-heading">
-              Dealing in all Professional <span>IT Services</span>
+            <h2 className="fw-bold display-6 mb-0">
+              Solutions That Drive <span className="process-gradient-text">Real Results</span>
             </h2>
           </div>
-          <div className="col-lg-6">
-            <p className="pixsy-header-desc">
-              We offer full-cycle software development services that meet varied business
-              requirements from IT strategy consulting to the end-to-end development of scalable solutions.
-            </p>
+          <div>
+            <Link
+              to="/our-services"
+              className="btn btn-outline-dark rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 fw-semibold"
+              style={{ borderColor: "#e2e8f0", fontSize: "14px" }}
+            >
+              <span>View All Services</span>
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
 
-        {/* Services Cards */}
-        <div className="row g-2 justify-content-center my-4">
+        {/* 3 Columns Grid (2 Rows x 3 Columns) */}
+        <div className="row g-4">
           {services.map((service, index) => (
-            <div
-              className="col-12 col-sm-6 col-md-6 col-lg-2"
-              key={index}
-              data-aos="fade-up"
-              data-aos-delay={index * 80}
-              style={{
-                "--card-primary": service.primary,
-                "--card-bg": service.bgGradient,
-                "--card-accent": service.accentColor,
-                "--card-desc": service.descColor,
-              }}
-            >
-              <div className="pixsy-service-card-modern">
-                <div className="service-card-header">
-                  <div className="service-icon-wrapper">{service.icon}</div>
-                  <span className="service-number">0{index + 1}</span>
-                </div>
+            <div className="col-md-6 col-lg-4" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+              <div
+                className="card h-100 p-4 rounded-4 position-relative service-card bg-white"
+                style={{
+                  border: "1px solid #f1f3f5",
+                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.03)",
+                  transition: "all 0.3s ease"
+                }}
+              >
+                <div className="card-body d-flex flex-column justify-content-between p-0">
+                  <div>
+                    {/* Icon */}
+                    <div className="mb-4">
+                      {service.icon}
+                    </div>
+                    {/* Title */}
+                    <h4 className="fw-bold fs-5 mb-2 text-dark">{service.title}</h4>
+                    {/* Description */}
+                    <p className="text-muted small mb-5" style={{ lineHeight: "1.6" }}>{service.description}</p>
+                  </div>
 
-                <div className="service-card-content">
-                  <h4>{service.title}</h4>
-                  <div className="pixsy-card-line"></div>
-                  <p>{service.description}</p>
-                </div>
-
-                <div className="service-card-footer">
-                  <button className="service-btn">
-                    <span>Explore Service</span>
-                    <ArrowRight size={16} className="btn-arrow" />
-                  </button>
+                  {/* Bottom Arrow Icon */}
+                  <div className="mt-auto">
+                    <div
+                      className="rounded-circle d-inline-flex align-items-center justify-content-center arrow-icon-box"
+                      style={{
+                        width: "35px",
+                        height: "35px",
+                        border: "1px solid #e2e8f0",
+                        backgroundColor: "#fff",
+                        transition: "all 0.3s ease"
+                      }}
+                    >
+                      <ArrowRight size={15} className="text-secondary" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        .process-gradient-text {
+          background: linear-gradient(135deg, #ff6b00, #ff2770, #873cff);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        .service-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 12px 30px rgba(0,0,0,0.08) !important;
+          border-color: transparent !important;
+        }
+        .service-card:hover .arrow-icon-box {
+          background: #6366f1 !important;
+          border-color: #6366f1 !important;
+        }
+        .service-card:hover .arrow-icon-box svg {
+          color: #fff !important;
+        }
+      `}</style>
     </section>
   );
 }

@@ -116,8 +116,8 @@ const Footer = () => {
             &copy; {currentYear} <span className="logo-gradient">Pixsy Media</span>.
             All rights reserved.
           </p>
-          <div className="text-muted">
-            Developed by <a href="https://www.awebgrow.com" className="text-decoration-none fw-semibold text-warning">https://www.awebgrow.com</a>
+          <div className="text-muted small">
+            Developed by <a href="https://www.awebgrow.com" className="text-decoration-none small fw-semibold text-warning">Awebgrow</a>
           </div>
           <div className="footer-bottom-links">
             <a href="#" className="text-decoration-none">Privacy Policy</a>

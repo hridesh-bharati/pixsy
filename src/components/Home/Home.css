@@ -1,0 +1,50 @@
+/* src/components/Home.css */
+.home-container {
+  background-color: #050510;
+  color: white;
+  min-height: 100vh;
+}
+
+.hero-background-wrapper {
+  position: relative;
+  width: 100%;
+  background-image: url('/images/home-page-slider-1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.hero-subtitle {
+  background: linear-gradient(90deg, #ff6b00, #ff2770);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.process-gradient-text {
+  background: linear-gradient(270deg, #ff6b00, #ff2770, #873cff, #2865ff, #ff6b00);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+@keyframes slideDownModal {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
