@@ -122,10 +122,10 @@ export default function Home() {
 
       <div data-aos="fade-up"><Cards /></div>
       <div data-aos="fade-up"><AboutHero /></div>
+      <div data-aos="fade-up"><ProfessionalServices /></div>
       <div data-aos="fade-up"><RecentProjects /></div>
       <div data-aos="fade-up"><StatsBanner /></div>
       <div data-aos="fade-up"><WhyChooseUs /></div>
-      <div data-aos="fade-up"><ProfessionalServices /></div>
       <div data-aos="fade-up"><Process /></div>
       <div data-aos="fade-up"><Testimonials /></div>
       <div data-aos="fade-up"><CtaBanner /></div>
