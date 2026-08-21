@@ -99,7 +99,7 @@ const About = () => {
               <h1 className="display-4 fw-bold mb-3">
                 Empowering Businesses Through <span ref={addToRefs} className="running-gradient-text">Digital Excellence</span>
               </h1>
-              <p className="lead text-muted mb-4">
+              <p className="  text-muted mb-4">
                 Pixsy Media is a premier full-cycle software development and digital solutions agency.
                 We bridge the gap between complex technology and business growth, helping brands thrive in a digital-first world.
               </p>

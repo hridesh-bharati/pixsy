@@ -1,4 +1,3 @@
-// src/components/Home/CardFeatures/Cards.jsx
 import React from 'react';
 import {
   LayoutGrid,
@@ -24,33 +23,27 @@ export default function Cards() {
     { title: 'App Maintenance', icon: LayoutGrid, desc: 'Reliable Support & Updates' },
   ];
 
+  // Aapke folder ki images list
+  const clientImages = [
+    '/images/card-slider/card1.JPEG',
+    '/images/card-slider/card2.JPEG',
+    '/images/card-slider/card3.JPEG',
+    '/images/card-slider/card4.JPEG',
+    '/images/card-slider/card5.JPEG',
+    '/images/card-slider/card6.JPEG',
+    '/images/card-slider/card7.JPEG',
+  ];
+
   return (
     <div className="services-marquee-section" data-aos="fade-up">
-      <div className="marquee-container">
-        {/* Infinite scrolling track (Duplicated) */}
-        <div className="marquee-track">
-          {services.map((service, index) => {
+      {/* First Marquee: Services (Moving Left to Right) */}
+      <div className="marquee-container mb-3">
+        <div className="marquee-track-right">
+          {[...services, ...services].map((service, index) => {
             const IconComponent = service.icon;
             const colorClass = `color-${(index % 8) + 1}`;
             return (
-              <div className={`service-card ${colorClass}`} key={`1-${index}`}>
-                <div className="service-icon-box">
-                  <IconComponent size={22} strokeWidth={2.5} />
-                </div>
-                <div className="service-info">
-                  <h4>{service.title}</h4>
-                  <p>{service.desc}</p>
-                </div>
-                <div className="card-bottom-line"></div>
-              </div>
-            );
-          })}
-          {/* Duplicate set for seamless infinite loop */}
-          {services.map((service, index) => {
-            const IconComponent = service.icon;
-            const colorClass = `color-${(index % 8) + 1}`;
-            return (
-              <div className={`service-card ${colorClass}`} key={`2-${index}`}>
+              <div className={`service-card ${colorClass}`} key={`service-${index}`}>
                 <div className="service-icon-box">
                   <IconComponent size={22} strokeWidth={2.5} />
                 </div>
@@ -64,7 +57,17 @@ export default function Cards() {
           })}
         </div>
       </div>
+
+      {/* Second Marquee: Image Cards / Partners (Moving Left to Right) */}
+      <div className="marquee-container">
+        <div className="marquee-track-right" style={{ animationDuration: '30s' }}>
+          {[...clientImages, ...clientImages].map((imgSrc, index) => (
+            <div className="client-image-card" key={`client-${index}`}>
+              <img src={imgSrc} alt={`Client ${index + 1}`} />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
-

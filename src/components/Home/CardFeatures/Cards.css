@@ -1,4 +1,4 @@
-/* src/components/Home/CardFeatures/Cards.css */
+/* src/components/CardFeatures/Cards.css */
 .services-marquee-section {
   width: 100%;
   padding: 12px 0;
@@ -35,14 +35,15 @@
   overflow: hidden;
 }
 
-.marquee-track {
+/* Left to Right Movement Track */
+.marquee-track-right {
   display: flex;
   gap: 10px;
   width: max-content;
-  animation: scrollMarquee 35s linear infinite;
+  animation: scrollMarqueeRight 35s linear infinite;
 }
 
-.marquee-track:hover {
+.marquee-track-right:hover {
   animation-play-state: paused;
 }
 
@@ -70,6 +71,26 @@
   box-shadow: 0 6px 20px color-mix(in srgb, var(--card-color-start) 15%, transparent);
 }
 
+/* Client Image Card Style */
+.client-image-card {
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 10px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  height: 55px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.03);
+}
+
+.client-image-card img {
+  max-height: 38px;
+  max-width: 110px;
+  object-fit: contain;
+}
+
 /* Decorative Bottom Line */
 .card-bottom-line {
   position: absolute;
@@ -87,7 +108,7 @@
   opacity: 1;
 }
 
-/* Icon Box - Compact & Vivid */
+/* Icon Box */
 .service-icon-box {
   width: 34px;
   height: 34px;
@@ -120,10 +141,7 @@
   margin: 0;
 }
 
-/* =========================================
-   DEFINING 8 BRIGHT & VIBRANT COLOR VARIATIONS
-========================================= */
-
+/* Color Variations */
 .service-card.color-1 {
   --card-color-start: #ff7e1d;
   --card-color-end: #ff3377;
@@ -164,13 +182,13 @@
   --card-color-end: #9b4dff;
 }
 
-/* Infinite Scroll Keyframes */
-@keyframes scrollMarquee {
+/* Right Direction Infinite Scroll Keyframes */
+@keyframes scrollMarqueeRight {
   0% {
-    transform: translateX(0);
+    transform: translateX(-50%);
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translateX(0);
   }
 }

@@ -1,7 +1,5 @@
 /* src/components/Home.css */
 .home-container {
-  background-color: #050510;
-  color: white;
   min-height: 100vh;
 }
 
@@ -19,14 +17,26 @@
 .hero-content-wrapper {
   position: relative;
   z-index: 2;
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 .hero-subtitle {
+  font-size: 1rem;
   background: linear-gradient(90deg, #ff6b00, #ff2770);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Perfect responsive heading size for PC and Mobile */
+.hero-main-title {
+  font-size: clamp(2rem, 3.8vw, 3.5rem);
+  line-height: 1.2;
+}
+
+.hero-description {
+  font-size: 1.05rem;
+  max-width: 580px;
 }
 
 .process-gradient-text {
@@ -46,5 +56,34 @@
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+/* Mobile Screens Specific Adjustments */
+@media (max-width: 991.98px) {
+  .hero-background-wrapper {
+    /* Mobile par background image par dark overlay taaki text clearly read ho sake */
+    background: linear-gradient(rgba(10, 10, 20, 0.85), rgba(10, 10, 20, 0.92)), url('/images/home-page-slider-1.png');
+    background-size: cover;
+    background-position: center;
+    text-align: center !important;
+  }
+
+  .hero-content-wrapper {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .hero-content-wrapper .text-start {
+    text-align: center !important;
+  }
+
+  .hero-description {
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .hero-content-wrapper .d-flex {
+    justify-content: center !important;
   }
 }

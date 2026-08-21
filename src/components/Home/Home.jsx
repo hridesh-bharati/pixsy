@@ -12,6 +12,7 @@ import "./Home.css";
 import RecentProjects from "./RecentProjects/RecentProjects";
 import StatsBanner from "./StatsBanner";
 import CtaBanner from "./CtaBanner";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
@@ -29,7 +30,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // GSAP Running color gradient animation for Home heading text
     if (heroHeadingRef.current) {
       gsap.to(heroHeadingRef.current, {
         backgroundPosition: '200% 50%',
@@ -39,16 +39,15 @@ export default function Home() {
       });
     }
 
-    // GSAP slide in animations for buttons
     if (leftBtnRef.current && rightBtnRef.current) {
       gsap.fromTo(
         leftBtnRef.current,
-        { x: -100, opacity: 0 },
+        { x: -50, opacity: 0 },
         { x: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.5 }
       );
       gsap.fromTo(
         rightBtnRef.current,
-        { x: 100, opacity: 0 },
+        { x: 50, opacity: 0 },
         { x: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.5 }
       );
     }
@@ -71,10 +70,9 @@ export default function Home() {
       <div className="hero-background-wrapper">
         <div className="container hero-content-wrapper">
           <div className="row align-items-center">
-            <div className="col-lg-6 text-start">
-              {/* Heading: Top to Bottom */}
+            <div className="col-lg-7 text-start">
               <h4
-                className="fw-bold hero-subtitle mb-3"
+                className="fw-bold hero-subtitle mb-2"
                 data-aos="fade-down"
                 data-aos-duration="1000"
               >
@@ -82,7 +80,7 @@ export default function Home() {
               </h4>
 
               <h1
-                className="display-4 fw-bold text-white mb-4 hero-main-title"
+                className="fw-bold text-white mb-3 hero-main-title"
                 data-aos="fade-down"
                 data-aos-duration="1200"
                 data-aos-delay="200"
@@ -90,33 +88,33 @@ export default function Home() {
                 We Create Digital Experiences That <span ref={heroHeadingRef} className="process-gradient-text">Grow Brands</span>
               </h1>
 
-              {/* Paragraph: Bottom to Top */}
               <p
-                className="lead text-light opacity-75 mb-4"
+                className="text-light mb-4 hero-description"
                 data-aos="fade-up"
                 data-aos-duration="1000"
                 data-aos-delay="400"
               >
-                Pixsy Media is a creative digital agency delivering websites, branding and digital marketing solutions that help businesses stand out and grow faster.
+                Pixsy Media is a creative digital agency delivering <br /> websites, branding and digital marketing solutions that  <br /> help businesses stand out and grow faster.
               </p>
 
-              {/* Buttons: Left & Right */}
               <div className="d-flex flex-wrap gap-3">
                 <button
                   ref={leftBtnRef}
                   onClick={() => setShowModal(true)}
                   className="btn btn-lg rounded-pill px-4 text-white fw-semibold shadow-sm"
-                  style={{ background: "linear-gradient(135deg, #ff6b00, #ff2770)" }}
+                  style={{ background: "linear-gradient(135deg, #ff6b00, #ff2770)", fontSize: "0.95rem" }}
                 >
                   Explore Our Work &rarr;
                 </button>
-                <button
-                  ref={rightBtnRef}
-                  onClick={() => setShowModal(true)}
-                  className="btn btn-outline-light btn-lg rounded-pill px-4 fw-semibold"
-                >
-                  Our Services &rarr;
-                </button>
+                <Link to={"/our-services"}>
+                  <button
+                    ref={rightBtnRef}
+                    className="btn btn-light btn-lg rounded-pill px-4 fw-semibold"
+                    style={{ fontSize: "0.95rem" }}
+                  >
+                    Our Services &rarr;
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -128,14 +126,11 @@ export default function Home() {
       <div data-aos="fade-up"><ProfessionalServices /></div>
       <div data-aos="fade-up"><RecentProjects /></div>
       <div data-aos="fade-up"><StatsBanner /></div>
-
       <div data-aos="fade-up"><WhyChooseUs /></div>
       <div data-aos="fade-up"><PixsyServices /></div>
       <div data-aos="fade-up"><Process /></div>
-
       <div data-aos="fade-up"><Testimonials /></div>
       <div data-aos="fade-up"><CtaBanner /></div>
-
 
       {/* Bootstrap Auto-popup Modal */}
       {showModal && (
