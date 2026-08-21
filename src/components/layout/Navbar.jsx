@@ -92,9 +92,9 @@ export default function Navbar({ user, role }) {
               { name: "Home", path: "/" },
               { name: "About Us", path: "/about-us" },
               { name: "Services", path: "/our-services" },
-              { name: "Our Work", path: "/our-work" },
-              { name: "Process", path: "/process" },
+              { name: "Team", path: "/our-team" },
               { name: "Blog", path: "/blog" },
+              { name: "Contact Us", path: "/contact-us" },
             ].map((item, idx) => (
               <li className="nav-item" key={idx}>
                 <NavLink
