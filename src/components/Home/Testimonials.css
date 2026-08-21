@@ -1,12 +1,18 @@
 /* src/components/Testimonials.css */
 
+.testimonial-overflow-container {
+  width: 100%;
+}
+
 .testimonial-card-wrapper {
+  box-sizing: border-box;
   transition: all 0.4s ease-in-out;
 }
 
-/* Mobile responsive adjustments */
+/* Mobile responsive adjustments for perfect centering */
 @media (max-width: 767.98px) {
   .testimonial-card-wrapper {
     width: 100% !important;
+    padding: 0 5px;
   }
 }

@@ -1,3 +1,4 @@
+// src/components/Process.jsx
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -20,10 +21,9 @@ const Process = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Heading Gradient Animation
-      const headingChars = headingRef.current?.querySelectorAll('.process-gradient-text');
-      if (headingChars) {
-        gsap.to(headingChars, {
+      // Heading Gradient Animation Fix
+      if (headingRef.current) {
+        gsap.to(headingRef.current, {
           backgroundPosition: '200% 50%',
           duration: 4,
           repeat: -1,
@@ -151,8 +151,8 @@ const Process = () => {
             <Briefcase size={14} />
             What We Do
           </span>
-          <h2 ref={headingRef} data-aos="fade-up">
-            Our Development <span className="process-gradient-text">Process</span>
+          <h2 data-aos="fade-up">
+            Our Development <span ref={headingRef} className="process-gradient-text">Process</span>
           </h2>
           <p className="process-subtitle" data-aos="fade-up" data-aos-delay="100">
             We offer full-cycle software development services and digital solutions
@@ -168,7 +168,7 @@ const Process = () => {
           <div className="process-timeline-list">
             {steps.map((step, index) => {
               const Icon = step.icon;
-              const isEven = index % 2 === 0; // Even = Left, Odd = Right
+              const isEven = index % 2 === 0;
 
               return (
                 <div
@@ -178,7 +178,6 @@ const Process = () => {
                   data-aos={isEven ? 'fade-right' : 'fade-left'}
                   data-aos-delay={index * 100}
                 >
-                  {/* Content Card with Smooth Slide Color Fill on Hover */}
                   <div className="timeline-content">
                     <div className="timeline-card-flare"></div>
                     <div className="timeline-header">
@@ -193,7 +192,6 @@ const Process = () => {
                     <p>{step.desc}</p>
                   </div>
 
-                  {/* Center Node & Larger Animated Icon */}
                   <div className="timeline-center-node" data-aos="zoom-in" data-aos-delay={index * 100 + 150}>
                     <div className="timeline-dot" style={{ borderColor: step.color }}>
                       <div className="timeline-dot-inner" style={{ background: step.color + '20', color: step.color }}>

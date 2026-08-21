@@ -5,8 +5,8 @@ import { ArrowRight, Send } from "lucide-react";
 
 export default function CtaBanner() {
   return (
-    <section className="py-5 bg-white overflow-hidden">
-      <div className="container-fluid px-3 px-lg-4">
+    <section className="py-3 bg-white overflow-hidden">
+      <div className="container-fluid px-1 px-lg-4">
         <div
           className="w-100 p-4 p-lg-5 rounded-4 position-relative cta-banner-box overflow-hidden shadow-lg d-flex align-items-center"
           style={{

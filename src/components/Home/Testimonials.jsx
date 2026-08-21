@@ -62,7 +62,6 @@ const Testimonials = () => {
     }
   ];
 
-  // Screen resize detect karne ke liye taaki mobile par 1 aur desktop par 3 cards dikhein
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -148,9 +147,9 @@ const Testimonials = () => {
 
         {/* Carousel Container */}
         <div className="position-relative">
-          <div className="overflow-hidden px-2 py-3">
+          <div className="testimonial-overflow-container overflow-hidden px-1 py-3">
             <div
-              className="d-flex gap-4"
+              className="d-flex"
               style={{
                 transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
                 transition: isTransitioning ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
@@ -162,8 +161,8 @@ const Testimonials = () => {
                 return (
                   <div
                     key={index}
-                    className="testimonial-card-wrapper flex-shrink-0"
-                    style={{ width: cardsPerView === 3 ? 'calc(33.333% - 1rem)' : '100%' }}
+                    className="testimonial-card-wrapper flex-shrink-0 px-2"
+                    style={{ width: cardsPerView === 3 ? '33.3333%' : '100%' }}
                   >
                     <div
                       className={`card h-100 p-4 rounded-4 border-0 position-relative shadow-sm ${isCenter ? 'shadow-lg border-2' : ''}`}
