@@ -3,7 +3,7 @@
 ========================================= */
 
 .process-section {
-  padding: 120px 0;
+  padding: 20px 0;
   background-color: #f8fafc;
   color: #1f2937;
   position: relative;
@@ -66,21 +66,6 @@
   text-align: center;
   max-width: 700px;
   margin: 0 auto 70px;
-}
-
-.process-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  background: rgba(255, 138, 0, 0.1);
-  border-radius: 50px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #ff8a00;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 14px;
 }
 
 .section-header h2 {

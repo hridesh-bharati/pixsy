@@ -147,10 +147,6 @@ const Process = () => {
       <div className="container position-relative z-2">
         {/* Header */}
         <div className="section-header">
-          <span className="process-badge" data-aos="zoom-in">
-            <Briefcase size={14} />
-            What We Do
-          </span>
           <h2 data-aos="fade-up">
             Our Development <span ref={headingRef} className="process-gradient-text">Process</span>
           </h2>

@@ -10,7 +10,7 @@ export default function RecentProjects() {
       title: "Tarang Goa",
       category: "Website Development",
       image: "/images/recent-projects/project1.png",
-      link: "#",
+      link: "https://taranggoa.vercel.app/",
       accentColor: "#ff6b00",
       bgColor: "#fff5ed"
     },
@@ -18,7 +18,7 @@ export default function RecentProjects() {
       title: "Digicom Training Academy",
       category: "Website Development",
       image: "/images/recent-projects/project2.png",
-      link: "#",
+      link: "https://digicomtrainingacademy.com/",
       accentColor: "#ff2770",
       bgColor: "#fff1f5"
     },
@@ -26,7 +26,7 @@ export default function RecentProjects() {
       title: "CJ Group",
       category: "Website Development",
       image: "/images/recent-projects/project3.png",
-      link: "#",
+      link: "https://www.cjgroupdevelopers.com/",
       accentColor: "#873cff",
       bgColor: "#f7f2ff"
     },
@@ -34,7 +34,7 @@ export default function RecentProjects() {
       title: "Artghar",
       category: "UI/UX Design",
       image: "/images/recent-projects/project1.png",
-      link: "#",
+      link: "https://taranggoa.vercel.app/",
       accentColor: "#06b6d4",
       bgColor: "#eef8ff"
     }
@@ -53,7 +53,7 @@ export default function RecentProjects() {
               Some Of Our Recent <span className="process-gradient-text">Projects</span>
             </h2>
           </div>
-          <div>
+          {/* <div>
             <Link
               to="/our-work"
               className="btn rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 fw-semibold shadow-sm project-all-btn"
@@ -64,7 +64,7 @@ export default function RecentProjects() {
                 <ArrowRight size={12} />
               </span>
             </Link>
-          </div>
+          </div> */}
         </div>
 
         {/* Projects Grid Container */}
@@ -76,59 +76,67 @@ export default function RecentProjects() {
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
-              <div
-                className="card h-100 p-3 rounded-4 position-relative project-glass-card bg-white"
-                style={{
-                  "--accent-color": project.accentColor,
-                  "--card-bg": project.bgColor,
-                  border: "1px solid #f1f3f5",
-                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)",
-                  transition: "all 0.3s ease"
-                }}
+              {/* Card ko a tag se wrap kar diya hai taaki poora card clickable ho jaye */}
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-decoration-none d-block h-100"
               >
-                {/* Wide Landscape Image Container */}
                 <div
-                  className="rounded-3 overflow-hidden mb-3 position-relative project-img-box"
-                  style={{ backgroundColor: "#f8fafc" }}
+                  className="card h-100 p-3 rounded-4 position-relative project-glass-card bg-white"
+                  style={{
+                    "--accent-color": project.accentColor,
+                    "--card-bg": project.bgColor,
+                    border: "1px solid #f1f3f5",
+                    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)",
+                    transition: "all 0.3s ease"
+                  }}
                 >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-100 h-100"
-                    style={{ objectFit: "contain", width: "100%", height: "100%" }}
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                    }}
-                  />
-                </div>
-
-                {/* Card Body Details */}
-                <div className="card-body p-0 d-flex justify-content-between align-items-end">
-                  <div>
-                    <h5 className="fw-bold mb-1 project-title-text" style={{ fontSize: "1.05rem", color: "#1e293b" }}>
-                      {project.title}
-                    </h5>
-                    <p className="mb-0 fw-medium" style={{ fontSize: "0.82rem", color: project.accentColor }}>
-                      {project.category}
-                    </p>
-                  </div>
-                  <div>
-                    <div
-                      className="rounded-circle d-inline-flex align-items-center justify-content-center external-icon-box"
-                      style={{
-                        width: "38px",
-                        height: "38px",
-                        backgroundColor: project.bgColor,
-                        color: project.accentColor,
-                        border: `1.5px solid ${project.accentColor}55`,
-                        transition: "all 0.3s ease"
+                  {/* Wide Landscape Image Container */}
+                  <div
+                    className="rounded-3 overflow-hidden mb-3 position-relative project-img-box"
+                    style={{ backgroundColor: "#f8fafc" }}
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-100 h-100"
+                      style={{ objectFit: "contain", width: "100%", height: "100%" }}
+                      onError={(e) => {
+                        e.target.style.display = 'none';
                       }}
-                    >
-                      <ExternalLink size={16} />
+                    />
+                  </div>
+
+                  {/* Card Body Details */}
+                  <div className="card-body p-0 d-flex justify-content-between align-items-end">
+                    <div>
+                      <h5 className="fw-bold mb-1 project-title-text" style={{ fontSize: "1.05rem", color: "#1e293b" }}>
+                        {project.title}
+                      </h5>
+                      <p className="mb-0 fw-medium" style={{ fontSize: "0.82rem", color: project.accentColor }}>
+                        {project.category}
+                      </p>
+                    </div>
+                    <div>
+                      <div
+                        className="rounded-circle d-inline-flex align-items-center justify-content-center external-icon-box"
+                        style={{
+                          width: "38px",
+                          height: "38px",
+                          backgroundColor: project.bgColor,
+                          color: project.accentColor,
+                          border: `1.5px solid ${project.accentColor}55`,
+                          transition: "all 0.3s ease"
+                        }}
+                      >
+                        <ExternalLink size={16} />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           ))}
         </div>
