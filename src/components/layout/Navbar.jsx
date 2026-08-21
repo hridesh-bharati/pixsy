@@ -93,7 +93,7 @@ export default function Navbar({ user, role }) {
       <div className="container">
         {/* Left: Brand Logo & Title */}
         <Link className="navbar-brand d-flex align-items-center text-decoration-none" to="/">
-          <img src="/images/logo.webp" className="img-fluid" alt="Pixsy Logo" style={{ width: '40px' }} />
+          <img src="/images/logo.webp" className="img-fluid rounded-1" alt="Pixsy Logo" style={{ width: '50px' }} />
           <div className="ms-2">
             <span ref={brandHeadingRef} className="fw-bold fs-5 process-gradient-text">Pixsy Media</span>
             <div style={{ fontSize: '10px', color: '#ff4d4d' }}>We're Partner of Your Innovations</div>

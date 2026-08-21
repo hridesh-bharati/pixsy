@@ -7,7 +7,6 @@ import ProfessionalServices from "./ProfessionalServices";
 import WhyChooseUs from "./WhyChooseUs";
 import Process from "./Process";
 import Testimonials from "./Testimonials";
-import PixsyServices from "./Services/PixsyServices";
 import "./Home.css";
 import RecentProjects from "./RecentProjects/RecentProjects";
 import StatsBanner from "./StatsBanner";
@@ -123,11 +122,10 @@ export default function Home() {
 
       <div data-aos="fade-up"><Cards /></div>
       <div data-aos="fade-up"><AboutHero /></div>
-      <div data-aos="fade-up"><ProfessionalServices /></div>
       <div data-aos="fade-up"><RecentProjects /></div>
       <div data-aos="fade-up"><StatsBanner /></div>
       <div data-aos="fade-up"><WhyChooseUs /></div>
-      <div data-aos="fade-up"><PixsyServices /></div>
+      <div data-aos="fade-up"><ProfessionalServices /></div>
       <div data-aos="fade-up"><Process /></div>
       <div data-aos="fade-up"><Testimonials /></div>
       <div data-aos="fade-up"><CtaBanner /></div>

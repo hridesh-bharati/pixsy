@@ -152,7 +152,7 @@ const Process = () => {
             What We Do
           </span>
           <h2 ref={headingRef} data-aos="fade-up">
-            Our <span className="process-gradient-text">Services</span>
+            Our Development <span className="process-gradient-text">Process</span>
           </h2>
           <p className="process-subtitle" data-aos="fade-up" data-aos-delay="100">
             We offer full-cycle software development services and digital solutions
