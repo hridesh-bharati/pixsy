@@ -33,7 +33,7 @@ const WhyChooseUs = () => {
         });
       }
 
-      // Cards staggered animation
+      // Cards staggered animation (optimized for mobile & desktop)
       const cards = sectionRef.current.querySelectorAll('.why-card');
       cards.forEach((card, index) => {
         const isEven = index % 2 === 0;
@@ -42,19 +42,19 @@ const WhyChooseUs = () => {
           card,
           {
             opacity: 0,
-            x: isEven ? -100 : 100,
-            y: 50,
+            x: window.innerWidth > 768 ? (isEven ? -60 : 60) : 0,
+            y: 40,
           },
           {
             scrollTrigger: {
               trigger: card,
-              start: 'top 85%',
+              start: 'top 90%',
               toggleActions: 'play none none reverse',
             },
             opacity: 1,
             x: 0,
             y: 0,
-            duration: 0.8,
+            duration: 0.7,
             ease: 'power3.out',
           }
         );
@@ -110,16 +110,16 @@ const WhyChooseUs = () => {
       <div className="container position-relative z-2">
         <div className="section-header">
           <span
-            className="badge px-3 py-1 rounded-pill fw-bold text-white mb-3 shadow-sm d-inline-block"
+            className="badge px-3 py-2 rounded-pill fw-bold text-white mb-3 shadow-sm d-inline-flex align-items-center gap-1"
             style={{ background: brandGradient, fontSize: '11px', letterSpacing: '1.5px' }}
           >
-            <Sparkles size={12} className="me-1" />
+            <Sparkles size={12} />
             WHY CHOOSE US
           </span>
-          <h2 className="fw-bold text-dark mb-3" style={{ fontSize: '2.2rem', lineHeight: '1.3' }}>
+          <h2 className="fw-bold text-dark mb-3 why-main-title">
             Why <span ref={headingRef} className="process-gradient-text">Pixsy Media</span>
           </h2>
-          <p className="text-muted mx-auto" style={{ maxWidth: '600px', fontSize: '0.95rem', lineHeight: '1.6' }}>
+          <p className="text-muted mx-auto why-subtitle">
             We combine creativity, technology, and strategy to deliver exceptional results
           </p>
         </div>
@@ -135,10 +135,10 @@ const WhyChooseUs = () => {
 
               <div className="why-card-inner">
                 <div className="why-icon-wrapper">
-                  <Icon size={26} />
+                  <Icon size={24} />
                 </div>
                 <h3 className="why-card-title">{title}</h3>
-                <p>{desc}</p>
+                <p className="why-card-desc">{desc}</p>
                 <div className="why-card-line"></div>
               </div>
             </div>

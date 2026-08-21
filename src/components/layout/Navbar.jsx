@@ -1,7 +1,7 @@
 // src/components/Navbar/Navbar.jsx
 import React, { useRef, useEffect } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
-import { LayoutDashboard } from "lucide-react";
+import { LayoutDashboard, TextAlignEnd } from "lucide-react";
 import { gsap } from "gsap";
 import "./Navbar.css";
 
@@ -23,43 +23,68 @@ export default function Navbar({ user, role }) {
     }
   }, []);
 
-  // Function to move fire indicator accurately under the link with a wide tail
   const updateFireBar = (element) => {
     if (fireBarRef.current && element && navListRef.current) {
       const listRect = navListRef.current.getBoundingClientRect();
       const elRect = element.getBoundingClientRect();
 
-      gsap.to(fireBarRef.current, {
-        left: elRect.left - listRect.left,
-        width: elRect.width,
-        opacity: 1,
-        duration: 0.45,
-        ease: "power3.out",
-      });
+      // Desktop vs Mobile check for proper placement
+      if (window.innerWidth >= 992) {
+        gsap.to(fireBarRef.current, {
+          left: elRect.left - listRect.left,
+          top: "auto",
+          width: elRect.width,
+          height: "4px",
+          opacity: 1,
+          duration: 0.45,
+          ease: "power3.out",
+        });
+      } else {
+        // Mobile view ke liye vertical position calculate karna
+        gsap.to(fireBarRef.current, {
+          left: 0,
+          top: elRect.top - listRect.top,
+          width: "4px",
+          height: elRect.height,
+          opacity: 1,
+          duration: 0.3,
+          ease: "power3.out",
+        });
+      }
     }
   };
 
-  // Align fire bar with active link on page load/route change
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const handleActiveAlignment = () => {
       const activeEl = navListRef.current?.querySelector(".nav-link.active");
       if (activeEl) {
         updateFireBar(activeEl);
       }
-    }, 50);
-    return () => clearTimeout(timer);
+    };
+
+    const timer = setTimeout(handleActiveAlignment, 50);
+    window.addEventListener("resize", handleActiveAlignment);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", handleActiveAlignment);
+    };
   }, [location.pathname]);
 
   const handleMouseEnter = (e) => {
-    updateFireBar(e.currentTarget);
+    if (window.innerWidth >= 992) {
+      updateFireBar(e.currentTarget);
+    }
   };
 
   const handleMouseLeave = () => {
-    const activeEl = navListRef.current?.querySelector(".nav-link.active");
-    if (activeEl) {
-      updateFireBar(activeEl);
-    } else {
-      gsap.to(fireBarRef.current, { opacity: 0, duration: 0.3 });
+    if (window.innerWidth >= 992) {
+      const activeEl = navListRef.current?.querySelector(".nav-link.active");
+      if (activeEl) {
+        updateFireBar(activeEl);
+      } else {
+        gsap.to(fireBarRef.current, { opacity: 0, duration: 0.3 });
+      }
     }
   };
 
@@ -75,8 +100,18 @@ export default function Navbar({ user, role }) {
           </div>
         </Link>
 
-        <button className="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#pixsyNavbar" aria-controls="pixsyNavbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
+        {/* Mobile Menu Button */}
+        <button
+          className="navbar-toggler border-0 text-white shadow-none p-2 d-flex align-items-center justify-content-center d-lg-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#pixsyNavbar"
+          aria-controls="pixsyNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          style={{ background: 'rgba(255, 255, 255, 0.05)', borderRadius: '8px' }}
+        >
+          <TextAlignEnd size={24} strokeWidth={2} className="text-white" />
         </button>
 
         <div className="collapse navbar-collapse" id="pixsyNavbar">
@@ -85,7 +120,7 @@ export default function Navbar({ user, role }) {
             ref={navListRef}
             onMouseLeave={handleMouseLeave}
           >
-            {/* Sliding Real Flame / Diya Tail Indicator */}
+            {/* Sliding Real Flame Indicator */}
             <div ref={fireBarRef} className="nav-fire-indicator"></div>
 
             {[

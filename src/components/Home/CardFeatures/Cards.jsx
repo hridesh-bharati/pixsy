@@ -23,7 +23,6 @@ export default function Cards() {
     { title: 'App Maintenance', icon: LayoutGrid, desc: 'Reliable Support & Updates' },
   ];
 
-  // Aapke folder ki images list
   const clientImages = [
     '/images/card-slider/card1.JPEG',
     '/images/card-slider/card2.JPEG',
@@ -35,10 +34,10 @@ export default function Cards() {
   ];
 
   return (
-    <div className="services-marquee-section" data-aos="fade-up">
-      {/* First Marquee: Services (Moving Left to Right) */}
-      <div className="marquee-container mb-3">
-        <div className="marquee-track-right">
+    <div className="services-marquee-section py-4" data-aos="fade-up">
+      {/* First Marquee: Services */}
+      <div className="marquee-container mb-4">
+        <div className="marquee-track-left">
           {[...services, ...services].map((service, index) => {
             const IconComponent = service.icon;
             const colorClass = `color-${(index % 8) + 1}`;
@@ -58,14 +57,19 @@ export default function Cards() {
         </div>
       </div>
 
-      {/* Second Marquee: Image Cards / Partners (Moving Left to Right) */}
-      <div className="marquee-container">
-        <div className="marquee-track-right" style={{ animationDuration: '30s' }}>
-          {[...clientImages, ...clientImages].map((imgSrc, index) => (
-            <div className="client-image-card" key={`client-${index}`}>
-              <img src={imgSrc} alt={`Client ${index + 1}`} />
-            </div>
-          ))}
+      {/* Second Marquee: Trusted By Brands Section */}
+      <div className="trusted-brands-section mt-4">
+        <div className="text-center mb-3">
+          <h6 className="trusted-brands-title">TRUSTED BY BRANDS</h6>
+        </div>
+        <div className="marquee-container">
+          <div className="marquee-track-right" style={{ animationDuration: '32s' }}>
+            {[...clientImages, ...clientImages].map((imgSrc, index) => (
+              <div className="client-image-card" key={`client-${index}`}>
+                <img src={imgSrc} alt={`Client Brand ${index + 1}`} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

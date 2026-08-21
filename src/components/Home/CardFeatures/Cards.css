@@ -1,7 +1,7 @@
 /* src/components/CardFeatures/Cards.css */
 .services-marquee-section {
   width: 100%;
-  padding: 12px 0;
+  padding: 16px 0;
   background-color: #ffffff;
   overflow: hidden;
   position: relative;
@@ -35,19 +35,37 @@
   overflow: hidden;
 }
 
-/* Left to Right Movement Track */
-.marquee-track-right {
+/* Tracks */
+.marquee-track-left {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   width: max-content;
-  animation: scrollMarqueeRight 35s linear infinite;
+  animation: scrollMarqueeLeft 35s linear infinite;
 }
 
+.marquee-track-right {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: scrollMarqueeRight 32s linear infinite;
+}
+
+.marquee-track-left:hover,
 .marquee-track-right:hover {
   animation-play-state: paused;
 }
 
-/* Smaller, Compact Vibrant Light Cards Style */
+/* Trusted By Brands Heading Style */
+.trusted-brands-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #64748b;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* Service Cards */
 .service-card {
   background: linear-gradient(135deg,
       color-mix(in srgb, var(--card-color-start) 12%, #ffffff),
@@ -65,29 +83,32 @@
   overflow: hidden;
 }
 
-.service-card:hover {
-  transform: translateY(-2px) scale(1.02);
-  border-color: color-mix(in srgb, var(--card-color-start) 40%, transparent);
-  box-shadow: 0 6px 20px color-mix(in srgb, var(--card-color-start) 15%, transparent);
-}
-
-/* Client Image Card Style */
+/* Bada Size Client Image Cards */
 .client-image-card {
   background: #ffffff;
-  border: 1px solid #f1f5f9;
-  border-radius: 10px;
-  padding: 6px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 140px;
-  height: 55px;
-  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.03);
+  min-width: 170px;
+  /* Thoda aur bada kiya gaya hai */
+  height: 68px;
+  /* Height ko bhi bada kiya gaya hai */
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+  transition: transform 0.3s ease;
+}
+
+.client-image-card:hover {
+  transform: translateY(-3px);
+  border-color: #cbd5e1;
 }
 
 .client-image-card img {
-  max-height: 38px;
-  max-width: 110px;
+  max-height: 46px;
+  /* Images ko bhi bada kiya gaya hai */
+  max-width: 135px;
   object-fit: contain;
 }
 
@@ -119,12 +140,6 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: all 0.4s ease;
-  box-shadow: 0 3px 10px color-mix(in srgb, var(--card-color-end) 35%, transparent);
-}
-
-.service-card:hover .service-icon-box {
-  transform: rotate(6deg) scale(1.06);
 }
 
 /* Service Info */
@@ -182,7 +197,17 @@
   --card-color-end: #9b4dff;
 }
 
-/* Right Direction Infinite Scroll Keyframes */
+/* Keyframes */
+@keyframes scrollMarqueeLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes scrollMarqueeRight {
   0% {
     transform: translateX(-50%);
