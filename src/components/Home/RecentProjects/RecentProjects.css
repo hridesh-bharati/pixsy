@@ -1,67 +1,60 @@
 /* src/components/Home/RecentProjects/RecentProjects.css */
-.recent-projects-section {
-  background-color: #ffffff;
-  color: #1e293b;
-}
 
 .process-gradient-text {
   background: linear-gradient(135deg, #ff6b00, #ff2770, #873cff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+  display: inline-block;
 }
 
-/* Colorful Light Card Style */
-.project-glass-card {
-  background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 0 10px;
+}
+
+/* Wide Image Box for Laptop Screenshots */
+.project-img-box {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  /* Wide laptop ratio taaki image bilkul na kate */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .project-glass-card:hover {
   transform: translateY(-6px);
-  border-color: var(--accent-color) !important;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08) !important;
-  background: var(--card-bg) !important;
+  border-color: var(--accent-color) !important;
 }
 
 .project-glass-card:hover .external-icon-box {
-  background: var(--accent-color) !important;
+  background-color: var(--accent-color) !important;
+  color: #ffffff !important;
   border-color: var(--accent-color) !important;
-  color: #fff !important;
-  transform: scale(1.1);
-  box-shadow: 0 5px 15px var(--accent-color) 66;
 }
 
 .project-all-btn {
-  background: #ffffff !important;
   transition: all 0.3s ease;
 }
 
 .project-all-btn:hover {
-  background: linear-gradient(135deg, #ff6b00, #ff2770) !important;
-  color: #fff !important;
-  border-color: transparent !important;
-  box-shadow: 0 8px 20px rgba(255, 39, 112, 0.3);
+  background-color: #ff2770 !important;
+  color: #ffffff !important;
 }
 
-/* PC par 5 cards ek row mein */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.25rem;
-  padding: 0.25rem;
-}
-
-@media (max-width: 1200px) {
-  .projects-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.project-all-btn:hover span:last-child {
+  background: #ffffff !important;
+  color: #ff2770 !important;
 }
 
 @media (max-width: 768px) {
   .projects-grid {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
   }
 }

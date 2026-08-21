@@ -9,6 +9,7 @@ import {
   ArrowLeft,
   ArrowRight
 } from 'lucide-react';
+import './Testimonials.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,7 @@ const Testimonials = () => {
   const sectionRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const [cardsPerView, setCardsPerView] = useState(3);
 
   const baseTestimonials = [
     {
@@ -60,10 +62,23 @@ const Testimonials = () => {
     }
   ];
 
-  // Duplicate items to create an infinite loop buffer
+  // Screen resize detect karne ke liye taaki mobile par 1 aur desktop par 3 cards dikhein
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setCardsPerView(1);
+      } else {
+        setCardsPerView(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const testimonials = [...baseTestimonials, ...baseTestimonials, ...baseTestimonials];
 
-  // Start at the middle set so users can go both ways seamlessly
   useEffect(() => {
     setCurrentIndex(baseTestimonials.length);
   }, []);
@@ -88,7 +103,6 @@ const Testimonials = () => {
   }, []);
 
   const handleTransitionEnd = () => {
-    // If we reach the end of the cloned set, loop back silently without animation
     if (currentIndex >= baseTestimonials.length * 2) {
       setIsTransitioning(false);
       setCurrentIndex(baseTestimonials.length);
@@ -100,7 +114,6 @@ const Testimonials = () => {
 
   useEffect(() => {
     if (!isTransitioning) {
-      // Re-enable transition immediately after resetting index
       const timer = setTimeout(() => setIsTransitioning(true), 50);
       return () => clearTimeout(timer);
     }
@@ -114,7 +127,6 @@ const Testimonials = () => {
     setCurrentIndex((prev) => prev - 1);
   };
 
-  // Determine active dot index based on base length
   const activeDotIndex = (currentIndex - baseTestimonials.length + baseTestimonials.length) % baseTestimonials.length;
 
   return (
@@ -140,26 +152,26 @@ const Testimonials = () => {
             <div
               className="d-flex gap-4"
               style={{
-                transform: `translateX(-${currentIndex * (100 / 3)}%)`,
+                transform: `translateX(-${currentIndex * (100 / cardsPerView)}%)`,
                 transition: isTransitioning ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
               }}
               onTransitionEnd={handleTransitionEnd}
             >
               {testimonials.map((testimonial, index) => {
-                const isCenter = index === currentIndex + 1;
+                const isCenter = cardsPerView === 3 ? index === currentIndex + 1 : index === currentIndex;
                 return (
                   <div
                     key={index}
                     className="testimonial-card-wrapper flex-shrink-0"
-                    style={{ width: 'calc(33.333% - 1rem)' }}
+                    style={{ width: cardsPerView === 3 ? 'calc(33.333% - 1rem)' : '100%' }}
                   >
                     <div
                       className={`card h-100 p-4 rounded-4 border-0 position-relative shadow-sm ${isCenter ? 'shadow-lg border-2' : ''}`}
                       style={{
                         backgroundColor: testimonial.bgColor,
-                        transform: isCenter ? 'scale(1.05)' : 'scale(0.95)',
+                        transform: cardsPerView === 3 && isCenter ? 'scale(1.05)' : 'scale(1)',
                         transition: 'all 0.4s ease',
-                        opacity: isCenter ? 1 : 0.75,
+                        opacity: cardsPerView === 3 && !isCenter ? 0.75 : 1,
                         zIndex: isCenter ? 2 : 1
                       }}
                     >
@@ -201,7 +213,7 @@ const Testimonials = () => {
             </div>
           </div>
 
-          {/* Floating Control Buttons on the Right Side */}
+          {/* Floating Control Buttons */}
           <div className="d-flex justify-content-center justify-content-md-end align-items-center gap-3 mt-4 px-3">
             <button
               onClick={prevSlide}

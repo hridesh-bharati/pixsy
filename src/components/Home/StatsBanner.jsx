@@ -12,8 +12,8 @@ export default function StatsBanner() {
 
   return (
     <section className="py-4 bg-white">
-      <div className="container-fluid px-0">
-        <div className="w-100 py-4 px-3 stats-rainbow-banner shadow-sm">
+      <div className="container-fluid">
+        <div className="w-100 py-4 px-3 stats-rainbow-banner shadow-sm rounded-4">
           <div className="row align-items-center justify-content-around text-white text-center text-md-start g-4 mx-0">
             {stats.map((item, index) => (
               <div className="col-6 col-md-3 d-flex flex-column flex-md-row align-items-center justify-content-center gap-3" key={index}>

@@ -23,7 +23,6 @@ const WhyChooseUs = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Running Color Animation for Heading
       if (headingRef.current) {
         gsap.to(headingRef.current, {
           backgroundPosition: '200% 50%',
@@ -33,32 +32,23 @@ const WhyChooseUs = () => {
         });
       }
 
-      // Cards staggered animation (optimized for mobile & desktop)
-      const cards = sectionRef.current.querySelectorAll('.why-card');
-      cards.forEach((card, index) => {
-        const isEven = index % 2 === 0;
-
-        gsap.fromTo(
-          card,
-          {
-            opacity: 0,
-            x: window.innerWidth > 768 ? (isEven ? -60 : 60) : 0,
-            y: 40,
+      const cards = sectionRef.current.querySelectorAll('.why-modern-card');
+      gsap.fromTo(
+        cards,
+        { opacity: 0, y: 40 },
+        {
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
           },
-          {
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 90%',
-              toggleActions: 'play none none reverse',
-            },
-            opacity: 1,
-            x: 0,
-            y: 0,
-            duration: 0.7,
-            ease: 'power3.out',
-          }
-        );
-      });
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: 'power3.out',
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -68,47 +58,53 @@ const WhyChooseUs = () => {
     {
       icon: Rocket,
       title: 'Fast Delivery',
-      desc: 'We deliver projects on time with agile methodology and rapid development cycles.',
-      color: '#ff6b00'
+      desc: 'We deliver projects on time with agile methodology and rapid deployment cycles.',
+      accent: '#ff6b00',
+      accentEnd: '#ff9933'
     },
     {
       icon: Users,
       title: 'Expert Team',
-      desc: 'Our team of 50+ experienced professionals ensures top-quality results every time.',
-      color: '#ff2468'
+      desc: 'Our team of skilled professionals ensures top-quality results every single time.',
+      accent: '#ff2770',
+      accentEnd: '#ff5c8d'
     },
     {
       icon: Shield,
       title: 'Secure Solutions',
-      desc: 'Enterprise-grade security with regular audits and compliance standards.',
-      color: '#a52aff'
+      desc: 'Enterprise-grade security standards with rigorous compliance audits.',
+      accent: '#a52aff',
+      accentEnd: '#c766ff'
     },
     {
       icon: Clock,
       title: '24/7 Support',
-      desc: 'Round-the-clock support with dedicated account managers for your business.',
-      color: '#315cff'
+      desc: 'Round-the-clock dedicated assistance and maintenance for your business.',
+      accent: '#315cff',
+      accentEnd: '#5c82ff'
     },
     {
       icon: Zap,
       title: 'Performance Focused',
-      desc: 'Optimized solutions that deliver speed, efficiency, and measurable results.',
-      color: '#ff8c00'
+      desc: 'Lightning-fast architectures optimized for high speed and conversion.',
+      accent: '#06b6d4',
+      accentEnd: '#22d3ee'
     },
     {
       icon: Award,
       title: 'Quality Guarantee',
-      desc: '100% satisfaction guarantee with rigorous testing and quality assurance.',
-      color: '#e040a0'
+      desc: '100% satisfaction assurance backed by rigorous multi-stage testing.',
+      accent: '#10b981',
+      accentEnd: '#34d399'
     }
   ];
 
   return (
-    <section ref={sectionRef} className="why-choose-us">
-      <div className="why-grid-pattern"></div>
+    <section ref={sectionRef} className="py-5 bg-light position-relative overflow-hidden why-section">
+      <div className="container py-lg-5 position-relative z-2">
 
-      <div className="container position-relative z-2">
-        <div className="section-header">
+        {/* Header Section */}
+        <div className="text-center mx-auto mb-5 pb-2" style={{ maxWidth: '650px' }}>
           <span
             className="badge px-3 py-2 rounded-pill fw-bold text-white mb-3 shadow-sm d-inline-flex align-items-center gap-1"
             style={{ background: brandGradient, fontSize: '11px', letterSpacing: '1.5px' }}
@@ -116,34 +112,43 @@ const WhyChooseUs = () => {
             <Sparkles size={12} />
             WHY CHOOSE US
           </span>
-          <h2 className="fw-bold text-dark mb-3 why-main-title">
+          <h2 className="fw-bold display-6 text-dark mb-3">
             Why <span ref={headingRef} className="process-gradient-text">Pixsy Media</span>
           </h2>
-          <p className="text-muted mx-auto why-subtitle">
-            We combine creativity, technology, and strategy to deliver exceptional results
+          <p className="text-muted fs-6 mb-0">
+            We blend creative design with advanced technology to build digital solutions that scale.
           </p>
         </div>
 
-        <div className="why-grid">
-          {features.map(({ icon: Icon, title, desc, color }, index) => (
-            <div
-              key={index}
-              className="why-card"
-              style={{ "--card-color": color }}
-            >
-              <div className="why-card-flare"></div>
+        {/* Colorful Modern Cards Grid */}
+        <div className="row g-4">
+          {features.map(({ icon: Icon, title, desc, accent, accentEnd }, index) => (
+            <div key={index} className="col-md-6 col-lg-4">
+              <div
+                className="why-modern-card h-100 p-4 rounded-4 position-relative"
+                style={{
+                  "--accent": accent,
+                  "--accent-end": accentEnd
+                }}
+              >
+                <div className="card-inner d-flex flex-column h-100 position-relative z-2">
+                  <div className="d-flex align-items-center justify-content-between mb-4">
+                    <div className="why-icon-box rounded-3 d-flex align-items-center justify-content-center shadow-sm">
+                      <Icon size={24} strokeWidth={2.2} />
+                    </div>
+                    <span className="why-index fw-bold fs-4">0{index + 1}</span>
+                  </div>
 
-              <div className="why-card-inner">
-                <div className="why-icon-wrapper">
-                  <Icon size={24} />
+                  <h3 className="fw-bold fs-5 text-dark mb-2">{title}</h3>
+                  <p className="text-muted small mb-4 lh-base flex-grow-1">{desc}</p>
+
+                  <div className="why-card-line rounded-pill"></div>
                 </div>
-                <h3 className="why-card-title">{title}</h3>
-                <p className="why-card-desc">{desc}</p>
-                <div className="why-card-line"></div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

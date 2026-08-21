@@ -9,7 +9,7 @@ export default function RecentProjects() {
     {
       title: "Tarang Goa",
       category: "Website Development",
-      image: "/images/tarang-goa.jpg",
+      image: "/images/recent-projects/project1.png",
       link: "#",
       accentColor: "#ff6b00",
       bgColor: "#fff5ed"
@@ -17,7 +17,7 @@ export default function RecentProjects() {
     {
       title: "Digicom Training Academy",
       category: "Website Development",
-      image: "/images/digicom.jpg",
+      image: "/images/recent-projects/project2.png",
       link: "#",
       accentColor: "#ff2770",
       bgColor: "#fff1f5"
@@ -25,7 +25,7 @@ export default function RecentProjects() {
     {
       title: "CJ Group",
       category: "Website Development",
-      image: "/images/cj-group.jpg",
+      image: "/images/recent-projects/project3.png",
       link: "#",
       accentColor: "#873cff",
       bgColor: "#f7f2ff"
@@ -33,18 +33,10 @@ export default function RecentProjects() {
     {
       title: "Artghar",
       category: "UI/UX Design",
-      image: "/images/artghar.jpg",
+      image: "/images/recent-projects/project1.png",
       link: "#",
       accentColor: "#06b6d4",
       bgColor: "#eef8ff"
-    },
-    {
-      title: "Virnda Cards",
-      category: "Website Development",
-      image: "/images/virnda.jpg",
-      link: "#",
-      accentColor: "#10b981",
-      bgColor: "#ecfdf5"
     }
   ];
 
@@ -88,25 +80,26 @@ export default function RecentProjects() {
                 className="card h-100 p-3 rounded-4 position-relative project-glass-card bg-white"
                 style={{
                   "--accent-color": project.accentColor,
-                  "--card-bg": project.bgColor
+                  "--card-bg": project.bgColor,
+                  border: "1px solid #f1f3f5",
+                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)",
+                  transition: "all 0.3s ease"
                 }}
               >
-                {/* Project Image Preview Container */}
+                {/* Wide Landscape Image Container */}
                 <div
                   className="rounded-3 overflow-hidden mb-3 position-relative project-img-box"
-                  style={{ height: "180px", background: project.bgColor, border: `1px solid ${project.accentColor}33` }}
+                  style={{ backgroundColor: "#f8fafc" }}
                 >
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-100 h-100 object-fit-cover"
+                    className="w-100 h-100"
+                    style={{ objectFit: "contain", width: "100%", height: "100%" }}
                     onError={(e) => {
                       e.target.style.display = 'none';
                     }}
                   />
-                  <div className="position-absolute inset-0 d-flex align-items-center justify-content-center small fw-semibold" style={{ color: project.accentColor, opacity: 0.7, zIndex: -1 }}>
-                    {project.title} Preview
-                  </div>
                 </div>
 
                 {/* Card Body Details */}
@@ -115,7 +108,7 @@ export default function RecentProjects() {
                     <h5 className="fw-bold mb-1 project-title-text" style={{ fontSize: "1.05rem", color: "#1e293b" }}>
                       {project.title}
                     </h5>
-                    <p className="mb-0 fw-medium" style={{ fontSize: "0.82srem", color: project.accentColor }}>
+                    <p className="mb-0 fw-medium" style={{ fontSize: "0.82rem", color: project.accentColor }}>
                       {project.category}
                     </p>
                   </div>
